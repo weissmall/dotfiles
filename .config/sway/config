@@ -38,3 +38,12 @@ bindsym $mod+q kill
 
 gaps inner 0
 gaps outer 0
+
+bar {
+	id default
+	swaybar_command waybar
+	position top
+	hidden_state hide
+	mode hide
+	modifier Mod4
+}

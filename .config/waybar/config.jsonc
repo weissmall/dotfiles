@@ -1,8 +1,11 @@
 {
+    // "id": "bar-0",
+    "ipc": true,
     "layer": "top",
     // If height property would be not present, it'd be calculated dynamically
     "height": 30,
     "margin": 4,
+    // "name": "test",
     "position": "top",
     "modules-left": [
         // "custom/menu",

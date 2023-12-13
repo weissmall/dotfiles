@@ -1,0 +1,255 @@
+/* =============================================================================
+ *
+ * Waybar configuration
+ *
+ * Configuration reference: https://github.com/Alexays/Waybar/wiki/Configuration
+ *
+ * =========================================================================== */
+
+/* import css definitions for current theme */
+
+/* -----------------------------------------------------------------------------
+ * Keyframes
+ * -------------------------------------------------------------------------- */
+
+@keyframes blink-warning {
+    70% {
+        color: @wm_icon_bg;
+    }
+
+    to {
+        color: @wm_icon_bg;
+        background-color: @warning_color;
+    }
+}
+
+@keyframes blink-critical {
+    70% {
+        color: @wm_icon_bg;
+    }
+
+    to {
+        color: @wm_icon_bg;
+        background-color: @error_color;
+    }
+}
+
+/* -----------------------------------------------------------------------------
+ * Base styles
+ * -------------------------------------------------------------------------- */
+
+/* Reset all styles */
+* {
+    border: none;
+    border-radius: 0;
+    min-height: 0;
+    margin: 0;
+    padding: 0;
+    font-family: "JetBrainsMono Nerd Font", "Roboto Mono", sans-serif;
+}
+
+/* The whole bar */
+window#waybar {
+    /* background: @theme_bg_color; */
+    /* color: @wm_icon_bg; */
+    background-color: transparent;
+    border-radius: 8px;
+    color: #7aa2f7;
+    font-size: 14px;
+}
+
+window#waybar {
+    opacity: 0;
+}
+
+window#waybar:hover {
+    opacity: 1;
+}
+
+#workspaces button {
+    background-color: rgba(37, 41, 60, 1);
+}
+
+#custom-wf-recorder,
+#sway-mode,
+#custom-weather {
+    background-color: rgba(37, 41, 60, 1);
+    padding: 0px 10px;
+    border-radius: 8px;
+}
+
+#workspaces button:first-child,
+#language {
+    border-radius: 8px 0px 0px 8px;
+}
+
+#workspaces button:last-child,
+#clock {
+    border-radius: 0px 8px 8px 0px;
+}
+
+#workspaces button.focused {
+    /* border-color: @theme_selected_bg_color; */
+    background-color: rgba(37, 41, 60, 1);
+    /* border-color: #0db9d7; */
+}
+
+#workspaces button.urgent {
+    /* border-color: @error_color; */
+    /* color: @error_color; */
+    background-color: rgba(37, 41, 60, 1);
+}
+
+
+/* Each module */
+#custom-pacman,
+#custom-menu,
+#custom-help,
+#custom-scratchpad,
+#custom-github,
+#custom-clipboard,
+#custom-zeit,
+#custom-dnd,
+#bluetooth,
+#battery,
+#clock,
+#cpu,
+#memory,
+#mode,
+#network,
+#pulseaudio,
+#temperature,
+#idle_inhibitor,
+#backlight,
+#language,
+#custom-adaptive-light,
+#custom-sunset,
+#custom-playerctl,
+#tray {
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: rgba(37, 41, 60, 1);
+}
+
+/* -----------------------------------------------------------------------------
+ * Module styles
+ * -------------------------------------------------------------------------- */
+
+#custom-scratchpad,
+#custom-menu,
+#workspaces button.focused,
+#clock {
+    /* color: @theme_bg_color;
+    background-color: @theme_selected_bg_color; */
+    /* background-color: transparent; */
+}
+
+#custom-zeit.tracking {
+    background-color: @warning_color;
+}
+
+#battery {
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#battery.warning {
+    color: @warning_color;
+}
+
+#battery.critical {
+    color: @error_color;
+}
+
+#battery.warning.discharging {
+    animation-name: blink-warning;
+    animation-duration: 3s;
+}
+
+#battery.critical.discharging {
+    animation-name: blink-critical;
+    animation-duration: 2s;
+}
+
+#clock {
+    font-weight: bold;
+}
+
+#cpu.warning {
+    color: @warning_color;
+}
+
+#cpu.critical {
+    color: @error_color;
+}
+
+#custom-menu {
+    padding-left: 8px;
+    padding-right: 13px;
+}
+
+#memory {
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#memory.warning {
+    color: @warning_color;
+}
+
+#memory.critical {
+    color: @error_color;
+    animation-name: blink-critical;
+    animation-duration: 2s;
+}
+
+#mode {
+    background: @background_color;
+}
+
+#network.disconnected {
+    color: @warning_color;
+}
+
+#pulseaudio.muted {
+    color: @warning_color;
+}
+
+#temperature.critical {
+    color: @error_color;
+}
+
+#workspaces button {
+    border-top: 2px solid transparent;
+    /* To compensate for the top border and still have vertical centering */
+    padding-bottom: 2px;
+    padding-left: 10px;
+    padding-right: 10px;
+    /* color: @theme_selected_bg_color; */
+    color: #7aa2f7;
+}
+
+#workspaces button.focused {
+    /* border-color: @theme_selected_bg_color; */
+    border-color: #0db9d7;
+}
+
+#workspaces button.urgent {
+    border-color: @error_color;
+    color: @error_color;
+}
+
+#custom-pacman {
+    color: @warning_color;
+}
+
+#bluetooth.disabled {
+    color: @warning_color;
+}
+
+#custom-wf-recorder {
+    color: @error_color;
+    padding-right: 10px;
+}

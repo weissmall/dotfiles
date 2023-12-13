@@ -58,14 +58,6 @@ window#waybar {
     font-size: 14px;
 }
 
-window#waybar {
-    opacity: 0;
-}
-
-window#waybar:hover {
-    opacity: 1;
-}
-
 #workspaces button {
     background-color: rgba(37, 41, 60, 1);
 }

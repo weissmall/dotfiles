@@ -5,8 +5,8 @@
 # Read `man 5 sway` for a complete reference.
 
 # styles - set the folder for your theme definition file
-#set $theme /usr/share/sway/themes/matcha-green
-set $theme /usr/share/sway/themes/dracula
+set $theme /usr/share/sway/themes/matcha-green
+#set $theme /usr/share/sway/themes/dracula
 
 # theme variables
 include $theme/definitions

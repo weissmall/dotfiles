@@ -5,10 +5,10 @@
 # Read `man 5 sway` for a complete reference.
 
 # styles - set the folder for your theme definition file
-set $theme $HOME/.config/sway/themes/matcha-green
+set $theme $HOME/.config/sway/themes/matcha-blue
 
 # theme variables
-include $theme/definitions
+include $theme/theme.conf
 
 include $HOME/.config/sway/definitions.d/*.conf
 include $HOME/.config/sway/inputs/*.conf

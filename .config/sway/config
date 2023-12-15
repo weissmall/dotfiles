@@ -5,16 +5,18 @@
 # Read `man 5 sway` for a complete reference.
 
 # styles - set the folder for your theme definition file
-set $theme $HOME/.config/sway/themes/matcha-blue
+set $swayConfigPath $HOME/.config/sway
+
+set $theme $swayConfigPath/themes/matcha-blue
 
 # theme variables
 include $theme/theme.conf
 
-include $HOME/.config/sway/definitions.d/*.conf
-include $HOME/.config/sway/inputs/*.conf
-include $HOME/.config/sway/outputs/*.conf
-include $HOME/.config/sway/modes/*.conf
-include $HOME/.config/sway/config.d/*.conf
+include $swayConfigPath/definitions.d/*.conf
+include $swayConfigPath/inputs/*.conf
+include $swayConfigPath/outputs/*.conf
+include $swayConfigPath/modes/*.conf
+include $swayConfigPath/config.d/*.conf
 
 # user config
 output * bg $HOME/Pictures/wallpaper_.jpg fill
@@ -22,12 +24,3 @@ bindsym $mod+q kill
 
 gaps inner 0
 gaps outer 0
-
-bar {
-	id default
-	swaybar_command waybar
-	position top
-	hidden_state hide
-	mode hide
-	modifier Mod4
-}

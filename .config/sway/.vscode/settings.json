@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "**/*.sway.conf": "i3",
+        "**/sway/config": "i3"
+    }
+}

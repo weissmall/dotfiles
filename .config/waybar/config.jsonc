@@ -3,7 +3,7 @@
     "ipc": true,
     "layer": "top",
     // If height property would be not present, it'd be calculated dynamically
-    "height": 30,
+    "height": 40,
     "margin": 4,
     // "name": "test",
     "position": "top",
@@ -43,6 +43,28 @@
         "tray",
         "clock"
     ],
+    "sway/workspaces": {
+        "format": "{icon}",
+        "on-click": "activate",
+        // "persistent-workspaces": {
+        //     "1": [],
+        //     "2": [],
+        //     "3": [],
+        //     "4": [],
+        //     "5": []
+        // },
+        "format-icons": {
+            "1": "",
+            "2": "",
+            "3": "",
+            "4": "",
+            "5": "",
+            "urgent": "",
+            "active": "",
+            "default": ""
+        },
+        "sort-by-number": true
+    },
     "battery": {
         "interval": 30,
         "states": {

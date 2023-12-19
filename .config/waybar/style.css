@@ -12,6 +12,16 @@
  * Keyframes
  * -------------------------------------------------------------------------- */
 
+
+/* #workspaces */
+/* #workspaces button */
+/* #workspaces button.active */
+/* #workspaces button.visible */
+/* #workspaces button.urgent */
+/* #workspaces button.empty */
+/* #workspaces button.persistent */
+/* #workspaces button.hidden */
+
 @keyframes blink-warning {
     70% {
         color: @wm_icon_bg;
@@ -46,6 +56,7 @@
     margin: 0;
     padding: 0;
     font-family: "JetBrainsMono Nerd Font", "Roboto Mono", sans-serif;
+    background-color: transparent;
 }
 
 /* The whole bar */
@@ -53,19 +64,32 @@ window#waybar {
     /* background: @theme_bg_color; */
     /* color: @wm_icon_bg; */
     background-color: transparent;
+    /* background-color: rgba(37, 41, 60, 1); */
     border-radius: 8px;
     color: #7aa2f7;
     font-size: 14px;
 }
 
-#workspaces button {
+window#waybar {
     background-color: rgba(37, 41, 60, 1);
+    border-radius: 0.8em;
+    border: 0px solid transparent;
+    font-size: 1em;
+}
+
+.modules-left {
+    background-color: shade(rgba(37, 41, 60, 1), 1.25);
+    border-radius: 0.8em;
+}
+
+#custom-scratchpad {
+    margin-right: 0.5em;
 }
 
 #custom-wf-recorder,
 #sway-mode,
 #custom-weather {
-    background-color: rgba(37, 41, 60, 1);
+    background-color: transparent;
     padding: 0px 10px;
     border-radius: 8px;
 }
@@ -120,7 +144,7 @@ window#waybar {
 #tray {
     padding-left: 10px;
     padding-right: 10px;
-    background-color: rgba(37, 41, 60, 1);
+    background-color: transparent;
 }
 
 /* -----------------------------------------------------------------------------

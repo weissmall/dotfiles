@@ -1,5 +1,5 @@
 vim.opt.nu = true
-vim.opt.relativenumber = false
+vim.opt.relativenumber = true
 
 vim.opt.tabstop = 2
 vim.opt.softtabstop = 2
@@ -29,3 +29,6 @@ vim.opt.colorcolumn = "80"
 -- Configs for nvim-tree
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
+
+vim.o.timeout = true
+vim.o.timeoutlen = 500

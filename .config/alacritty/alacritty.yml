@@ -60,6 +60,6 @@ schemes:
 
 colors: *tokyo-night-storm
 font:
-  size: 10
+  size: 12
 window:
   opacity: 0.85

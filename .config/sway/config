@@ -22,5 +22,5 @@ include $swayConfigPath/config.d/*.conf
 output * bg $HOME/Pictures/wallpaper_.jpg fill
 bindsym $mod+q kill
 
-gaps inner 4
-gaps outer 4
+gaps inner 0
+gaps outer 0

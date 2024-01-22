@@ -32,7 +32,7 @@ transparent.setup({ -- Optional, you don't have to run setup.
 	exclude_groups = {}, -- table: groups you don't want to clear
 })
 
-vim.keymap.set("n", "<leader>tt", vim.cmd.TransparentToggle)
+transparent.clear_prefix("NvimTree")
 
 function SetupColorScheme(colorScheme)
 	local color = colorScheme or "rose-pine"
@@ -40,7 +40,7 @@ function SetupColorScheme(colorScheme)
 
 	-- vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 	-- vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
-	vim.g.transparent_groups = vim.list_extend(vim.g.transparent_groups or {}, { "ExtraGroup" })
+	vim.g.transparent_groups = vim.list_extend(vim.g.transparent_groups or {}, { "NvimTreeNormal" })
 	vim.cmd.TransparentEnable()
 end
 

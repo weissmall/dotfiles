@@ -1,40 +1,40 @@
 local dashboard = require("dashboard")
 vim.keymap.set("n", "<leader>p", vim.cmd.Dashboard)
 dashboard.setup({
-  theme = 'doom',
-  config = {
-    header = {}, --your header
-    center = {
-      {
-        icon = ' ',
-        icon_hl = 'Title',
-        desc = 'Find File',
-        desc_hl = 'String',
-        key = 'b',
-        keymap = '<C>',
-        key_hl = 'Number',
-        key_format = ' %s', -- remove default surrounding `[]`
-        action = 'lua print(2)'
-      },
-      {
-        icon = ' ',
-        desc = 'Projects manager',
-        key = 'r',
-        keymap = '<C>',
-        key_format = ' %s', -- remove default surrounding `[]`
-        action = 'lua print(3)'
-      },
-      {
-        icon = ' ',
-        desc = 'Open dashboard',
-        key = 'd',
-        keymap = '<leader>',
-        key_format = ' %s', -- remove default surrounding `[]`
-        action = 'lua print(4)'
-      },
-    },
-    footer = {}
-  }
+	theme = "doom",
+	config = {
+		header = {}, --your header
+		center = {
+			{
+				icon = " ",
+				icon_hl = "Title",
+				desc = "Find File",
+				desc_hl = "String",
+				key = "b",
+				keymap = "<C>",
+				key_hl = "Number",
+				key_format = " %s", -- remove default surrounding `[]`
+				action = "lua print(2)",
+			},
+			{
+				icon = " ",
+				desc = "Projects manager",
+				key = "r",
+				keymap = "<C>",
+				key_format = " %s", -- remove default surrounding `[]`
+				action = "lua print(3)",
+			},
+			{
+				icon = " ",
+				desc = "Open dashboard",
+				key = "d",
+				keymap = "<leader>",
+				key_format = " %s", -- remove default surrounding `[]`
+				action = "lua print(4)",
+			},
+		},
+		footer = {},
+	},
 })
 
 -- dashboard.setup({

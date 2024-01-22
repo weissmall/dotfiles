@@ -6,6 +6,12 @@ vim.keymap.set("n", "<leader>ftff", vim.cmd.NvimTreeFindFile)
 vim.keymap.set("n", "<leader>ftc", vim.cmd.NvimTreeCollapse)
 
 tree.setup({
+	sync_root_with_cwd = true,
+	respect_buf_cwd = true,
+	update_focused_file = {
+		enable = true,
+		update_root = true,
+	},
 	sort = {
 		sorter = "case_sensitive",
 	},

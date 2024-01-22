@@ -23,6 +23,12 @@ formatter.setup({
 		python = {
 			require("formatter.filetypes.python").black,
 		},
+		cpp = {
+			require("formatter.filetypes.cpp").clangformat,
+		},
+		c = {
+			require("formatter.filetypes.c").clangformat,
+		},
 		["*"] = {
 			require("formatter.filetypes.any").remove_trailing_whitespace,
 		},

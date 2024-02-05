@@ -96,6 +96,7 @@ cmp.setup({
 })
 
 local lspConfig = require("lspconfig")
+
 lspConfig.lua_ls.setup({
 	capabilities = capabilities,
 	on_attach = on_attach,
@@ -213,6 +214,50 @@ lspConfig.clangd.setup({
 		"--completion-style=detailed",
 		"--function-arg-placeholders",
 	},
+})
+
+local flutter = require("flutter-tools")
+flutter.setup({
+	root_patterns = {
+		".git",
+		"pubspec.yaml",
+	},
+	lsp = {
+		capabilities = capabilities,
+		on_attach = on_attach,
+		settings = {
+			showTodos = true,
+			completeFunctionCalls = true,
+			enableSnippets = true,
+			updateImportsOnRename = true,
+		},
+	},
+	-- lsp = {
+	-- 	color = { -- show the derived colours for dart variables
+	-- 		enabled = false, -- whether or not to highlight color variables at all, only supported on flutter >= 2.10
+	-- 		background = false, -- highlight the background
+	-- 		background_color = nil, -- required, when background is transparent (i.e. background_color = { r = 19, g = 17, b = 24},)
+	-- 		foreground = false, -- highlight the foreground
+	-- 		virtual_text = true, -- show the highlight using virtual text
+	-- 		virtual_text_str = "■", -- the virtual text character to highlight
+	-- 	},
+	-- 	settings = {
+	-- 		showTodos = true,
+	-- 		completeFunctionCalls = true,
+	-- 		analysisExcludedFolders = { "<path-to-flutter-sdk-packages>" },
+	-- 		renameFilesWithClasses = "prompt", -- "always"
+	-- 		enableSnippets = true,
+	-- 		updateImportsOnRename = true, -- Whether to update imports and other directives when files are renamed. Required for `FlutterRename` command.
+	-- 	},
+	-- },
+})
+
+lspConfig.cmake.setup({
+	cmd = { "cmake-language-server" },
+	filetypes = { "cmake" },
+	init_options = "build",
+	root_dir = util.root_pattern("CmakePresets.json", ".git", "build", "cmake", "CMakeLists.txt"),
+	single_file_support = true,
 })
 
 lsp.setup()

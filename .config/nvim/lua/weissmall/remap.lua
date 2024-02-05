@@ -37,6 +37,18 @@ vim.keymap.set("n", "<A-5>", "<Cmd>BufferGoto 5<CR>", opts)
 
 vim.keymap.set("n", "<A-c>", "<Cmd>BufferClose<CR>", opts)
 vim.keymap.set("n", "<A-e>", "<Cmd>BufferPick<CR>", opts)
+vim.keymap.set("n", "<A-Right>", "<Cmd>BufferNext<CR>", opts)
+vim.keymap.set("n", "<A-Left>", "<Cmd>BufferPrevious<CR>", opts)
 
 -- Transparency
 vim.keymap.set("n", "<leader>tt", vim.cmd.TransparentToggle)
+
+-- Resizing
+-- Useful link: https://vi.stackexchange.com/questions/514/how-do-i-change-the-current-splits-width-and-height
+-- Horizontal
+vim.keymap.set("n", "<C-Right>", "1<C-w><")
+vim.keymap.set("n", "<C-Left>", "1<C-w>>")
+
+-- Vertical
+vim.keymap.set("n", "<C-Up>", "1<C-w>+")
+vim.keymap.set("n", "<C-Down>", "1<C-w>-")

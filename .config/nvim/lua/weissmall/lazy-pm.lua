@@ -12,15 +12,16 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-	{
-		"Civitasv/cmake-tools.nvim",
-		branch = "main",
-		opts = {
-			cmake_build_directory = "build",
-			cmake_generate_options = { "-D", "CMAKE_EXPORT_COMPILE_COMMANDS=1" },
-		},
-	},
-	{ "p00f/clangd_extensions.nvim" },
+	{ "github/copilot.vim" },
+	-- {
+	-- 	"Civitasv/cmake-tools.nvim",
+	-- 	branch = "main",
+	-- 	opts = {
+	-- 		cmake_build_directory = "build",
+	-- 		cmake_generate_options = { "-D", "CMAKE_EXPORT_COMPILE_COMMANDS=1" },
+	-- 	},
+	-- },
+	-- { "p00f/clangd_extensions.nvim" },
 	{ "chipsenkbeil/distant.nvim" },
 	{ "mfussenegger/nvim-dap" },
 	{ "rcarriga/nvim-dap-ui" },

@@ -1,0 +1,12 @@
+- name: Remove NOPASSWD permissions of the user
+  become: true
+  ansible.builtin.file:
+    path: "{{ aur_user_nopasswd_path }}"
+    state: absent
+
+- name: Delete the builder user
+  become: true
+  ansible.builtin.user:
+    name: "{{ aur_user_name }}"
+    state: absent
+    remove: true

@@ -1,0 +1,8 @@
+- name: Install programming software
+  become: true
+  become_user: "{{ aur_user_name }}"
+  kewlfft.aur.aur:
+    name: "{{ programming_software }}"
+    use: "{{ aur_package_manager }}"
+    state: present
+  changed_when: false

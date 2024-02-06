@@ -1,0 +1,23 @@
+update: true
+swapfile_path: /swapfile
+swapfile_size: 8G
+
+echo_message: "Hello, world"
+
+base_packages:
+  - base
+  - base-devel
+  - linux
+  - linux-firmware
+  - sudo
+  - dhcpcd
+  - netctl
+  - networkmanager
+  - openssh
+  - nano
+  - pipewire
+  - man-db
+  - man-pages
+  - git
+  - wget
+  - reflector

@@ -1,0 +1,5 @@
+# AUR config
+
+aur_user_name: aur_builder
+aur_user_nopasswd_path: /etc/sudoers.d/11-install-aur_builder
+aur_package_manager: yay

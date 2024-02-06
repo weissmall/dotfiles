@@ -1,0 +1,47 @@
+- name: Configure host
+  hosts: localhost
+  connection: local
+
+  vars_files:
+    - configs/default_config.yaml
+    - configs/config.yaml
+    - configs/software.yaml
+
+  tasks:
+    - import_tasks: tasks/default_task.yaml
+    - import_tasks: tasks/create_builder.yaml
+    - import_tasks: tasks/software.yaml
+    - import_tasks: tasks/delete_builder.yaml
+
+      #   tasks:
+      #   - name: Install git and base-devel packages
+      #     pacman:
+      #       name:
+      #         - git
+      #         - base-devel
+      #       state: present
+      #
+      #   - name: Install yay using pacman
+      #     pacman:
+      #       name: yay
+      #       state: present
+      #       update_cache: yes
+      #
+      #   - name: Install ansible pacman/yay module
+      #     command: ansible-galaxy collection install community.general
+      #
+      #   - name: Install AUR collection
+      #     command: ansible-galaxy collection install kewlfft.aur
+
+      # - name: Install neovim with yay
+      #   become: true
+      #   become_user: weissmall
+      #   kewlfft.aur.aur:
+      #     name: neovim
+      #     state: present
+
+      # - name: Install stremio
+      #   become: true
+      #   kewlfft.aur.aur:
+      #     name: stremio
+      #     state: present

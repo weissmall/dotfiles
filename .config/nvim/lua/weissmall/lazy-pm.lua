@@ -12,7 +12,8 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-	{ "github/copilot.vim" },
+	{ "zhenyangze/vim-bitoai" },
+	{ "github/copilot.vim", deactivate = true },
 	-- {
 	-- 	"Civitasv/cmake-tools.nvim",
 	-- 	branch = "main",

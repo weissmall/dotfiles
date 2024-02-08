@@ -1,3 +1,19 @@
 programming_software:
   - tmux
-  # - vscodium
+  - vscodium
+  - insomnium
+
+software_misc:
+  - thunderbird
+  - telegram-desktop
+  - firefox
+  - spotify
+  - obsidian
+
+software_shell:
+  - neovim
+  - alacritty
+
+software_system:
+  - rofi
+  - kanshi

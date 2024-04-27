@@ -6,7 +6,32 @@ vim.keymap.set("n", "<leader>lsr", vim.cmd.LspRestart)
 
 -- [[ Configure LSP ]]
 --  This function gets run when an LSP connects to a particular buffer.
-local on_attach = function(_, bufnr)
+local on_attach = function(client, bufnr)
+	-- Prettier section
+	local group = vim.api.nvim_create_augroup("lsp_format_on_save", { clear = false })
+	local event = "BufWritePre" -- or "BufWritePost"
+	if client.supports_method("textDocument/formatting") then
+		vim.keymap.set("n", "<Leader>f", function()
+			vim.lsp.buf.format({ bufnr = vim.api.nvim_get_current_buf() })
+		end, { buffer = bufnr, desc = "[lsp] format" })
+
+		-- format on save
+		vim.api.nvim_clear_autocmds({ buffer = bufnr, group = group })
+		vim.api.nvim_create_autocmd(event, {
+			buffer = bufnr,
+			group = group,
+			callback = function()
+				vim.lsp.buf.format({ bufnr = bufnr, async = async })
+			end,
+			desc = "[lsp] format on save",
+		})
+	end
+
+	if client.supports_method("textDocument/rangeFormatting") then
+		vim.keymap.set("x", "<Leader>f", function()
+			vim.lsp.buf.format({ bufnr = vim.api.nvim_get_current_buf() })
+		end, { buffer = bufnr, desc = "[lsp] format" })
+	end
 	-- NOTE: Remember that lua is a real programming language, and as such it is possible
 	-- to define small helper and utility functions so you don't have to repeat yourself
 	-- many times.
@@ -258,6 +283,28 @@ lspConfig.cmake.setup({
 	init_options = "build",
 	root_dir = util.root_pattern("CmakePresets.json", ".git", "build", "cmake", "CMakeLists.txt"),
 	single_file_support = true,
+})
+
+lspConfig.gdscript.setup({
+	on_attach = on_attach,
+	filetypes = {
+		"gd",
+		"gdscript",
+		"gdscript3",
+	},
+	root_dir = util.root_pattern("project.godot", ".git"),
+})
+
+lspConfig.terraformls.setup({
+	cmd = { "terraform-ls", "serve" },
+})
+
+lspConfig.tsserver.setup({
+	on_attach = on_attach,
+	filetypes = {
+		"javascript",
+		"typescript",
+	},
 })
 
 lsp.setup()

@@ -38,12 +38,19 @@ local function toggleDefaultTerminal()
 	defaultTerminal:toggle()
 end
 
+local TermState = {
+	opened = true,
+}
+
 vim.keymap.set("n", "<C-t>", toggleDefaultTerminal)
 vim.keymap.set("t", "<C-t>", toggleDefaultTerminal)
-vim.keymap.set("n", "<leader>gs", toggleLazyGit)
-vim.keymap.set("t", "<leader>gs", toggleLazyGit)
-vim.keymap.set("n", "<leader>ds", toggleLazyDocker)
-vim.keymap.set("t", "<leader>ds", toggleLazyDocker)
+vim.keymap.set("t", "<C-esc>", [[<C-\><C-n>]])
+
+vim.keymap.set("n", "<leader>ts", "<Cmd>TermSelect<CR>")
+-- vim.keymap.set("n", "<leader>gs", toggleLazyGit)
+-- vim.keymap.set("t", "<leader>gs", toggleLazyGit)
+-- vim.keymap.set("n", "<leader>ds", toggleLazyDocker)
+-- vim.keymap.set("t", "<leader>ds", toggleLazyDocker)
 
 term.setup({
 	shade_terminals = false,

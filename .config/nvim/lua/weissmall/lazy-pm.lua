@@ -12,8 +12,35 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
+	require("weissmall.plugins.markdown").plugin,
+	{
+		"Joakker/lua-json5",
+	},
+	{
+		"Everduin94/nvim-quick-switcher",
+	},
+	-- Tests
+	{
+		"nvim-neotest/neotest",
+		dependencies = {
+			"nvim-neotest/nvim-nio",
+			"nvim-lua/plenary.nvim",
+			"antoinemadec/FixCursorHold.nvim",
+			"nvim-treesitter/nvim-treesitter",
+			"sidlatau/neotest-dart",
+			"marilari88/neotest-vitest",
+		},
+	},
+	-- Plugin for firefox
+	{
+		"glacambre/firenvim",
+		lazy = not vim.g.started_by_firenvim,
+		build = function()
+			vim.fn["firenvim#install"](0)
+		end,
+	},
 	{ "zhenyangze/vim-bitoai" },
-	{ "github/copilot.vim", deactivate = true },
+	-- { "github/copilot.vim", deactivate = true },
 	-- {
 	-- 	"Civitasv/cmake-tools.nvim",
 	-- 	branch = "main",
@@ -22,10 +49,18 @@ require("lazy").setup({
 	-- 		cmake_generate_options = { "-D", "CMAKE_EXPORT_COMPILE_COMMANDS=1" },
 	-- 	},
 	-- },
-	-- { "p00f/clangd_extensions.nvim" },
+	{ "p00f/clangd_extensions.nvim" },
 	{ "chipsenkbeil/distant.nvim" },
-	{ "mfussenegger/nvim-dap" },
-	{ "rcarriga/nvim-dap-ui" },
+
+	-- Debugging
+	{
+		"rcarriga/nvim-dap-ui",
+		dependencies = {
+			"mfussenegger/nvim-dap",
+			"nvim-neotest/nvim-nio",
+		},
+	},
+
 	{ "jay-babu/mason-nvim-dap.nvim" },
 	{ "MunifTanjim/prettier.nvim" },
 	{ "vidocqh/auto-indent.nvim" },
@@ -68,7 +103,7 @@ require("lazy").setup({
 	{ "williamboman/mason.nvim" },
 	{ "williamboman/mason-lspconfig.nvim" },
 
-	{ "VonHeikemen/lsp-zero.nvim", branch = "v3.x" },
+	{ "VonHeikemen/lsp-zero.nvim",        branch = "v3.x" },
 	{ "neovim/nvim-lspconfig" },
 	{ "hrsh7th/cmp-nvim-lsp" },
 	{ "hrsh7th/cmp-nvim-lua" },
@@ -89,10 +124,10 @@ require("lazy").setup({
 	{ "nvim-lualine/lualine.nvim" },
 
 	-- Neovim development
-	{ "folke/neodev.nvim", opts = {} },
+	{ "folke/neodev.nvim",         opts = {} },
 
 	-- Terminal
-	{ "akinsho/toggleterm.nvim", version = "*", config = true },
+	{ "akinsho/toggleterm.nvim",   version = "*", config = true },
 
 	-- Rust
 	-- {

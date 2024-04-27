@@ -9,7 +9,7 @@ vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 vim.keymap.set("n", "<leader>lsi", vim.cmd.Mason)
 
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
-vim.keymap.set("v", "K", ":m '>-2<CR>gv=gv")
+vim.keymap.set("v", "K", ":m .-2<CR>gv=gv")
 
 vim.keymap.set("i", "<C-s>", vim.cmd.w)
 vim.keymap.set("n", "<C-s>", vim.cmd.w)
@@ -34,6 +34,9 @@ vim.keymap.set("n", "<A-2>", "<Cmd>BufferGoto 2<CR>", opts)
 vim.keymap.set("n", "<A-3>", "<Cmd>BufferGoto 3<CR>", opts)
 vim.keymap.set("n", "<A-4>", "<Cmd>BufferGoto 4<CR>", opts)
 vim.keymap.set("n", "<A-5>", "<Cmd>BufferGoto 5<CR>", opts)
+
+vim.keymap.set("n", "<A-l>", "<Cmd>BufferNext<CR>", opts)
+vim.keymap.set("n", "<A-h>", "<Cmd>BufferPrevious<CR>", opts)
 
 vim.keymap.set("n", "<A-c>", "<Cmd>BufferClose<CR>", opts)
 vim.keymap.set("n", "<A-e>", "<Cmd>BufferPick<CR>", opts)

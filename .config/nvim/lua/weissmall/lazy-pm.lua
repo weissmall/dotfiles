@@ -13,8 +13,18 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
 	require("weissmall.plugins.markdown").plugin,
+	require("weissmall.plugins.pkl").plugin,
+	require("weissmall.plugins.themes").catpuccin,
+	{
+		"brenoprata10/nvim-highlight-colors",
+	},
+	{
+		"Fymyte/rasi.vim",
+		ft = { "rasi" },
+	},
 	{
 		"Joakker/lua-json5",
+		build = "./install.sh",
 	},
 	{
 		"Everduin94/nvim-quick-switcher",
@@ -58,6 +68,8 @@ require("lazy").setup({
 		dependencies = {
 			"mfussenegger/nvim-dap",
 			"nvim-neotest/nvim-nio",
+			"mxsdev/nvim-dap-vscode-js",
+			"microsoft/vscode-js-debug",
 		},
 	},
 

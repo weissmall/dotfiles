@@ -21,6 +21,16 @@ tree.setup({
 	renderer = {
 		group_empty = true,
 	},
+	diagnostics = {
+		enable = true,
+		show_on_dirs = true,
+		-- icons = {
+		-- 	error = "E",
+		-- 	warning = "W",
+		-- 	info = "I",
+		-- 	hint = "H",
+		-- },
+	},
 	filters = {
 		git_ignored = false,
 		dotfiles = false,

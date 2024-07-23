@@ -242,40 +242,109 @@ lspConfig.clangd.setup({
 })
 
 local flutter = require("flutter-tools")
+-- flutter.setup({
+-- 	root_patterns = {
+-- 		".git",
+-- 		"pubspec.yaml",
+-- 	},
+-- 	lsp = {
+-- 		capabilities = capabilities,
+-- 		on_attach = on_attach,
+-- 		settings = {
+-- 			showTodos = true,
+-- 			completeFunctionCalls = true,
+-- 			enableSnippets = true,
+-- 			updateImportsOnRename = true,
+-- 		},
+-- 	},
+-- 	-- lsp = {
+-- 	-- 	color = { -- show the derived colours for dart variables
+-- 	-- 		enabled = false, -- whether or not to highlight color variables at all, only supported on flutter >= 2.10
+-- 	-- 		background = false, -- highlight the background
+-- 	-- 		background_color = nil, -- required, when background is transparent (i.e. background_color = { r = 19, g = 17, b = 24},)
+-- 	-- 		foreground = false, -- highlight the foreground
+-- 	-- 		virtual_text = true, -- show the highlight using virtual text
+-- 	-- 		virtual_text_str = "■", -- the virtual text character to highlight
+-- 	-- 	},
+-- 	-- 	settings = {
+-- 	-- 		showTodos = true,
+-- 	-- 		completeFunctionCalls = true,
+-- 	-- 		analysisExcludedFolders = { "<path-to-flutter-sdk-packages>" },
+-- 	-- 		renameFilesWithClasses = "prompt", -- "always"
+-- 	-- 		enableSnippets = true,
+-- 	-- 		updateImportsOnRename = true, -- Whether to update imports and other directives when files are renamed. Required for `FlutterRename` command.
+-- 	-- 	},
+-- 	-- },
+-- })
+--
 flutter.setup({
-	root_patterns = {
-		".git",
-		"pubspec.yaml",
+	ui = {
+		border = "rounded",
+		notification_style = "plugin",
 	},
+	decorations = {
+		statusline = {
+			app_version = true,
+			device = true,
+			project_config = false,
+		},
+	},
+	debugger = {
+		enabled = true,
+		run_via_dap = true,
+		exception_breakpoints = {},
+	},
+	fvm = false,
 	lsp = {
-		capabilities = capabilities,
+		color = {
+			enabled = true,
+			background = true,
+			background_color = nil,
+			foreground = false,
+			virtual_text = true,
+			virtual_text_str = "■",
+		},
 		on_attach = on_attach,
+		capabilities = capabilities,
 		settings = {
 			showTodos = true,
 			completeFunctionCalls = true,
+			-- analysisExcludedFolders = { "<path-to-flutter-sdk-packages>" },
+			renameFilesWithClasses = "always",
 			enableSnippets = true,
 			updateImportsOnRename = true,
 		},
 	},
-	-- lsp = {
-	-- 	color = { -- show the derived colours for dart variables
-	-- 		enabled = false, -- whether or not to highlight color variables at all, only supported on flutter >= 2.10
-	-- 		background = false, -- highlight the background
-	-- 		background_color = nil, -- required, when background is transparent (i.e. background_color = { r = 19, g = 17, b = 24},)
-	-- 		foreground = false, -- highlight the foreground
-	-- 		virtual_text = true, -- show the highlight using virtual text
-	-- 		virtual_text_str = "■", -- the virtual text character to highlight
-	-- 	},
-	-- 	settings = {
-	-- 		showTodos = true,
-	-- 		completeFunctionCalls = true,
-	-- 		analysisExcludedFolders = { "<path-to-flutter-sdk-packages>" },
-	-- 		renameFilesWithClasses = "prompt", -- "always"
-	-- 		enableSnippets = true,
-	-- 		updateImportsOnRename = true, -- Whether to update imports and other directives when files are renamed. Required for `FlutterRename` command.
-	-- 	},
-	-- },
 })
+
+-- lspConfig.dartls.setup({
+-- 	cmd = { "dart", "language-server", "--protocol=lsp" },
+-- 	filetypes = { "dart" },
+-- 	init_options = {
+-- 		closingLabels = true,
+-- 		flutterOutline = true,
+-- 		onlyAnalyzeProjectsWithOpenFiles = true,
+-- 		outline = true,
+-- 		suggestFromUnimportedLibraries = true,
+-- 	},
+-- 	root_dir = util.root_pattern("pubspec.yaml"),
+-- 	capabilities = capabilities,
+-- 	on_attach = on_attach,
+-- 	settings = {
+-- 		dart = {
+-- 			showTodos = true,
+-- 			completeFunctionCalls = true,
+-- 			enableSnippets = true,
+-- 			updateImportsOnRename = true,
+-- 		},
+-- 		flutter = {
+-- 			showTodos = true,
+-- 			completeFunctionCalls = true,
+-- 			enableSnippets = true,
+-- 			updateImportsOnRename = true,
+-- 		},
+-- 	},
+-- })
 
 lspConfig.cmake.setup({
 	cmd = { "cmake-language-server" },
@@ -305,6 +374,15 @@ lspConfig.tsserver.setup({
 		"javascript",
 		"typescript",
 	},
+})
+
+lspConfig.svelte.setup({
+	cmd = {
+		"svelteserver",
+		"--stdio",
+	},
+	filetypes = { "svelte" },
+	root_dir = util.root_pattern("package.json"),
 })
 
 lsp.setup()

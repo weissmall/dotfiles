@@ -42,9 +42,9 @@ local TermState = {
 	opened = true,
 }
 
-vim.keymap.set("n", "<C-t>", toggleDefaultTerminal)
-vim.keymap.set("t", "<C-t>", toggleDefaultTerminal)
+vim.keymap.set("n", "<leader>t", toggleDefaultTerminal)
 vim.keymap.set("t", "<C-esc>", [[<C-\><C-n>]])
+vim.keymap.set("t", "<esc>", [[<C-\><C-n>]])
 
 vim.keymap.set("n", "<leader>ts", "<Cmd>TermSelect<CR>")
 -- vim.keymap.set("n", "<leader>gs", toggleLazyGit)

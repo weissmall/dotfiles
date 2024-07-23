@@ -7,7 +7,7 @@ neotest.setup({
 			use_lsp = true,
 		}),
 		require("neotest-vitest")({
-			vitestCommand = "npx vitest",
+			vitestCommand = "npx vitest run",
 		}),
 	},
 })
@@ -40,7 +40,12 @@ local function testSummaryClose()
 	return neotest.summary.close()
 end
 
+local function testWatchFile()
+	return neotest.watch.watch(vim.fn.expand("%"))
+end
+
 vim.keymap.set("n", "<leader>tc", runCurrentTest)
+vim.keymap.set("n", "<leader>twf", testWatchFile)
 vim.keymap.set("n", "<leader>tf", runFileTest)
 vim.keymap.set("n", "<leader>ts", stopTest)
 vim.keymap.set("n", "<leader>tpo", openPanel)

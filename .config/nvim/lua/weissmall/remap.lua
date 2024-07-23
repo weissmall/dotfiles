@@ -11,8 +11,8 @@ vim.keymap.set("n", "<leader>lsi", vim.cmd.Mason)
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m .-2<CR>gv=gv")
 
-vim.keymap.set("i", "<C-s>", vim.cmd.w)
 vim.keymap.set("n", "<C-s>", vim.cmd.w)
+vim.keymap.set("n", "<leader>s", vim.cmd.w)
 
 vim.keymap.set("n", "<leader>y", '"+y')
 vim.keymap.set("v", "<leader>y", '"+y')
@@ -55,3 +55,8 @@ vim.keymap.set("n", "<C-Left>", "1<C-w>>")
 -- Vertical
 vim.keymap.set("n", "<C-Up>", "1<C-w>+")
 vim.keymap.set("n", "<C-Down>", "1<C-w>-")
+
+vim.keymap.set("n", "<leader>j", "<C-w>j")
+vim.keymap.set("n", "<leader>k", "<C-w>k")
+vim.keymap.set("n", "<leader>h", "<C-w>h")
+vim.keymap.set("n", "<leader>l", "<C-w>l")

@@ -9,7 +9,6 @@ project.setup({
 	},
 	patterns = {
 		".git",
-		"package.json",
 		"pubspec.yaml",
 		"Cargo.toml",
 		".nvimproj",

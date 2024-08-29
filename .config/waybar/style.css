@@ -50,11 +50,6 @@
 
 /* Reset all styles */
 * {
-    border: none;
-    border-radius: 0;
-    min-height: 0;
-    margin: 0;
-    padding: 0;
     font-family: "JetBrainsMono Nerd Font", "Roboto Mono", sans-serif;
     /* background-color: transparent; */
 }
@@ -66,20 +61,26 @@ window#waybar {
     background-color: transparent;
     /* background-color: rgba(37, 41, 60, 1); */
     border-radius: 8px;
+    border-radius: 0;
     color: #7aa2f7;
-    font-size: 14px;
+    font-size: 8px;
 }
 
 window#waybar {
+    padding: 0;
+    margin: 0;
     background-color: rgba(37, 41, 60, 1);
-    border-radius: 0.8em;
+    /* border-radius: 0.8em; */
+    border-radius: 0;
     border: 0px solid transparent;
     font-size: 1em;
 }
 
 .modules-left {
     background-color: shade(rgba(37, 41, 60, 1), 1.25);
-    border-radius: 0.8em;
+    background: none;
+    /* border-radius: 0.8em; */
+    border-radius: 0;
 }
 
 #custom-scratchpad {
@@ -97,16 +98,18 @@ window#waybar {
 #workspaces button:first-child,
 #language {
     border-radius: 8px 0px 0px 8px;
+    border-radius: 0;
 }
 
 #workspaces button:last-child,
 #clock {
     border-radius: 0px 8px 8px 0px;
+    border-radius: 0;
 }
 
 #workspaces button.focused {
     /* border-color: @theme_selected_bg_color; */
-    background-color: rgba(37, 41, 60, 1);
+    /* background-color: rgba(37, 41, 60, 1); */
     /* border-color: #0db9d7; */
 }
 
@@ -157,6 +160,7 @@ window#waybar {
 #clock {
     /* color: @theme_bg_color;
     background-color: @theme_selected_bg_color; */
+    background-color: transparent;
     /* background-color: transparent; */
 }
 
@@ -238,7 +242,7 @@ window#waybar {
 }
 
 #workspaces button {
-    border-top: 2px solid transparent;
+    border-bottom: 1px solid transparent;
     /* To compensate for the top border and still have vertical centering */
     padding-bottom: 2px;
     padding-left: 10px;
@@ -249,7 +253,8 @@ window#waybar {
 
 #workspaces button.focused {
     /* border-color: @theme_selected_bg_color; */
-    border-color: #0db9d7;
+    /* border-color: #0db9d7; */
+    color: #0db9d7;
 }
 
 #workspaces button.urgent {

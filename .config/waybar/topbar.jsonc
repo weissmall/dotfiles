@@ -185,7 +185,7 @@
         "on-click": "swaymsg exec \"\\$once \\$term_float watch sensors\""
     },
     "tray": {
-        "icon-size": 24,
+        "icon-size": 21,
         "spacing": 5
     },
     "custom/pacman": {

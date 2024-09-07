@@ -1,67 +1,73 @@
 {
     // "id": "bar-0",
     "ipc": true,
-    "layer": "top",
+    "layer": "bottom",
     // If height property would be not present, it'd be calculated dynamically
-    "height": 40,
-    "margin": 4,
+    "height": 10,
+    "margin": 0,
     // "name": "test",
     "position": "top",
     "modules-left": [
         // "custom/menu",
-        "sway/workspaces",
-        "custom/scratchpad"
+        "sway/workspaces"
+        //"custom/scratchpad"
     ],
     "modules-center": [
         "custom/wf-recorder",
+        "clock"
         // "sway/mode",
         // "custom/weather",
-        "clock"
+        // "clock"
     ],
     "modules-right": [
         // informational
-        "sway/language",
+        "battery",
+        "backlight",
+        "bluetooth",
+        "custom/playerctl",
+        "pulseaudio",
+        "custom/sunset",
+        "tray",
+        "sway/language"
         // "custom/github",
         // "custom/clipboard",
         // "custom/zeit",
         // "cpu",
         // "temperature",
         // "memory",
-        "battery",
         // connecting
         // "network",
-        "bluetooth",
         // media
-        "custom/playerctl",
         // "idle_inhibitor",
         // "custom/dnd",
-        "pulseaudio",
-        "backlight",
         // system
         // "custom/adaptive-light",
-        "custom/sunset",
         // "custom/pacman",
-        "tray"
     ],
     "sway/workspaces": {
-        "format": "{icon}",
+        "format": "{name}",
         "on-click": "activate",
-        // "persistent-workspaces": {
-        //     "1": [],
-        //     "2": [],
-        //     "3": [],
-        //     "4": [],
-        //     "5": []
-        // },
+        //"persistent-workspaces": {
+        //    "1": [],
+        //    "2": [],
+        //    "3": [],
+        //    "4": [],
+        //    "5": [],
+        //    "6": [],
+        //    "7": [],
+        //    "8": [],
+        //    "9": [],
+        //    "0": []
+        //},
         "format-icons": {
             "1": "",
             "2": "",
             "3": "",
             "4": "",
             "5": "",
-            "urgent": "",
+            "urgent": ""
             //"active": "",
-            // "default": ""
+            //"default": ""
         },
         "sort-by-number": true
     },
@@ -71,8 +77,8 @@
             "warning": 30,
             "critical": 15
         },
-        "format-charging": "󰂄 {capacity}%",
-        "format": "{icon} {capacity}%",
+        "format-charging": "󰂄",
+        "format": "{icon}",
         "format-icons": [
             "󱃍",
             "󰁺",
@@ -89,7 +95,8 @@
     },
     "clock": {
         "interval": 60,
-        "format": "{:%e %b %Y %H:%M}",
+        //"format": "{:%H:%M %a%e %b}",
+        "format": "{:%I:%M %p}",
         "tooltip": true,
         "tooltip-format": "<big>{:%B %Y}</big>\n<tt>{calendar}</tt>",
         "on-click": "swaymsg exec \\$calendar"
@@ -141,7 +148,7 @@
         "tooltip-format-deactivated": "power-saving enabled"
     },
     "backlight": {
-        "format": "{icon} {percent}%",
+        "format": "{icon}",
         "format-icons": [
             "󰃞",
             "󰃟",
@@ -152,7 +159,7 @@
     },
     "pulseaudio": {
         "scroll-step": 5,
-        "format": "{icon} {volume}%{format_source}",
+        "format": "{icon}",
         "format-muted": "󰖁 {format_source}",
         "format-source": "",
         "format-source-muted": " 󰍭",
@@ -185,8 +192,8 @@
         "on-click": "swaymsg exec \"\\$once \\$term_float watch sensors\""
     },
     "tray": {
-        "icon-size": 24,
-        "spacing": 5
+        "icon-size": 15,
+        "spacing": 16
     },
     "custom/pacman": {
         "format": "󰀼 {}",
@@ -209,9 +216,10 @@
         "tooltip-format": "{}"
     },
     "sway/language": {
-        "format": " {}",
+        "format": "{flag}",
         "min-length": 5,
-        "tooltip": false,
+        "tooltip": true,
+        "tooltip-format": "{long} {flag}",
         "on-click": "swaymsg input $(swaymsg -t get_inputs --raw | jq '[.[] | select(.type == \"keyboard\")][0] | .identifier') xkb_switch_layout next"
     },
     "custom/scratchpad": {

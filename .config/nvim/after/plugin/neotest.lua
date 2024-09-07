@@ -44,7 +44,12 @@ local function testWatchFile()
 	return neotest.watch.watch(vim.fn.expand("%"))
 end
 
+local function debugCurrent()
+	return neotest.run.run({ strategy = "dap" })
+end
+
 vim.keymap.set("n", "<leader>tc", runCurrentTest)
+vim.keymap.set("n", "<leader>tdc", debugCurrent)
 vim.keymap.set("n", "<leader>twf", testWatchFile)
 vim.keymap.set("n", "<leader>tf", runFileTest)
 vim.keymap.set("n", "<leader>ts", stopTest)

@@ -28,8 +28,8 @@ transparent.setup({ -- Optional, you don't have to run setup.
 		"StatusLineNC",
 		"EndOfBuffer",
 	},
-	extra_groups = {},                              -- table: additional groups that should be cleared
-	exclude_groups = { "Telescope", "NormalFloat" }, -- table: groups you don't want to clear
+	extra_groups = {},                                                  -- table: additional groups that should be cleared
+	exclude_groups = { "Telescope", "NormalFloat", "Barbar", "Buffer" }, -- table: groups you don't want to clear
 })
 
 transparent.clear_prefix("NvimTree")
@@ -40,8 +40,15 @@ function SetupColorScheme(colorScheme)
 
 	-- vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 	-- vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
-	vim.g.transparent_groups = vim.list_extend(vim.g.transparent_groups or {}, { "NvimTreeNormal" })
+	local tGroups = {
+		"NvimTreeNormal",
+		"NormalFloat",
+		-- require("barbar.utils.highlight"),
+	}
+	vim.g.transparent_groups = vim.list_extend(vim.g.transparent_groups or {}, tGroups)
 	vim.cmd.TransparentEnable()
+	-- vim.cmd.TransparentToggle()
+	vim.cmd("hi BufferTabpageFill guibg=transparent")
 end
 
 -- SetupColorScheme("tokyonight-night")

@@ -121,6 +121,32 @@ cmp.setup({
 })
 
 local lspConfig = require("lspconfig")
+local neodev = require("neodev")
+
+neodev.setup({
+	library = {
+		plugins = true,
+	},
+})
+
+neodev.setup({
+	-- library = {
+	-- 	plugins = {
+	-- 		"lazy",
+	-- 		"neotest",
+	-- 		"nvim-dap",
+	-- 		"nvim-dap-ui",
+	-- 		"toggleterm",
+	-- 		"neotest-dart",
+	-- 		"neotest-vitest",
+	-- 		"markdown-preview",
+	-- 		"flutter-tools",
+	-- 		"nvim-tree",
+	-- 		"wilder",
+	-- 	},
+	-- 	types = true,
+	-- },
+})
 
 lspConfig.lua_ls.setup({
 	capabilities = capabilities,
@@ -295,6 +321,9 @@ flutter.setup({
 		exception_breakpoints = {},
 	},
 	fvm = false,
+	dev_log = {
+		enabled = false,
+	},
 	lsp = {
 		color = {
 			enabled = true,
@@ -316,6 +345,18 @@ flutter.setup({
 		},
 	},
 })
+
+-- lspConfig.dcmls.setup({
+-- 	cmd = {
+-- 		"dcm",
+-- 		"start-server",
+-- 		"--client=neovim",
+-- 	},
+-- 	filetypes = {
+-- 		"dart",
+-- 	},
+-- 	root_dir = util.root_pattern("pubspec.yaml"),
+-- })
 
 -- lspConfig.dartls.setup({
 -- 	cmd = { "dart", "language-server", "--protocol=lsp" },
@@ -368,7 +409,7 @@ lspConfig.terraformls.setup({
 	cmd = { "terraform-ls", "serve" },
 })
 
-lspConfig.tsserver.setup({
+lspConfig.ts_ls.setup({
 	on_attach = on_attach,
 	filetypes = {
 		"javascript",
@@ -383,6 +424,55 @@ lspConfig.svelte.setup({
 	},
 	filetypes = { "svelte" },
 	root_dir = util.root_pattern("package.json"),
+})
+
+lspConfig.jsonls.setup({
+	capabilities = capabilities,
+	on_attach = on_attach,
+})
+
+-- lspConfig.yamlls.setup({
+-- 	settings = {
+-- 		redhat = {
+-- 			telemetry = {
+-- 				enabled = false,
+-- 			},
+-- 		},
+-- 		yaml = {
+-- 			schemas = {
+-- 				["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*",
+-- 			},
+-- 		},
+-- 	},
+-- })
+
+lspConfig.docker_compose_language_service.setup({
+	cmd = { "docker-compose-langserver", "--stdio" },
+	filetypes = { "yaml.docker-compose", "yml.docker-compose", "yaml" },
+	root_dir = util.root_pattern("docker-compose.yaml", "docker-compose.yml", "compose.yaml", "compose.yml"),
+	single_file_support = true,
+})
+
+lspConfig.dockerls.setup({
+	settings = {
+		docker = {
+			languageserver = {
+				formatter = {
+					ignoreMultilineInstructions = true,
+				},
+			},
+		},
+	},
+	cmd = { "docker-langserver", "--stdio" },
+	filetypes = { "dockerfile" },
+	root_dir = util.root_pattern("Dockerfile"),
+	single_file_support = true,
+})
+
+lspConfig.groovyls.setup({
+	-- 	cmd = { "java", "-jar", "groovy-language-server-all.jar" },
+	filetypes = { "groovy" },
+	single_file_support = true,
 })
 
 lsp.setup()

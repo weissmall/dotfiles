@@ -17,10 +17,30 @@ include $swayConfigPath/inputs/*.conf
 include $swayConfigPath/outputs/*.conf
 include $swayConfigPath/modes/*.conf
 include $swayConfigPath/config.d/*.conf
+include $swayConfigPath/themes/catpuccin-macchiato
 
 # user config
-output * bg $HOME/Pictures/wallpaper_.jpg fill
+# output * bg $HOME/Pictures/Wallpapers/3.jpg fill
 bindsym $mod+q kill
 
 gaps inner 0
 gaps outer 0
+
+set $opacity 0.9
+for_window [class=".*"] opacity $opacity, border disable
+for_window [app_id=".*"] opacity $opacity, border disable
+
+blur enable
+blur_xray disable
+blur_noise 0
+blur_radius 10
+blur_saturation 1
+blur_contrast 1
+blur_brightness 1
+
+shadows disable
+
+layer_effects "waybar" blur enable
+layer_effects "rofi" blur enable
+
+# default_dim_inactive 0.05

@@ -16,12 +16,69 @@ require("lazy").setup({
 	require("weissmall.plugins.pkl").plugin,
 	require("weissmall.plugins.themes").catpuccin,
 	{
-		"brenoprata10/nvim-highlight-colors",
+		"MeanderingProgrammer/render-markdown.nvim",
+		opts = {},
+		dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" }, -- if you prefer nvim-web-devicons
 	},
+	{
+		"akinsho/bufferline.nvim",
+		dependencies = {
+			"famiu/bufdelete.nvim",
+		},
+	},
+	{ "gelguy/wilder.nvim" },
+	-- {
+	-- 	"folke/noice.nvim",
+	-- 	-- event = "VeryLazy",
+	-- 	opts = {},
+	-- 	dependencies = {
+	-- 		"MunifTanjim/nui.nvim",
+	-- 		"rcarriga/nvim-notify",
+	-- 	},
+	-- },
+	{
+		"https://gitlab.com/itaranto/plantuml.nvim",
+		version = "*",
+		config = function()
+			require("plantuml").setup({
+				renderer = {
+					type = "text",
+					options = {
+						split_cmd = "split",
+					},
+				},
+				render_on_write = true,
+			})
+		end,
+	},
+	{
+		"brenoprata10/nvim-highlight-colors",
+		config = function()
+			require("nvim-highlight-colors").setup({})
+		end,
+	},
+	-- Rofi syntax
 	{
 		"Fymyte/rasi.vim",
 		ft = { "rasi" },
+		lazy = true,
 	},
+	{
+		"vhyrro/luarocks.nvim",
+		priority = 1000,
+		config = true,
+		opts = {
+			rocks = { "lua-curl", "nvim-nio", "mimetypes", "xml2lua" },
+		},
+	},
+	-- {
+	-- 	"rest-nvim/rest.nvim",
+	-- 	ft = "http",
+	-- 	dependencies = { "luarocks.nvim" },
+	-- 	config = function()
+	-- 		require("rest-nvim").setup()
+	-- 	end,
+	-- },
 	{
 		"Joakker/lua-json5",
 		build = "./install.sh",
@@ -40,16 +97,17 @@ require("lazy").setup({
 			"sidlatau/neotest-dart",
 			"marilari88/neotest-vitest",
 		},
+		lazy = true,
 	},
 	-- Plugin for firefox
-	{
-		"glacambre/firenvim",
-		lazy = not vim.g.started_by_firenvim,
-		build = function()
-			vim.fn["firenvim#install"](0)
-		end,
-	},
-	{ "zhenyangze/vim-bitoai" },
+	-- {
+	-- 	"glacambre/firenvim",
+	-- 	lazy = not vim.g.started_by_firenvim,
+	-- 	build = function()
+	-- 		vim.fn["firenvim#install"](0)
+	-- 	end,
+	-- 	lazy = true,
+	-- },
 	-- { "github/copilot.vim", deactivate = true },
 	-- {
 	-- 	"Civitasv/cmake-tools.nvim",
@@ -59,7 +117,10 @@ require("lazy").setup({
 	-- 		cmake_generate_options = { "-D", "CMAKE_EXPORT_COMPILE_COMMANDS=1" },
 	-- 	},
 	-- },
-	{ "p00f/clangd_extensions.nvim" },
+	{
+		"p00f/clangd_extensions.nvim",
+		lazy = true,
+	},
 	{ "chipsenkbeil/distant.nvim" },
 
 	-- Debugging
@@ -71,6 +132,7 @@ require("lazy").setup({
 			"mxsdev/nvim-dap-vscode-js",
 			"microsoft/vscode-js-debug",
 		},
+		lazy = true,
 	},
 
 	{ "jay-babu/mason-nvim-dap.nvim" },
@@ -131,15 +193,44 @@ require("lazy").setup({
 		version = "v2.*",
 		build = "make install_jsregexp",
 	},
-	{ "akinsho/flutter-tools.nvim" },
+	{
+		"akinsho/flutter-tools.nvim",
+		lazy = true,
+	},
 	-- Powerline
 	{ "nvim-lualine/lualine.nvim" },
 
 	-- Neovim development
-	{ "folke/neodev.nvim",         opts = {} },
+	{ "folke/neodev.nvim",        opts = {} },
+	-- {
+	-- 	"folke/lazydev.nvim",
+	-- 	-- dir = "~/dev/open-sos/lazydev.nvim",
+	-- 	dependencies = { { "bilal2453/luvit-meta" } },
+	-- 	ft = "lua",
+	-- 	opts = {
+	-- 		library = { "luvit-meta/library" },
+	-- 	},
+	-- 	init = function()
+	-- 		local luadir = vim.fn.expand("~/.config/nvim/lua/")
+	-- 		if not vim.loop.fs_stat(luadir) then
+	-- 			vim.fn.mkdir(luadir)
+	-- 		end
+	-- 	end,
+	-- },
+	{ "Bilal2453/luvit-meta",     lazy = true }, -- optional `vim.uv` typings
+	{                                       -- optional completion source for require statements and module annotations
+		"hrsh7th/nvim-cmp",
+		opts = function(_, opts)
+			opts.sources = opts.sources or {}
+			table.insert(opts.sources, {
+				name = "lazydev",
+				group_index = 0, -- set group index to 0 to skip loading LuaLS completions
+			})
+		end,
+	},
 
 	-- Terminal
-	{ "akinsho/toggleterm.nvim",   version = "*", config = true },
+	{ "akinsho/toggleterm.nvim", version = "*", config = true },
 
 	-- Rust
 	-- {
@@ -181,23 +272,26 @@ require("lazy").setup({
 	},
 
 	-- Opened windows bar
-	{
-		"romgrk/barbar.nvim",
-		dependencies = {
-			"lewis6991/gitsigns.nvim",
-			"nvim-tree/nvim-web-devicons",
-		},
-		init = function()
-			vim.g.barbar_auto_setup = false
-		end,
-		version = "*",
-	},
+	-- {
+	-- 	"romgrk/barbar.nvim",
+	-- 	dependencies = {
+	-- 		"lewis6991/gitsigns.nvim",
+	-- 		"nvim-tree/nvim-web-devicons",
+	-- 	},
+	-- 	init = function()
+	-- 		vim.g.barbar_auto_setup = false
+	-- 	end,
+	-- 	version = "*",
+	-- },
 
 	-- Notifications
 	{ "rcarriga/nvim-notify" },
 
 	-- Golang
-	{ "olexsmir/gopher.nvim" },
+	{
+		"olexsmir/gopher.nvim",
+		lazy = true,
+	},
 
 	-- Formatting
 	{ "mhartington/formatter.nvim" },
@@ -206,7 +300,10 @@ require("lazy").setup({
 	{ "ThePrimeagen/vim-be-good" },
 
 	-- Python envs
-	{ "AckslD/swenv.nvim" },
+	{
+		"AckslD/swenv.nvim",
+		lazy = true,
+	},
 
 	-- UI Hooks
 	{ "stevearc/dressing.nvim" },

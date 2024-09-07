@@ -9,15 +9,26 @@ local function showProjects()
   require("telescope").extensions.projects.projects({})
 end
 
-vim.keymap.set("n", "<leader>ff", builtin.find_files, {})
+local function tlWrapper(fn)
+  return function()
+    fn({
+      layout_strategy = "vertical",
+      layout_config = {
+        width = 0.8,
+      },
+    })
+  end
+end
+
+vim.keymap.set("n", "<leader>ff", tlWrapper(builtin.find_files), {})
 -- vim.keymap.set("n", "<C-p>", builtin.git_files, {})
-vim.keymap.set("n", "<leader>fg", builtin.live_grep, {})
-vim.keymap.set("n", "<leader>fof", builtin.oldfiles, {})
-vim.keymap.set("n", "<leader>b", builtin.buffers, {})
+vim.keymap.set("n", "<leader>fg", tlWrapper(builtin.live_grep), {})
+vim.keymap.set("n", "<leader>fof", tlWrapper(builtin.oldfiles), {})
+vim.keymap.set("n", "<leader>b", tlWrapper(builtin.buffers), {})
 
-vim.keymap.set("n", "<leader>nh", telescope.extensions.notify.notify)
+vim.keymap.set("n", "<leader>nh", tlWrapper(telescope.extensions.notify.notify))
 
-vim.keymap.set("n", "<leader>r", showProjects)
+vim.keymap.set("n", "<leader>r", tlWrapper(showProjects))
 
 local function flutterCommands()
   return require("telescope").extensions.flutter.commands()
@@ -26,3 +37,12 @@ vim.keymap.set("n", "<leader>fc", flutterCommands)
 
 --vim.keymap.set("n", "<leader>fb", builtin.buffers, {})
 --vim.keymap.set("n", "<leader>fh", builtin.help_tags, {})
+telescope.setup({
+  defaults = {
+    layout_config = {
+      vertical = {
+        width = 0.8,
+      },
+    },
+  },
+})

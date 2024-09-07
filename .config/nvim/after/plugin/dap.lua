@@ -73,8 +73,8 @@ dap.configurations.dart = {
 		request = "launch",
 		name = "Launch dart",
 		dartSdkPath = "/opt/flutter/bin/cache/dart-sdk/bin/dart", -- ensure this is correct
-		flutterSdkPath = "/opt/flutter/bin/flutter",        -- ensure this is correct
-		program = "${workspaceFolder}/lib/main.dart",       -- ensure this is correct
+		flutterSdkPath = "/opt/flutter/bin/flutter",            -- ensure this is correct
+		program = "${workspaceFolder}/lib/main.dart",           -- ensure this is correct
 		cwd = "${workspaceFolder}",
 	},
 	{
@@ -82,8 +82,8 @@ dap.configurations.dart = {
 		request = "launch",
 		name = "Launch flutter",
 		dartSdkPath = "/opt/flutter/bin/cache/dart-sdk/bin/dart", -- ensure this is correct
-		flutterSdkPath = "/opt/flutter/bin/flutter",        -- ensure this is correct
-		program = "${workspaceFolder}/lib/main.dart",       -- ensure this is correct
+		flutterSdkPath = "/opt/flutter/bin/flutter",            -- ensure this is correct
+		program = "${workspaceFolder}/lib/main.dart",           -- ensure this is correct
 		cwd = "${workspaceFolder}",
 	},
 }
@@ -226,6 +226,7 @@ end
 vim.keymap.set("n", "<leader>do", dapui.open)
 vim.keymap.set("n", "<leader>dc", dapui.close)
 vim.keymap.set("n", "<leader>dlj", launchJson)
+vim.keymap.set("n", "<leader>dtl", "<CMD>DapToggleRepl<CR>")
 
 vim.keymap.set("n", "<F5>", dap.continue)
 vim.keymap.set("n", "<F9>", dap.toggle_breakpoint)

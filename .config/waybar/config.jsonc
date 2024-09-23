@@ -72,13 +72,13 @@
         "sort-by-number": true
     },
     "battery": {
-        "interval": 30,
+        "interval": 1,
         "states": {
             "warning": 30,
             "critical": 15
         },
         "format-charging": "󰂄",
-        "format": "{icon}",
+        "format": "{icon} {power}",
         "format-icons": [
             "󱃍",
             "󰁺",
@@ -159,6 +159,8 @@
     },
     "pulseaudio": {
         "scroll-step": 5,
+        "icon-size": 18,
+        "font-size": 18,
         "format": "{icon}",
         "format-muted": "󰖁 {format_source}",
         "format-source": "",

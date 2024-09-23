@@ -43,4 +43,18 @@ shadows disable
 layer_effects "waybar" blur enable
 layer_effects "rofi" blur enable
 
+for_window [title="Emulator"] opacity disable, blur disable, border disable
+
 # default_dim_inactive 0.05
+
+
+corner_radius 6
+shadows enable
+default_dim_inactive 0.05
+layer_effects "way-shell-message-tray-underlay" blur enable; shadows enable;
+layer_effects "way-shell-message-tray" shadows enable; corner_radius 20
+layer_effects "way-shell-quick-settings-underlay" blur enable; shadows enable;
+layer_effects "way-shell-quick-settings" shadows enable; corner_radius 20
+layer_effects "way-shell-switcher" shadows enable; corner_radius 20
+layer_effects "way-shell-quick-switcher" shadows enable; corner_radius 20
+layer_effects "way-shell-dialog" blur enable; shadows enable;

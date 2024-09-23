@@ -16,6 +16,21 @@
     margin: 5px;
 }
 
+/*window#waybar.chromium {*/
+/*    background-color: #000000;*/
+/*    border: none;*/
+/*}*/
+
+/*.popup {*/
+/*    background-color: rgba(0, 0, 0, 0.4);*/
+/*    border-radius: 42px;*/
+/*}*/
+
+/*menuitem > check | lable > accelerator || separator*/
+.popup menuitem:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
 #clock,
 #network,
 #pulseaudio,
@@ -28,6 +43,16 @@
 #temperature {
     padding: 8px 10px;
     color: white;
+}
+
+/*#battery:hover {*/
+/*    background-color: #ff0000;*/
+/*}*/
+
+/*Tooltip*/
+decoration {
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 8px;
 }
 
 #clock {
@@ -45,10 +70,11 @@
 #pulseaudio,
 #backlight,
 #custom-sunset,
-#sway-language
+#sway-language,
+#custom-playerctl
 {
     color: white;
-    background: transparent;
+    /*background: transparent;*/
     border-radius: 15px;
     margin: 0 8px;
     margin-top: -2px;
@@ -61,8 +87,8 @@
 }
 
 #pulseaudio {
-    margin-top: 0px;
-    font-size: 16px;
+    margin-top: -3px;
+    font-size: 20px;
 }
 
 #tray {

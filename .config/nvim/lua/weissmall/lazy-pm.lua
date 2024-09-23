@@ -16,6 +16,9 @@ require("lazy").setup({
 	require("weissmall.plugins.pkl").plugin,
 	require("weissmall.plugins.themes").catpuccin,
 	{
+		"tomasky/bookmarks.nvim",
+	},
+	{
 		"MeanderingProgrammer/render-markdown.nvim",
 		opts = {},
 		dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" }, -- if you prefer nvim-web-devicons
@@ -152,6 +155,16 @@ require("lazy").setup({
 		"nvim-telescope/telescope.nvim",
 		dependencies = {
 			"nvim-lua/plenary.nvim",
+		},
+	},
+	{
+		"nvim-telescope/telescope-fzf-native.nvim",
+		build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release",
+	},
+	{
+		url = "https://codeberg.org/elfahor/telescope-just.nvim",
+		requires = {
+			"nvim-telescope/telescope.nvim",
 		},
 	},
 

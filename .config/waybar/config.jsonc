@@ -78,7 +78,7 @@
             "critical": 15
         },
         "format-charging": "󰂄",
-        "format": "{icon} {power}",
+        "format": "{icon}",
         "format-icons": [
             "󱃍",
             "󰁺",

@@ -1,0 +1,1 @@
+/home/weissmall/Projects/weissmall/lua-autodots/rc.lua

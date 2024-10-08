@@ -45,9 +45,10 @@ require("lazy").setup({
 		config = function()
 			require("plantuml").setup({
 				renderer = {
-					type = "text",
+					type = "imv",
+					format = "svg",
 					options = {
-						split_cmd = "split",
+						split_cmd = "vsplit",
 					},
 				},
 				render_on_write = true,

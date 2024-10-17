@@ -346,17 +346,17 @@ flutter.setup({
 	},
 })
 
--- lspConfig.dcmls.setup({
--- 	cmd = {
--- 		"dcm",
--- 		"start-server",
--- 		"--client=neovim",
--- 	},
--- 	filetypes = {
--- 		"dart",
--- 	},
--- 	root_dir = util.root_pattern("pubspec.yaml"),
--- })
+lspConfig.dcmls.setup({
+	cmd = {
+		"dcm",
+		"start-server",
+		"--client=neovim",
+	},
+	filetypes = {
+		"dart",
+	},
+	root_dir = util.root_pattern("pubspec.yaml"),
+})
 
 -- lspConfig.dartls.setup({
 -- 	cmd = { "dart", "language-server", "--protocol=lsp" },

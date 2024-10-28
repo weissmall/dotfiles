@@ -16,6 +16,10 @@ require("lazy").setup({
 	require("weissmall.plugins.pkl").plugin,
 	require("weissmall.plugins.themes").catpuccin,
 	{
+		"renerocksai/telekasten.nvim",
+		dependencies = { "nvim-telescope/telescope.nvim" },
+	},
+	{
 		"tomasky/bookmarks.nvim",
 	},
 	{

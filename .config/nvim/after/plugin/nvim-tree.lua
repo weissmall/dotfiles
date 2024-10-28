@@ -34,7 +34,7 @@ vim.keymap.set("n", "<leader>ft", nvimTreeFocusOrToggle)
 vim.keymap.set("n", "<leader>fta", toggle_width_adaptive, { desc = "[F]ile [T]ree toggle [A]daptive width" })
 -- vim.keymap.set("n", "<leader>ftf", vim.cmd.NvimTreeFocus)
 -- vim.keymap.set("n", "<leader>ftff", vim.cmd.NvimTreeFindFile)
--- vim.keymap.set("n", "<leader>ftc", vim.cmd.NvimTreeCollapse)
+vim.keymap.set("n", "<leader>ftc", vim.cmd.NvimTreeClose)
 local function get_view_width_max()
 	return view_width_max
 end

@@ -32,3 +32,6 @@ vim.g.loaded_netrwPlugin = 1
 
 vim.o.timeout = true
 vim.o.timeoutlen = 500
+vim.cmd([[
+  set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz,хъ;[],ХЪ;{},жэ;\;',ЖЭ;:\",/;\|,б;.,Б;<,ю;.,Ю;>
+]])

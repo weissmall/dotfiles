@@ -94,6 +94,7 @@ mason_lsp.setup({
 })
 
 local cmp = require("cmp")
+local compare = require("cmp.config.compare")
 
 cmp.setup({
 	sources = cmp.config.sources({
@@ -104,6 +105,17 @@ cmp.setup({
 			name = "luasnip",
 		},
 	}),
+	-- :help cmp-config.sorting.comparators
+	sorting = {
+		priority_weight = 1.0,
+		comparators = {
+			function(t1, t2)
+				return compare.kind(t1, t2)
+			end,
+			compare.order,
+			compare.exact,
+		},
+	},
 	snippet = {
 		expand = function(args)
 			require("luasnip").lsp_expand(args.body)

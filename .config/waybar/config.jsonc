@@ -21,12 +21,12 @@
     ],
     "modules-right": [
         // informational
-        "battery",
-        "backlight",
-        "bluetooth",
         "custom/playerctl",
-        "pulseaudio",
+        "backlight",
         "custom/sunset",
+        "battery",
+        "pulseaudio",
+        "bluetooth",
         "tray",
         "sway/language"
         // "custom/github",

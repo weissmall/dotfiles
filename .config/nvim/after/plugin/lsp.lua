@@ -327,10 +327,16 @@ flutter.setup({
 			project_config = false,
 		},
 	},
+	-- debugger = {
+	-- 	enabled = true,
+	-- 	run_via_dap = true,
+	-- 	exception_breakpoints = {},
+	-- },
 	debugger = {
 		enabled = true,
-		run_via_dap = true,
+		-- run_via_dap = true,
 		exception_breakpoints = {},
+		evaluate_to_string_in_debug_views = false,
 	},
 	fvm = false,
 	dev_log = {
@@ -338,7 +344,7 @@ flutter.setup({
 	},
 	lsp = {
 		color = {
-			enabled = true,
+			enabled = false,
 			background = true,
 			background_color = nil,
 			foreground = false,
@@ -352,7 +358,7 @@ flutter.setup({
 			completeFunctionCalls = true,
 			-- analysisExcludedFolders = { "<path-to-flutter-sdk-packages>" },
 			renameFilesWithClasses = "always",
-			enableSnippets = true,
+			enableSnippets = false,
 			updateImportsOnRename = true,
 		},
 	},

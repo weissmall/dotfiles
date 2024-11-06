@@ -197,7 +197,7 @@ require("lazy").setup({
 	{ "williamboman/mason.nvim" },
 	{ "williamboman/mason-lspconfig.nvim" },
 
-	{ "VonHeikemen/lsp-zero.nvim",        branch = "v3.x" },
+	{ "VonHeikemen/lsp-zero.nvim", branch = "v3.x" },
 	{ "neovim/nvim-lspconfig" },
 	{ "hrsh7th/cmp-nvim-lsp" },
 	{ "hrsh7th/cmp-nvim-lua" },
@@ -221,7 +221,7 @@ require("lazy").setup({
 	{ "nvim-lualine/lualine.nvim" },
 
 	-- Neovim development
-	{ "folke/neodev.nvim",        opts = {} },
+	-- { "folke/neodev.nvim",        opts = {} },
 	-- {
 	-- 	"folke/lazydev.nvim",
 	-- 	-- dir = "~/dev/open-sos/lazydev.nvim",
@@ -237,8 +237,8 @@ require("lazy").setup({
 	-- 		end
 	-- 	end,
 	-- },
-	{ "Bilal2453/luvit-meta",     lazy = true }, -- optional `vim.uv` typings
-	{                                       -- optional completion source for require statements and module annotations
+	{ "Bilal2453/luvit-meta", lazy = true }, -- optional `vim.uv` typings
+	{ -- optional completion source for require statements and module annotations
 		"hrsh7th/nvim-cmp",
 		opts = function(_, opts)
 			opts.sources = opts.sources or {}

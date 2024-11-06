@@ -15,6 +15,8 @@ require("lazy").setup({
 	require("weissmall.plugins.markdown").plugin,
 	require("weissmall.plugins.pkl").plugin,
 	require("weissmall.plugins.themes").catpuccin,
+	require("weissmall.plugins.lazydev").lazydev,
+	require("weissmall.plugins.lazydev").blink,
 	{
 		"renerocksai/telekasten.nvim",
 		dependencies = { "nvim-telescope/telescope.nvim" },

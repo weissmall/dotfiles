@@ -1,4 +1,5 @@
 local lsp = require("lsp-zero")
+local util = require("lspconfig/util")
 
 vim.keymap.set("n", "<leader>lsr", vim.cmd.LspRestart)
 
@@ -191,6 +192,17 @@ lspConfig.lua_ls.setup({
 			},
 		})
 	end,
+	root_dir = util.root_pattern(
+		"init.lua",
+		".luarc.json",
+		".luarc.jsonc",
+		".luacheckrc",
+		".stylua.toml",
+		"stylua.toml",
+		"selene.toml",
+		"selene.yml",
+		".git"
+	),
 	capabilities = capabilities,
 	on_attach = on_attach,
 	settings = {
@@ -205,10 +217,12 @@ lspConfig.lua_ls.setup({
 				},
 			},
 			workspace = {
+				checkThirdParty = false,
 				library = {
+					vim.env.VIMRUNTIME,
 					-- vim.api.nvim_get_runtime_file("", true),
-					vim.fn.expand("$VIMRUNTIME/lua"),
-					vim.fn.expand("$HOME/.local/share/nvim"),
+					-- vim.fn.expand("$VIMRUNTIME/lua"),
+					-- vim.fn.expand("$HOME/.local/share/nvim"),
 				},
 			},
 			telemetry = {
@@ -250,7 +264,6 @@ lspConfig.rust_analyzer.setup({
 		},
 	},
 })
-local util = require("lspconfig/util")
 
 lspConfig.gopls.setup({
 	capabilities = capabilities,
@@ -523,4 +536,5 @@ lspConfig.groovyls.setup({
 	single_file_support = true,
 })
 
+lsp.setup()
 lsp.setup()

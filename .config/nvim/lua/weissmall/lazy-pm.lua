@@ -17,13 +17,13 @@ require("lazy").setup({
 	require("weissmall.plugins.themes").catpuccin,
 	-- require("weissmall.plugins.lazydev").lazydev,
 	-- require("weissmall.plugins.lazydev").blink,
-	{
-		"folke/lazydev.nvim",
-		dependencies = {
-			"Bilal2453/luvit-meta",
-			lazy = true,
-		},
-	},
+	-- {
+	-- 	"folke/lazydev.nvim",
+	-- 	dependencies = {
+	-- 		"Bilal2453/luvit-meta",
+	-- 		lazy = true,
+	-- 	},
+	-- },
 	{
 		"renerocksai/telekasten.nvim",
 		dependencies = { "nvim-telescope/telescope.nvim" },
@@ -249,10 +249,10 @@ require("lazy").setup({
 		"hrsh7th/nvim-cmp",
 		opts = function(_, opts)
 			opts.sources = opts.sources or {}
-			table.insert(opts.sources, {
-				name = "lazydev",
-				group_index = 0, -- set group index to 0 to skip loading LuaLS completions
-			})
+			-- table.insert(opts.sources, {
+			-- 	name = "lazydev",
+			-- 	group_index = 0, -- set group index to 0 to skip loading LuaLS completions
+			-- })
 		end,
 	},
 

@@ -15,8 +15,15 @@ require("lazy").setup({
 	require("weissmall.plugins.markdown").plugin,
 	require("weissmall.plugins.pkl").plugin,
 	require("weissmall.plugins.themes").catpuccin,
-	require("weissmall.plugins.lazydev").lazydev,
-	require("weissmall.plugins.lazydev").blink,
+	-- require("weissmall.plugins.lazydev").lazydev,
+	-- require("weissmall.plugins.lazydev").blink,
+	{
+		"folke/lazydev.nvim",
+		dependencies = {
+			"Bilal2453/luvit-meta",
+			lazy = true,
+		},
+	},
 	{
 		"renerocksai/telekasten.nvim",
 		dependencies = { "nvim-telescope/telescope.nvim" },
@@ -197,7 +204,7 @@ require("lazy").setup({
 	{ "williamboman/mason.nvim" },
 	{ "williamboman/mason-lspconfig.nvim" },
 
-	{ "VonHeikemen/lsp-zero.nvim", branch = "v3.x" },
+	{ "VonHeikemen/lsp-zero.nvim",        branch = "v3.x" },
 	{ "neovim/nvim-lspconfig" },
 	{ "hrsh7th/cmp-nvim-lsp" },
 	{ "hrsh7th/cmp-nvim-lua" },
@@ -237,8 +244,8 @@ require("lazy").setup({
 	-- 		end
 	-- 	end,
 	-- },
-	{ "Bilal2453/luvit-meta", lazy = true }, -- optional `vim.uv` typings
-	{ -- optional completion source for require statements and module annotations
+	{ "Bilal2453/luvit-meta",     lazy = true }, -- optional `vim.uv` typings
+	{                                       -- optional completion source for require statements and module annotations
 		"hrsh7th/nvim-cmp",
 		opts = function(_, opts)
 			opts.sources = opts.sources or {}

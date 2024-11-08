@@ -102,6 +102,10 @@ cmp.setup({
 		{
 			name = "luasnip",
 		},
+		{
+			name = "lazydev",
+			group_index = 0,
+		},
 	}),
 	-- :help cmp-config.sorting.comparators
 	sorting = {
@@ -202,9 +206,9 @@ lspConfig.lua_ls.setup({
 			},
 			workspace = {
 				library = {
-					vim.api.nvim_get_runtime_file("", true),
-					[vim.fn.expand("$VIMRUNTIME/lua")] = true,
-					[vim.fn.expand("$HOME/.local/share/nvim")] = true,
+					-- vim.api.nvim_get_runtime_file("", true),
+					vim.fn.expand("$VIMRUNTIME/lua"),
+					vim.fn.expand("$HOME/.local/share/nvim"),
 				},
 			},
 			telemetry = {

@@ -12,6 +12,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
+	{ "imsnif/kdl.vim" },
 	require("weissmall.plugins.markdown").plugin,
 	require("weissmall.plugins.pkl").plugin,
 	require("weissmall.plugins.themes").catpuccin,
@@ -245,7 +246,7 @@ require("lazy").setup({
 	-- 	end,
 	-- },
 	{ "Bilal2453/luvit-meta",     lazy = true }, -- optional `vim.uv` typings
-	{                                       -- optional completion source for require statements and module annotations
+	{                                           -- optional completion source for require statements and module annotations
 		"hrsh7th/nvim-cmp",
 		opts = function(_, opts)
 			opts.sources = opts.sources or {}

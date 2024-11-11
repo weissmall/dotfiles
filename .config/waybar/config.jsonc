@@ -9,7 +9,9 @@
     "position": "top",
     "modules-left": [
         // "custom/menu",
-        "sway/workspaces"
+        "sway/workspaces",
+        "niri/workspaces"
+        //"wlr/taskbar"
         //"custom/scratchpad"
     ],
     "modules-center": [
@@ -28,7 +30,8 @@
         "pulseaudio",
         "bluetooth",
         "tray",
-        "sway/language"
+        "sway/language",
+        "niri/language"
         // "custom/github",
         // "custom/clipboard",
         // "custom/zeit",
@@ -44,6 +47,23 @@
         // "custom/adaptive-light",
         // "custom/pacman",
     ],
+    "niri/workspaces": {
+        "all-outputs": true,
+        "format": "{name}",
+        "format-icons": {
+            "1": "",
+            "2": "",
+            "3": "",
+            "4": "",
+            "5": "",
+            "urgent": "",
+            "active": "",
+            "default": ""
+        },
+        "disable-click": false,
+        "disable-markup": false,
+        "current-only": false
+    },
     "sway/workspaces": {
         "format": "{name}",
         "on-click": "activate",
@@ -223,6 +243,13 @@
         "tooltip": true,
         "tooltip-format": "{long} {flag}",
         "on-click": "swaymsg input $(swaymsg -t get_inputs --raw | jq '[.[] | select(.type == \"keyboard\")][0] | .identifier') xkb_switch_layout next"
+    },
+    "niri/language": {
+        "format": "{flag}",
+        "min-length": 5,
+        "tooltip": true,
+        "tooltip-format": "{long} {flag}"
+        //"on-click": "swaymsg input $(swaymsg -t get_inputs --raw | jq '[.[] | select(.type == \"keyboard\")][0] | .identifier') xkb_switch_layout next"
     },
     "custom/scratchpad": {
         "interval": "once",

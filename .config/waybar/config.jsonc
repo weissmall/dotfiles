@@ -9,8 +9,7 @@
     "position": "top",
     "modules-left": [
         // "custom/menu",
-        "sway/workspaces",
-        "niri/workspaces"
+        "sway/workspaces"
         //"wlr/taskbar"
         //"custom/scratchpad"
     ],
@@ -245,11 +244,7 @@
         "on-click": "swaymsg input $(swaymsg -t get_inputs --raw | jq '[.[] | select(.type == \"keyboard\")][0] | .identifier') xkb_switch_layout next"
     },
     "niri/language": {
-        "format": "{flag}",
-        "min-length": 5,
-        "tooltip": true,
-        "tooltip-format": "{long} {flag}"
-        //"on-click": "swaymsg input $(swaymsg -t get_inputs --raw | jq '[.[] | select(.type == \"keyboard\")][0] | .identifier') xkb_switch_layout next"
+        "format": "{flag}"
     },
     "custom/scratchpad": {
         "interval": "once",

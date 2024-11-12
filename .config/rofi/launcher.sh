@@ -44,6 +44,7 @@ function showSsh()
 {
   rofi \
     -show ssh \
+    -terminal wezterm \
     -theme ${dir}/${theme}.rasi
 }
 

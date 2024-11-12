@@ -1,4 +1,4 @@
-local lsp = require("lsp-zero")
+-- local lsp = require("lsp-zero")
 local util = require("lspconfig/util")
 
 vim.keymap.set("n", "<leader>lsr", vim.cmd.LspRestart)
@@ -88,7 +88,7 @@ mason_lsp.setup({
 		"luasnip",
 	},
 	handlers = {
-		lsp.default_setup,
+		-- lsp.default_setup,
 	},
 })
 
@@ -536,5 +536,11 @@ lspConfig.groovyls.setup({
 	single_file_support = true,
 })
 
-lsp.setup()
-lsp.setup()
+lspConfig.kotlin_language_server.setup({
+	filetypes = "kotlin",
+	on_attach = on_attach,
+	capabilities = capabilities,
+})
+
+-- lsp.setup()
+-- lsp.setup()

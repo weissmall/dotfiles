@@ -9,7 +9,9 @@
     "position": "top",
     "modules-left": [
         // "custom/menu",
-        "sway/workspaces"
+        "sway/workspaces",
+        "niri/workspaces",
+        "niri/window"
         //"wlr/taskbar"
         //"custom/scratchpad"
     ],
@@ -29,8 +31,7 @@
         "pulseaudio",
         "bluetooth",
         "tray",
-        "sway/language",
-        "niri/language"
+        "sway/language"
         // "custom/github",
         // "custom/clipboard",
         // "custom/zeit",
@@ -46,22 +47,29 @@
         // "custom/adaptive-light",
         // "custom/pacman",
     ],
+    "niri/window": {
+        "format": "{}",
+        "rewrite": {
+            "(.*) - Mozilla Firefox": "🌎 $1",
+            "(.*) - zsh": "> [$1]"
+        }
+    },
     "niri/workspaces": {
         "all-outputs": true,
-        "format": "{name}",
-        "format-icons": {
-            "1": "",
-            "2": "",
-            "3": "",
-            "4": "",
-            "5": "",
-            "urgent": "",
-            "active": "",
-            "default": ""
-        },
-        "disable-click": false,
-        "disable-markup": false,
-        "current-only": false
+        "format": "{name}"
+        //"format-icons": {
+        //    "1": "",
+        //    "2": "",
+        //    "3": "",
+        //    "4": "",
+        //    "5": "",
+        //    "urgent": "",
+        //    "active": "",
+        //    "default": ""
+        //},
+        //"disable-click": false,
+        //"disable-markup": false,
+        //"current-only": false
     },
     "sway/workspaces": {
         "format": "{name}",
@@ -181,7 +189,7 @@
         "icon-size": 18,
         "font-size": 18,
         "format": "{icon}",
-        "format-muted": "󰖁 {format_source}",
+        "format-muted": "󰖁",
         "format-source": "",
         "format-source-muted": " 󰍭",
         "format-icons": {

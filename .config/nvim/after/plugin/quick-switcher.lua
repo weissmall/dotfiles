@@ -2,7 +2,7 @@ local qs = require("nvim-quick-switcher")
 
 local function find_by_fn(fn, opts)
 	return function()
-		require("nvim-quick-switcher").find_by_fn(fn, opts)
+		qs.find_by_fn(fn, opts)
 	end
 end
 

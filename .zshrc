@@ -61,3 +61,8 @@ alias vc="zi && nvim ."
 # alias dart="fvm dart"
 
 export PATH="$PATH:/home/weissmall/fvm/default/bin"
+alias pkginst="pacman -Qet"
+
+eval "$(starship init zsh)"
+
+export usersvc="/usr/lib/systemd/user/"

@@ -1,7 +1,7 @@
 {
     // "id": "bar-0",
     "ipc": true,
-    "layer": "bottom",
+    "layer": "top",
     // If height property would be not present, it'd be calculated dynamically
     "height": 10,
     "margin": 0,

@@ -7,14 +7,14 @@
     "margin": 0,
     // "name": "test",
     "position": "top",
-    "modules-left": [
-        // "custom/menu",
-        "sway/workspaces",
-        "niri/workspaces",
-        "niri/window"
-        //"wlr/taskbar"
-        //"custom/scratchpad"
-    ],
+    //"modules-left": [
+    //    // "custom/menu",
+    //    //"sway/workspaces",
+    //    //"niri/workspaces",
+    //    //"niri/window"
+    //    //"wlr/taskbar"
+    //    //"custom/scratchpad"
+    //],
     "modules-center": [
         "custom/wf-recorder",
         "clock"

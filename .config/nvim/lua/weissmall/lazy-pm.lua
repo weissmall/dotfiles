@@ -12,7 +12,25 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
+	{
+		"olimorris/codecompanion.nvim",
+		enabled = true,
+		cmd = { "CodeCompanion" },
+		opts = {
+			strategies = {
+				chat = {
+					adapter = "ollama",
+				},
+				inline = {
+					adapter = "ollama",
+				},
+			},
+		},
+	},
+	{ "MunifTanjim/eslint.nvim" },
 	{ "imsnif/kdl.vim" },
+	{ "m00qek/baleia.nvim" },
+	{ "echasnovski/mini.animate", version = "*" },
 	require("weissmall.plugins.markdown").plugin,
 	require("weissmall.plugins.pkl").plugin,
 	require("weissmall.plugins.themes").catpuccin,
@@ -28,6 +46,12 @@ require("lazy").setup({
 	{
 		"renerocksai/telekasten.nvim",
 		dependencies = { "nvim-telescope/telescope.nvim" },
+	},
+	{
+		"vinnymeller/swagger-preview.nvim",
+		cmd = { "SwaggerPreview", "SwaggerPreviewStop", "SwaggerPreviewToggle" },
+		build = "npm i",
+		config = true,
 	},
 	{
 		"tomasky/bookmarks.nvim",
@@ -205,7 +229,7 @@ require("lazy").setup({
 	{ "williamboman/mason.nvim" },
 	{ "williamboman/mason-lspconfig.nvim" },
 
-	-- { "VonHeikemen/lsp-zero.nvim",        branch = "v3.x" },
+	{ "VonHeikemen/lsp-zero.nvim",        branch = "v3.x" },
 	{ "neovim/nvim-lspconfig" },
 	{ "hrsh7th/cmp-nvim-lsp" },
 	{ "hrsh7th/cmp-nvim-lua" },
@@ -246,7 +270,7 @@ require("lazy").setup({
 	-- 	end,
 	-- },
 	{ "Bilal2453/luvit-meta",     lazy = true }, -- optional `vim.uv` typings
-	{                                           -- optional completion source for require statements and module annotations
+	{                                       -- optional completion source for require statements and module annotations
 		"hrsh7th/nvim-cmp",
 		opts = function(_, opts)
 			opts.sources = opts.sources or {}
@@ -323,6 +347,7 @@ require("lazy").setup({
 
 	-- Formatting
 	{ "mhartington/formatter.nvim" },
+	{ "stevearc/conform.nvim" },
 
 	-- VimBeGood
 	{ "ThePrimeagen/vim-be-good" },

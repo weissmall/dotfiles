@@ -66,6 +66,8 @@ run_cmd() {
 	selected="$(confirm_exit)"
 	if [[ "$selected" == "$yes" ]]; then
 		if [[ $1 == '--shutdown' ]]; then
+			pkill telegram || echo "" > /dev/null
+			pkill java || echo "" > /dev/null
 			systemctl poweroff
 		elif [[ $1 == '--reboot' ]]; then
 			systemctl reboot
@@ -84,6 +86,8 @@ run_cmd() {
 				i3-msg exit
 			elif [[ "$DESKTOP_SESSION" == 'plasma' ]]; then
 				qdbus org.kde.ksmserver /KSMServer logout 0 0 0
+			elif [[ "$DESKTOP_SESSION" == 'niri' ]]; then
+                                niri msg action quit -s
 			else
 				session=`loginctl session-status | head -n 1 | awk '{print $1}'`
 				loginctl terminate-session $session
@@ -112,7 +116,8 @@ case ${chosen} in
 		elif [[ -x '/usr/bin/i3lock' ]]; then
 			i3lock
 	        else
-			swaymsg exec \$locking
+			$HOME/.config/rofi/scripts/lock.sh
+			# swaymsg exec \$locking
 		fi
         ;;
     $suspend)

@@ -7,10 +7,11 @@ local function customLineReplace()
 	local value = string.gsub(vim.fn.getreg('"z'), "%s+", "")
 	local len = string.len(value)
 	local leftLen = 72
-	local symLen = (leftLen - len) / 2
-	local mod = leftLen % 2
 
-	local line = "/* " .. string.rep("-", symLen) .. " " .. value .. " " .. string.rep("-", symLen + mod) .. " */"
+	local leftInsert = math.floor((leftLen - len) / 2)
+	local rightInsert = leftInsert + ((leftLen - len) % 2)
+
+	local line = "/* " .. string.rep("-", leftInsert) .. " " .. value .. " " .. string.rep("-", rightInsert) .. " */"
 
 	vim.fn.setline(pos, line)
 end

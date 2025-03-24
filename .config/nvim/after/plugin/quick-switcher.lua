@@ -9,16 +9,19 @@ end
 local find_test_fn = function(p)
 	local path = p.path
 	local file_name = p.prefix
-	local result = path:gsub("lib", "test") .. "/" .. p.prefix .. "*"
+	local result = path:gsub("lib", "test") .. "/" .. file_name .. "*"
+	vim.notify("Go to test: " .. result)
 	return result
 end
 
 local find_src_fn = function(p)
 	local path = p.path
-	local file_name = p.prefix
-	local result = path:gsub("test", "lib") .. "/" .. p.prefix .. "*"
+	local file_name = p.prefix:gsub("_test", "")
+
+	local result = path:gsub("test", "lib") .. "/" .. file_name .. "*"
+	vim.notify("Go to source: " .. result)
 	return result
 end
 
-vim.keymap.set("n", "<leader>gt", find_by_fn(find_test_fn))
-vim.keymap.set("n", "<leader>gs", find_by_fn(find_src_fn))
+vim.keymap.set("n", "<leader>gtt", find_by_fn(find_test_fn))
+vim.keymap.set("n", "<leader>gts", find_by_fn(find_src_fn))

@@ -12,6 +12,9 @@ prettier.setup({
 	-- 	timeout = 5000,
 	-- },
 	bin = "prettierd",
+	cli_options = {
+		config_precedence = "prefer-file",
+	},
 	filetypes = {
 		"css",
 		"graphql",

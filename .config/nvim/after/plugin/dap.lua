@@ -1,5 +1,6 @@
 local dap = require("dap")
 local dapui = require("dapui")
+dap.set_log_level("TRACE")
 
 local dapVscode = require("dap.ext.vscode")
 dapVscode.json_decode = require("json5").parse
@@ -50,11 +51,17 @@ dap.adapters.lldb = {
 	name = "lldb",
 }
 
-dap.adapters["lldb-vscode"] = {
+dap.adapters.codelldb = {
 	type = "executable",
-	command = "/usr/bin/lldb-vscode",
-	name = "lldb-vscode",
+	command = "/home/weissmall/.local/share/nvim/mason/bin/codelldb",
+	name = "codelldb",
 }
+
+-- dap.adapters["lldb-vscode"] = {
+-- 	type = "executable",
+-- 	command = "/usr/bin/lldb-vscode",
+-- 	name = "lldb-vscode",
+-- }
 
 dap.adapters["pwa-node"] = {
 	type = "server",
@@ -101,6 +108,35 @@ dap.configurations.cpp = {
 		end,
 	},
 }
+
+-- {
+--     "type": "lldb",
+--     "request": "launch",
+--     "name": "Local",
+--     "program": "${command:cmake.launchTargetPath}",
+--     "envFile": "dev.env",
+--     "args": [
+--         "-Wno-warning",
+--         "-ferror-limit=0",
+--         "-fmodules"
+--     ],
+--     "env": {
+--         "KAFKA_HOST_ADDRESS": "localhost:9092",
+--         "TMP_VIDEO_DIR": "/home/weissmall/Projects/Dipal/Lithium/Lithium/tmpvids",
+--         "PGDATABASE": "lithium",
+--         "PGUSER": "lithium",
+--         "PGPASSWORD": "lithiumpassword",
+--         "PGHOST": "localhost",
+--         "PGPORT": "5432",
+--         "LOGGER_CONFIG_FILE": "logger.dev.conf",
+--         "SDK_TIMEOUT_MS": "10000",
+--         "DEVICE_CONTENT_POLL_INTERVAL_MS": "1000000",
+--         "DEVICE_CONTENT_POLL_BATCH_SIZE": "128",
+--         "TMP_FILES_CLEANUP_INTERVAL_MS": "1000000",
+--         "MAX_SIZE_NOT_FILTERED_VIDEOS": "64"
+--     },
+--     "cwd": "${workspaceFolder}"
+-- }
 
 local exts = {
 	"javascript",

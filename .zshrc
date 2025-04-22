@@ -45,6 +45,7 @@ fi
 
 eval "$(zoxide init zsh)"
 alias vc="zi && nvim ."
+alias vr="sudo -e nvim"
 
 # Flutter
 # export PATH="$PATH:/opt/flutter/bin"
@@ -60,9 +61,27 @@ alias vc="zi && nvim ."
 # alias flutter="fvm flutter"
 # alias dart="fvm dart"
 
-export PATH="$PATH:/home/weissmall/fvm/default/bin"
+export PATH="$PATH:$HOME/fvm/default/bin"
 alias pkginst="pacman -Qet"
 
 eval "$(starship init zsh)"
 
 export usersvc="/usr/lib/systemd/user/"
+
+## ls to exa
+alias ls="exa"
+
+
+alias dbr="dart pub run build_runner build"
+alias dbrc="dart pub run build_runner build --delete-conflicting-outputs"
+
+alias pmm="pm2"
+
+alias resource="source ~/.zshrc"
+alias vrc="nvim ~/.zshrc"
+
+# GO binaries
+export PATH="$PATH:$HOME/go/bin"
+
+# Git sync with submodules
+alias gssync="git pull origin \$(git rev-parse --abbrev-ref HEAD) && git submodule update --init --recursive"

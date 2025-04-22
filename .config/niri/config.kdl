@@ -15,7 +15,11 @@ spawn-at-startup "kanshi"
 spawn-at-startup "swayosd-server"
 
 // Top bar
-spawn-at-startup "waybar"
+// spawn-at-startup "waybar"
+
+// spawn-at-startup "bash" "-c" "lua /home/weissmall/Projects/CursorTest/weissbar/init.lua"
+
+spawn-at-startup "ags" "run" "--gtk4"
 
 // Running Xorg applications
 spawn-at-startup "xwayland-satellite"
@@ -29,6 +33,9 @@ spawn-at-startup "bash" "-c" "[ -x \"$(command -v wl-paste)\" ] && [ -x \"$(comm
 
 // Notifications
 spawn-at-startup "bash" "-c" "[ -x \"$(command -v dunst)\" ] && pkill dunst; dunst"
+
+// Conky
+spawn-at-startup "bash" "-c" "$HOME/.config/niri/conky.sh"
 
 /* -------------------------------------------------------------------------- */
 
@@ -49,6 +56,7 @@ environment {
 
     // qt wayland
     QT_QPA_PLATFORM "xcb"
+    // QT_QPA_PLATFORM "wayland"
     QT_QPA_PLATFORMTHEME "qt5ct"
     QT_WAYLAND_DISABLE_WINDOWDECORATION "1"
 
@@ -303,6 +311,24 @@ window-rule {
     default-column-width {}
 }
 
+window-rule {
+    // This regular expression is intentionally made as specific as possible,
+    // since this is the default config, and we want no false positives.
+    // You can get away with just app-id="wezterm" if you want.
+    match app-id=r#"^Emulator"#
+    opacity 1.0
+    open-floating false
+}
+
+window-rule {
+    // This regular expression is intentionally made as specific as possible,
+    // since this is the default config, and we want no false positives.
+    // You can get away with just app-id="wezterm" if you want.
+    match title=r#"^TelegramDesktop"#
+    opacity 1.0
+    open-floating false
+}
+
 // Example: block out two password managers from screen capture.
 // (This example rule is commented out with a "/-" in front.)
 /-window-rule {
@@ -328,6 +354,10 @@ binds {
     // Clipboard menu
     Super+Shift+P {
         spawn "bash" "-c" "cliphist list | rofi -dmenu -p \"Select item to copy\" -lines 10 -theme $HOME/.config/rofi/launcher.rasi | cliphist decode | wl-copy";
+    }
+
+    Super+Shift+D {
+        spawn "bash" "-c" "notify-send \"$(niri msg focused-window)\"";
     }
 
 
@@ -555,6 +585,8 @@ binds {
     // set-column-width "100" will make the column occupy 200 physical screen pixels.
     Mod+Minus { set-column-width "-10%"; }
     Mod+Equal { set-column-width "+10%"; }
+    Mod+Alt+Minus { set-column-width "-1%"; }
+    Mod+Alt+Equal { set-column-width "+1%"; }
 
     // Finer height adjustments when in column with other windows.
     Mod+Shift+Minus { set-window-height "-10%"; }
@@ -568,7 +600,8 @@ binds {
     // Mod+Space       { switch-layout "next"; }
     // Mod+Shift+Space { switch-layout "prev"; }
 
-    Print { screenshot; }
+    Print { spawn "/bin/bash" "-c" "niri msg action screenshot | wl-copy"; }
+
     Ctrl+Print { screenshot-screen; }
     Alt+Print { screenshot-window; }
 

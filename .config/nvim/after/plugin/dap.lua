@@ -1,26 +1,23 @@
 local dap = require("dap")
-local dapui = require("dapui")
 dap.set_log_level("TRACE")
 
 local dapVscode = require("dap.ext.vscode")
 dapVscode.json_decode = require("json5").parse
 
-dapui.setup()
-
 dap.listeners.before.attach.dapui_config = function()
-	dapui.open()
+	require("dapui").open()
 end
 
 dap.listeners.before.launch.dapui_config = function()
-	dapui.open()
+	require("dapui").open()
 end
 
 dap.listeners.before.event_terminated.dapui_config = function()
-	dapui.close()
+	require("dapui").close()
 end
 
 dap.listeners.before.event_exited.dapui_config = function()
-	dapui.close()
+	require("dapui").close()
 end
 
 -- require("dap-vscode-js").setup({
@@ -55,7 +52,28 @@ dap.adapters.codelldb = {
 	type = "executable",
 	command = "/home/weissmall/.local/share/nvim/mason/bin/codelldb",
 	name = "codelldb",
+	args = { os.getenv("HOME") .. "/dev/golang/vscode-go/extension/dist/debugAdapter.js" },
 }
+
+dap.adapters.delve = function(callback, config)
+	if config.mode == "remote" and config.request == "attach" then
+		callback({
+			type = "server",
+			host = config.host or "127.0.0.1",
+			port = config.port or "38697",
+		})
+	else
+		callback({
+			type = "server",
+			port = "${port}",
+			executable = {
+				command = "dlv",
+				args = { "dap", "-l", "127.0.0.1:${port}", "--log", "--log-output=dap" },
+				detached = vim.fn.has("win32") == 0,
+			},
+		})
+	end
+end
 
 -- dap.adapters["lldb-vscode"] = {
 -- 	type = "executable",
@@ -92,6 +110,37 @@ dap.configurations.dart = {
 		flutterSdkPath = "/opt/flutter/bin/flutter",            -- ensure this is correct
 		program = "${workspaceFolder}/lib/main.dart",           -- ensure this is correct
 		cwd = "${workspaceFolder}",
+	},
+}
+
+-- https://github.com/go-delve/delve/blob/master/Documentation/usage/dlv_dap.md
+dap.configurations.go = {
+	{
+		type = "delve",
+		name = "Debug",
+		request = "launch",
+		program = "${file}",
+	},
+	{
+		type = "delve",
+		name = "Debug Package",
+		request = "launch",
+		program = "${fileDirname}",
+	},
+	{
+		type = "delve",
+		name = "Debug test", -- configuration for debugging test files
+		request = "launch",
+		mode = "test",
+		program = "${file}",
+	},
+	-- works with go.mod packages and sub packages
+	{
+		type = "delve",
+		name = "Debug test (go.mod)",
+		request = "launch",
+		mode = "test",
+		program = "./${relativeFileDirname}",
 	},
 }
 
@@ -259,8 +308,6 @@ local function launchJson()
 	dapVscode.load_launchjs(".nvimproj/launch.json")
 end
 
-vim.keymap.set("n", "<leader>do", dapui.open)
-vim.keymap.set("n", "<leader>dc", dapui.close)
 vim.keymap.set("n", "<leader>dlj", launchJson)
 vim.keymap.set("n", "<leader>dtl", "<CMD>DapToggleRepl<CR>")
 

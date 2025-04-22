@@ -6,6 +6,7 @@ local tabbar = require("tabbar")
 local config = w.config_builder()
 config.window_frame = nil
 config.window_decorations = "NONE"
+config.scrollback_lines = 50000
 ui.setup(config)
 keybings.setKeybinds(config)
 

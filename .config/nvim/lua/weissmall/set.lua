@@ -35,3 +35,6 @@ vim.o.timeoutlen = 500
 -- vim.cmd([[
 --   set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz,хъ;[],ХЪ;{},жэ;\;',ЖЭ;:\",/;\|,б;.,Б;<,ю;.,Ю;>
 -- ]])
+vim.opt.list = true
+-- vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
+vim.opt.listchars = { tab = "  ", trail = "·", nbsp = "␣" }

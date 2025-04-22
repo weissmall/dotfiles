@@ -1,4 +1,4 @@
-local opts = { noremap = true, silent = true }
+local _ = { noremap = true, silent = true }
 
 -- Setting leader key for Space
 vim.g.mapleader = " "

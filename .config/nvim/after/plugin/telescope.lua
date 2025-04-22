@@ -2,7 +2,7 @@ local telescope = require("telescope")
 local builtin = require("telescope.builtin")
 
 telescope.load_extension("projects")
-telescope.load_extension("notify")
+telescope.load_extension("noice")
 telescope.load_extension("flutter")
 
 local function showProjects()
@@ -25,8 +25,6 @@ vim.keymap.set("n", "<leader>ff", tlWrapper(builtin.find_files), {})
 vim.keymap.set("n", "<leader>fg", tlWrapper(builtin.live_grep), {})
 vim.keymap.set("n", "<leader>fof", tlWrapper(builtin.oldfiles), {})
 vim.keymap.set("n", "<leader>b", tlWrapper(builtin.buffers), {})
-
-vim.keymap.set("n", "<leader>nh", tlWrapper(telescope.extensions.notify.notify))
 
 vim.keymap.set("n", "<leader>r", tlWrapper(showProjects))
 

@@ -20,6 +20,6 @@ local lazydev = {
 -- }
 
 return {
-	lazydev = lazydev,
-	blink = {},
+	lazydev,
+	{},
 }

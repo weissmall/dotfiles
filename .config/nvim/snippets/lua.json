@@ -1,16 +1,9 @@
 {
-        // Place your global snippets here. Each snippet is defined under a snippet name and has a scope, prefix, body and
-        // description. Add comma separated ids of the languages where the snippet is applicable in the scope field. If scope
-        // is left empty or omitted, the snippet gets applied to all languages. The prefix is what is
-        // used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
-        // $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders.
-        // Placeholders with the same ids are connected.
-        // Example:
         "Flutter separator": {
                 "prefix": "sep",
                 "body": [
                         "/* -------------------------------------------------------------------------- */"
-                ],
+                ]
         },
         "Elementary testWidgetModel snippet": {
                 "prefix": "testwm",
@@ -24,13 +17,20 @@
                         ");"
                 ]
         },
+        "LazySpec typing": {
+                "prefix": "lzsp",
+                "body": [
+                        "---@module 'lazy'",
+                        "---@type LazySpec"
+                ]
+        },
         "Arrange-Act-Assert test suite": {
                 "prefix": "aaa",
                 "body": [
                         "// * Arrange",
                         "// ! Act",
                         "// ? Assert"
-                ],
+                ]
         },
         "Test comments": {
                 "prefix": "tecc",
@@ -38,8 +38,8 @@
                         "// Setup",
                         "// * Fixturing",
                         "// ! Executing",
-                        "// ? Verification",
-                ],
+                        "// ? Verification"
+                ]
         },
         "Generated files": {
                 "prefix": "parg",
@@ -68,7 +68,7 @@
         "Context extention": {
                 "prefix": "conec",
                 "body": "import 'package:comfortech_app/core/extentions/build_context.dart';",
-                "scope": "dart,flutter",
+                "scope": "dart,flutter"
         },
         "Dependencies comment line": {
                 "prefix": "depc",
@@ -96,7 +96,7 @@
                         "  builder: (context, state) {",
                         "    return ${0:Container()};",
                         "  },",
-                        ");",
+                        ");"
                 ],
                 "scope": "dart,flutter"
         },
@@ -145,7 +145,7 @@
         "App Localizations for Flutter": {
                 "prefix": "locale",
                 "scope": "dart,flutter",
-                "body": "AppLocalizations.of(context).${1:value}",
+                "body": "AppLocalizations.of(context).${1:value}"
         },
         "App Localizations import": {
                 "prefix": "locale-import",
@@ -179,7 +179,7 @@
                         "  // TODO: implement call",
                         "  throw UnimplementedError();",
                         "  }",
-                        "}",
+                        "}"
                 ]
         },
         "Test mocked entity": {
@@ -202,10 +202,9 @@
                 "body": [
                         "group('[$1] ->', () {",
                         "  $0",
-                        "});",
+                        "});"
                 ]
         },
-        // Comfortel snippet for MIT license
         "Pastes MIT license header": {
                 "prefix": "temrsmit",
                 "body": [

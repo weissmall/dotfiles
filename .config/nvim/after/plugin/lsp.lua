@@ -68,7 +68,7 @@ local on_attach = function(client, bufnr)
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
+-- capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
 require("mason").setup({})
 local mason_lsp = require("mason-lspconfig")
@@ -167,76 +167,50 @@ mason_lsp.setup({
 	},
 })
 
-local cmp = require("cmp")
-local compare = require("cmp.config.compare")
+-- local cmp = require("cmp")
+-- local compare = require("cmp.config.compare")
 
-cmp.setup({
-	sources = cmp.config.sources({
-		{
-			name = "nvim_lsp",
-		},
-		{
-			name = "luasnip",
-		},
-		{
-			name = "lazydev",
-			group_index = 0,
-		},
-	}),
-	-- :help cmp-config.sorting.comparators
-	sorting = {
-		priority_weight = 1.0,
-		comparators = {
-			function(t1, t2)
-				return compare.kind(t1, t2)
-			end,
-			compare.order,
-			compare.exact,
-		},
-	},
-	snippet = {
-		expand = function(args)
-			require("luasnip").lsp_expand(args.body)
-		end,
-	},
-	mapping = cmp.mapping.preset.insert({
-		["<Tab>"] = cmp.mapping.confirm({ select = true }),
-		["<Esc>"] = cmp.mapping.abort(),
-		["<C-l>"] = cmp.mapping.confirm({ select = true }),
-		["<C-h>"] = cmp.mapping.abort(),
-		["<C-j>"] = cmp.mapping.select_next_item({ behavior = "insert" }),
-		["<C-k>"] = cmp.mapping.select_prev_item({ behavior = "insert" }),
-		["<C-Space>"] = cmp.mapping.complete(),
-	}),
-})
+-- cmp.setup({
+-- 	sources = cmp.config.sources({
+-- 		{
+-- 			name = "nvim_lsp",
+-- 		},
+-- 		{
+-- 			name = "luasnip",
+-- 		},
+-- 		{
+-- 			name = "lazydev",
+-- 			group_index = 0,
+-- 		},
+-- 	}),
+-- 	-- :help cmp-config.sorting.comparators
+-- 	sorting = {
+-- 		priority_weight = 1.0,
+-- 		comparators = {
+-- 			function(t1, t2)
+-- 				return compare.kind(t1, t2)
+-- 			end,
+-- 			compare.order,
+-- 			compare.exact,
+-- 		},
+-- 	},
+-- 	snippet = {
+-- 		expand = function(args)
+-- 			require("luasnip").lsp_expand(args.body)
+-- 		end,
+-- 	},
+-- 	mapping = cmp.mapping.preset.insert({
+-- 		["<Tab>"] = cmp.mapping.confirm({ select = true }),
+-- 		["<Esc>"] = cmp.mapping.abort(),
+-- 		["<C-l>"] = cmp.mapping.confirm({ select = true }),
+-- 		["<C-h>"] = cmp.mapping.abort(),
+-- 		["<C-j>"] = cmp.mapping.select_next_item({ behavior = "insert" }),
+-- 		["<C-k>"] = cmp.mapping.select_prev_item({ behavior = "insert" }),
+-- 		["<C-Space>"] = cmp.mapping.complete(),
+-- 	}),
+-- })
 
 local lspConfig = require("lspconfig")
--- local neodev = require("neodev")
-
--- neodev.setup({
--- 	library = {
--- 		plugins = true,
--- 	},
--- })
---
--- neodev.setup({
--- library = {
--- 	plugins = {
--- 		"lazy",
--- 		"neotest",
--- 		"nvim-dap",
--- 		"nvim-dap-ui",
--- 		"toggleterm",
--- 		"neotest-dart",
--- 		"neotest-vitest",
--- 		"markdown-preview",
--- 		"flutter-tools",
--- 		"nvim-tree",
--- 		"wilder",
--- 	},
--- 	types = true,
--- },
--- })
 
 lspConfig.lua_ls.setup({
 	n_init = function(client)
@@ -308,27 +282,6 @@ lspConfig.lua_ls.setup({
 		},
 	},
 })
-
--- local eslint = require("eslint")
--- eslint.setup({
--- 	bin = "eslint_d",
--- 	code_actions = {
--- 		enable = true,
--- 		apply_on_save = {
--- 			enable = true,
--- 			types = { "directive", "problem", "suggestion", "layout" },
--- 		},
--- 		disable_rule_comment = {
--- 			enable = true,
--- 			location = "separate_line", -- or `same_line`
--- 		},
--- 	},
--- 	diagnostics = {
--- 		enable = true,
--- 		report_unused_disable_directives = false,
--- 		run_on = "type", -- or `save`
--- 	},
--- })
 
 lspConfig.eslint.setup({
 	settings = {
@@ -448,90 +401,6 @@ lspConfig.clangd.setup({
 	},
 })
 
-local flutter = require("flutter-tools")
--- flutter.setup({
--- 	root_patterns = {
--- 		".git",
--- 		"pubspec.yaml",
--- 	},
--- 	lsp = {
--- 		capabilities = capabilities,
--- 		on_attach = on_attach,
--- 		settings = {
--- 			showTodos = true,
--- 			completeFunctionCalls = true,
--- 			enableSnippets = true,
--- 			updateImportsOnRename = true,
--- 		},
--- 	},
--- 	-- lsp = {
--- 	-- 	color = { -- show the derived colours for dart variables
--- 	-- 		enabled = false, -- whether or not to highlight color variables at all, only supported on flutter >= 2.10
--- 	-- 		background = false, -- highlight the background
--- 	-- 		background_color = nil, -- required, when background is transparent (i.e. background_color = { r = 19, g = 17, b = 24},)
--- 	-- 		foreground = false, -- highlight the foreground
--- 	-- 		virtual_text = true, -- show the highlight using virtual text
--- 	-- 		virtual_text_str = "■", -- the virtual text character to highlight
--- 	-- 	},
--- 	-- 	settings = {
--- 	-- 		showTodos = true,
--- 	-- 		completeFunctionCalls = true,
--- 	-- 		analysisExcludedFolders = { "<path-to-flutter-sdk-packages>" },
--- 	-- 		renameFilesWithClasses = "prompt", -- "always"
--- 	-- 		enableSnippets = true,
--- 	-- 		updateImportsOnRename = true, -- Whether to update imports and other directives when files are renamed. Required for `FlutterRename` command.
--- 	-- 	},
--- 	-- },
--- })
---
-flutter.setup({
-	ui = {
-		border = "rounded",
-		notification_style = "plugin",
-	},
-	decorations = {
-		statusline = {
-			app_version = true,
-			device = true,
-			project_config = false,
-		},
-	},
-	-- debugger = {
-	-- 	enabled = true,
-	-- 	run_via_dap = true,
-	-- 	exception_breakpoints = {},
-	-- },
-	debugger = {
-		enabled = true,
-		-- run_via_dap = true,
-		exception_breakpoints = {},
-		evaluate_to_string_in_debug_views = false,
-	},
-	fvm = false,
-	dev_log = {
-		enabled = false,
-	},
-	lsp = {
-		color = {
-			enabled = false,
-			background = true,
-			background_color = nil,
-			foreground = false,
-			virtual_text = true,
-			virtual_text_str = "■",
-		},
-		capabilities = capabilities,
-		settings = {
-			showTodos = true,
-			completeFunctionCalls = true,
-			-- analysisExcludedFolders = { "<path-to-flutter-sdk-packages>" },
-			renameFilesWithClasses = "always",
-			enableSnippets = false,
-			updateImportsOnRename = true,
-		},
-	},
-})
-
 lspConfig.dcmls.setup({
 	cmd = {
 		"dcm",
@@ -599,6 +468,21 @@ lspConfig.ts_ls.setup({
 		"javascript",
 		"typescript",
 		"typescriptreact",
+	},
+})
+
+lspConfig.cssls.setup({
+	filetypes = { "css", "scss", "less" },
+	settings = {
+		css = {
+			validate = true,
+		},
+		less = {
+			validate = true,
+		},
+		scss = {
+			validate = true,
+		},
 	},
 })
 

@@ -8,26 +8,6 @@ function M.setKeybinds(config)
 	config.keys = {
 		{
 			key = "h",
-			mods = "ALT",
-			action = act.ActivatePaneDirection("Left"),
-		},
-		{
-			key = "j",
-			mods = "ALT",
-			action = act.ActivatePaneDirection("Down"),
-		},
-		{
-			key = "k",
-			mods = "ALT",
-			action = act.ActivatePaneDirection("Up"),
-		},
-		{
-			key = "l",
-			mods = "ALT",
-			action = act.ActivatePaneDirection("Right"),
-		},
-		{
-			key = "h",
 			mods = "LEADER",
 			action = w.action.SplitPane({
 				direction = "Left",
@@ -82,6 +62,19 @@ function M.setKeybinds(config)
 				name = "tab_mode",
 				one_shot = false,
 			}),
+		},
+		{
+			key = "p",
+			mods = "ALT",
+			action = act.ActivateKeyTable({
+				name = "pane_mode",
+				one_shot = false,
+			}),
+		},
+		{
+			key = "Tab",
+			mods = "CTRL",
+			action = act.DisableDefaultAssignment,
 		},
 	}
 end
@@ -165,11 +158,37 @@ function M.getTabModeTable()
 	}
 end
 
+function M.getPaneModeTable()
+	return {
+		{
+			key = "h",
+			action = act.ActivatePaneDirection("Left"),
+		},
+		{
+			key = "j",
+			action = act.ActivatePaneDirection("Down"),
+		},
+		{
+			key = "k",
+			action = act.ActivatePaneDirection("Up"),
+		},
+		{
+			key = "l",
+			action = act.ActivatePaneDirection("Right"),
+		},
+		{
+			key = "Escape",
+			action = "PopKeyTable",
+		},
+	}
+end
+
 function M.setKeyTables(config)
 	config.key_tables = {
 		resize_table = M.getResizeTable(),
 		move_table = M.getMoveTable(),
 		tab_mode = M.getTabModeTable(),
+		pane_mode = M.getPaneModeTable(),
 	}
 end
 

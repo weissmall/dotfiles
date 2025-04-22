@@ -52,8 +52,5 @@ function SetupColorScheme(colorScheme)
 end
 
 -- SetupColorScheme("tokyonight-night")
+-- SetupColorScheme("kanagawa-wave")
 SetupColorScheme("catppuccin")
-
-require("catppuccin").setup({
-	flavour = "frappe",
-})

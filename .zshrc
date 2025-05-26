@@ -13,17 +13,24 @@ if [[ -e /usr/share/zsh/manjaro-zsh-prompt ]]; then
   # source /usr/share/zsh/manjaro-zsh-prompt
 fi
 
+source .zsh_private_env
+
 [ -z "$NVM_DIR" ] && export NVM_DIR="$HOME/.nvm"
 source /usr/share/nvm/nvm.sh
 source /usr/share/nvm/bash_completion
 source /usr/share/nvm/install-nvm-exec
 
 alias y="yadm"
+
+# NeoVim
 alias vg="nvim --listen ~/.cache/nvim/godot.pipe ."
 alias no="pnpm"
 alias vconf="nvim ~/.config/nvim"
 alias batinfo="upower -i $(upower --enumerate | grep BAT)"
 alias sv="sudo -e nvim"
+
+export NVIM_USE_CC=false
+export NVIM_USE_AVANTE=false
 
 # bun
 export BUN_INSTALL="$HOME/.bun"
@@ -85,3 +92,4 @@ export PATH="$PATH:$HOME/go/bin"
 
 # Git sync with submodules
 alias gssync="git pull origin \$(git rev-parse --abbrev-ref HEAD) && git submodule update --init --recursive"
+

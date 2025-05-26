@@ -93,8 +93,8 @@ input {
     mouse {
         // off
         // natural-scroll
-        // accel-speed 0.2
-        // accel-profile "flat"
+        accel-speed 0.0
+        accel-profile "flat"
         // scroll-method "no-scroll"
     }
 
@@ -329,6 +329,15 @@ window-rule {
     open-floating false
 }
 
+window-rule {
+    match app-id=r#"^TelegramDesktop$"# title="^Media viewer$"
+    opacity 1.0
+    open-maximized true
+    open-fullscreen false
+    open-floating true
+    clip-to-geometry false
+}
+
 // Example: block out two password managers from screen capture.
 // (This example rule is commented out with a "/-" in front.)
 /-window-rule {
@@ -358,6 +367,10 @@ binds {
 
     Super+Shift+D {
         spawn "bash" "-c" "notify-send \"$(niri msg focused-window)\"";
+    }
+
+    Super+Shift+C {
+        spawn "bash" "-c" "wl-copy \"$(niri msg focused-window)\"";
     }
 
 
@@ -611,4 +624,8 @@ binds {
     // Powers off the monitors. To turn them back on, do any input like
     // moving the mouse or pressing any other key.
     Mod+Shift+M { power-off-monitors; }
+}
+
+hotkey-overlay {
+    skip-at-startup
 }

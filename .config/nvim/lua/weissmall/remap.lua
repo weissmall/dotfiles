@@ -57,3 +57,5 @@ vim.keymap.set("n", "<leader>h", "<C-w>h")
 vim.keymap.set("n", "<leader>l", "<C-w>l")
 
 vim.keymap.set("n", "<leader>K", vim.diagnostic.open_float)
+
+-- vim.keymap.set("n", "<leader>wrs", vim.g.wrap_state_set, {})

@@ -108,6 +108,10 @@ local function bindKeys(bufnr)
 	nmap("<leader>wl", function()
 		print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
 	end, "[W]orkspace [L]ist Folders")
+
+	-- Diagnostic
+	nmap("dn", vim.diagnostic.goto_next, "[D]iagnostic [N]ext")
+	nmap("dp", vim.diagnostic.goto_prev, "[D]iagnostic [P]revious")
 end
 
 local function buffer_format(bufnr)
@@ -122,7 +126,7 @@ local function buffer_format(bufnr)
 		callback = function()
 			-- note: do not enable async formatting
 			vim.lsp.buf.format({ async = false, timeout_ms = 10000 })
-			vim.notify(tostring(group))
+			-- vim.notify(tostring(group))
 		end,
 	})
 

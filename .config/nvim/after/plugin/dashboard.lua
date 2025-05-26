@@ -1,10 +1,13 @@
 local dashboard = require("dashboard")
+
 dashboard.setup({
 	theme = "doom",
 	config = {
-		header = {
-			"weissmall",
-		}, --your header
+		week_header = {
+			enable = true,
+		},
+		disable_mode = true,
+		vertical_center = true,
 		center = {
 			{
 				icon = " ",
@@ -19,11 +22,58 @@ dashboard.setup({
 			},
 			{
 				icon = " ",
-				desc = "Projects manager",
-				key = "r",
-				keymap = "<C>",
+				icon_hl = "Title",
+				desc = "Find Grep",
+				desc_hl = "String",
+				key = "fg",
+				keymap = "<leader>",
+				key_hl = "Number",
 				key_format = " %s", -- remove default surrounding `[]`
-				action = "lua print(3)",
+				action = "lua print(2)",
+			},
+			{
+				icon = " ",
+				icon_hl = "Title",
+				desc = "Quick jump",
+				desc_hl = "String",
+				key = "e",
+				keymap = "<leader>",
+				key_hl = "Number",
+				key_format = " %s", -- remove default surrounding `[]`
+				action = "lua print(2)",
+			},
+			{
+				icon = " ",
+				icon_hl = "Title",
+				desc = "File Tree",
+				desc_hl = "String",
+				key = "ft",
+				keymap = "<leader>",
+				key_hl = "Number",
+				key_format = " %s", -- remove default surrounding `[]`
+				action = "lua print(2)",
+			},
+			{
+				icon = " ",
+				icon_hl = "Title",
+				desc = "Another File Manager",
+				desc_hl = "String",
+				key = "fm",
+				keymap = "<leader>",
+				key_hl = "Number",
+				key_format = " %s", -- remove default surrounding `[]`
+				action = "lua print(2)",
+			},
+			{
+				icon = " ",
+				icon_hl = "Title",
+				desc = "Quit",
+				desc_hl = "String",
+				key = "qa",
+				keymap = "<leader>",
+				key_hl = "Number",
+				key_format = " %s", -- remove default surrounding `[]`
+				action = "lua print(2)",
 			},
 		},
 		footer = {},

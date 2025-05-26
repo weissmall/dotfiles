@@ -22,29 +22,61 @@ local keymap = {
 }
 
 ---@module 'lazy'
----@type LazySpec
+---@type LazySpec[]
 return {
-  "saghen/blink.cmp",
-  commit = "52cd2aae77db635af85d6e642fe19c56782c0e5c",
-  event = { "InsertEnter", "CmdlineEnter" },
-  ---@module 'blink.cmp'
-  ---@type blink.cmp.Config
-  opts = {
-    cmdline = {
-      enabled = true,
-      completion = {
-        menu = {
-          auto_show = true,
+  {
+    "saghen/blink.cmp",
+    commit = "52cd2aae77db635af85d6e642fe19c56782c0e5c",
+    dependencies = {
+      "Kaiser-Yang/blink-cmp-avante",
+    },
+    event = { "InsertEnter", "CmdlineEnter" },
+    ---@module 'blink.cmp'
+    ---@type blink.cmp.Config
+    opts = {
+      snippets = {
+        preset = "mini_snippets",
+      },
+      cmdline = {
+        enabled = true,
+        completion = {
+          menu = {
+            auto_show = true,
+          },
+        },
+        keymap = keymap,
+      },
+      sources = {
+        default = { "avante", "lsp", "path", "snippets", "buffer" },
+        providers = {
+          avante = {
+            module = "blink-cmp-avante",
+            name = "Avante",
+            opts = {
+              -- options for blink-cmp-avante
+            },
+          },
         },
       },
       keymap = keymap,
+      fuzzy = {
+        implementation = "lua",
+      },
     },
-    sources = {
-      default = { "lsp", "path", "snippets", "buffer" },
-    },
-    keymap = keymap,
-    fuzzy = {
-      implementation = "lua",
-    },
+  },
+  dependencies = {
+    "echasnovski/mini.snippets",
+  },
+  {
+    "echasnovski/mini.snippets",
+    opts = function(_, opts)
+      opts = opts or {}
+      local loader = require("mini.snippets").gen_loader
+      return vim.tbl_deep_extend("force", opts, {
+        snippets = {
+          loader.from_file("~/.config/nvim/snippets/lua.json"),
+        },
+      })
+    end,
   },
 }

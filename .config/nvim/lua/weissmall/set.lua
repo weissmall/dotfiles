@@ -7,7 +7,6 @@ vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
 
 vim.opt.smartindent = true
-vim.opt.wrap = false
 
 vim.opt.swapfile = false
 vim.opt.backup = false
@@ -38,3 +37,7 @@ vim.o.timeoutlen = 500
 vim.opt.list = true
 -- vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 vim.opt.listchars = { tab = "  ", trail = "·", nbsp = "␣" }
+
+-- Wrapping
+vim.opt.wrap = true
+vim.opt.laststatus = 3

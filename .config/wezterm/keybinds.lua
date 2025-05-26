@@ -7,6 +7,18 @@ function M.setKeybinds(config)
 	M.setKeyTables(config)
 	config.keys = {
 		{
+			key = "r",
+			mods = "ALT",
+			action = act.PromptInputLine({
+				description = "Enter new name for tab",
+				action = w.action_callback(function(window, pane, line)
+					if line then
+						window:active_tab():set_title(line)
+					end
+				end),
+			}),
+		},
+		{
 			key = "h",
 			mods = "LEADER",
 			action = w.action.SplitPane({
@@ -93,39 +105,39 @@ end
 
 function M.getResizeTable()
 	return {
-		{ key = "LeftArrow",  action = act.AdjustPaneSize({ "Left", 1 }) },
-		{ key = "h",          action = act.AdjustPaneSize({ "Left", 1 }) },
+		{ key = "LeftArrow", action = act.AdjustPaneSize({ "Left", 1 }) },
+		{ key = "h", action = act.AdjustPaneSize({ "Left", 1 }) },
 
 		{ key = "RightArrow", action = act.AdjustPaneSize({ "Right", 1 }) },
-		{ key = "l",          action = act.AdjustPaneSize({ "Right", 1 }) },
+		{ key = "l", action = act.AdjustPaneSize({ "Right", 1 }) },
 
-		{ key = "UpArrow",    action = act.AdjustPaneSize({ "Up", 1 }) },
-		{ key = "k",          action = act.AdjustPaneSize({ "Up", 1 }) },
+		{ key = "UpArrow", action = act.AdjustPaneSize({ "Up", 1 }) },
+		{ key = "k", action = act.AdjustPaneSize({ "Up", 1 }) },
 
-		{ key = "DownArrow",  action = act.AdjustPaneSize({ "Down", 1 }) },
-		{ key = "j",          action = act.AdjustPaneSize({ "Down", 1 }) },
+		{ key = "DownArrow", action = act.AdjustPaneSize({ "Down", 1 }) },
+		{ key = "j", action = act.AdjustPaneSize({ "Down", 1 }) },
 
 		-- Cancel the mode by pressing escape
-		{ key = "Escape",     action = "PopKeyTable" },
+		{ key = "Escape", action = "PopKeyTable" },
 	}
 end
 
 function M.getMoveTable()
 	return {
-		{ key = "LeftArrow",  action = act.ActivatePaneDirection("Left") },
-		{ key = "h",          action = act.ActivatePaneDirection("Left") },
+		{ key = "LeftArrow", action = act.ActivatePaneDirection("Left") },
+		{ key = "h", action = act.ActivatePaneDirection("Left") },
 
 		{ key = "RightArrow", action = act.ActivatePaneDirection("Right") },
-		{ key = "l",          action = act.ActivatePaneDirection("Right") },
+		{ key = "l", action = act.ActivatePaneDirection("Right") },
 
-		{ key = "UpArrow",    action = act.ActivatePaneDirection("Up") },
-		{ key = "k",          action = act.ActivatePaneDirection("Up") },
+		{ key = "UpArrow", action = act.ActivatePaneDirection("Up") },
+		{ key = "k", action = act.ActivatePaneDirection("Up") },
 
-		{ key = "DownArrow",  action = act.ActivatePaneDirection("Down") },
-		{ key = "j",          action = act.ActivatePaneDirection("Down") },
+		{ key = "DownArrow", action = act.ActivatePaneDirection("Down") },
+		{ key = "j", action = act.ActivatePaneDirection("Down") },
 
 		-- Cancel the mode by pressing escape
-		{ key = "Escape",     action = "PopKeyTable" },
+		{ key = "Escape", action = "PopKeyTable" },
 	}
 end
 

@@ -3,12 +3,18 @@ local wezterm = require("wezterm")
 local M = {}
 
 function M.setColorScheme(config)
-	config.color_scheme = "tokyonight_night"
-	config.window_background_opacity = 0.90
+	-- config.color_scheme = "tokyonight_night"
+	config.color_scheme = "Rosé Pine Moon (base16)"
+	-- config.color_scheme = "Catppuccin Mocha"
+	config.window_background_opacity = 1.00
 end
 
 function M.setFonts(config)
-	config.font = wezterm.font("JetBrains Mono")
+	config.font = wezterm.font("JetBrains Mono", {
+		weight = "Medium",
+		italic = false,
+	})
+	config.line_height = 1.2
 	-- config.font = wezterm.font("Lotion", {
 	-- 	weight = "Bold",
 	-- })

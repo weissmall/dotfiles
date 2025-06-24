@@ -1,0 +1,11 @@
+[Unit]
+Description=Run syncthing on 16666 port
+
+[Service]
+ExecStart=/usr/bin/syncthing serve --gui-address http://127.0.0.1:16666 --no-browser
+WorkingDirectory=%h
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=default.target

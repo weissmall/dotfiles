@@ -32,7 +32,7 @@ spawn-at-startup "bash" "-c" "[ -x \"$(command -v wl-paste)\" ] && [ -x \"$(comm
 spawn-at-startup "bash" "-c" "[ -x \"$(command -v wl-paste)\" ] && [ -x \"$(command -v cliphist)\" ] && wl-paste --watch cliphist store"
 
 // Notifications
-spawn-at-startup "bash" "-c" "[ -x \"$(command -v dunst)\" ] && pkill dunst; dunst"
+// spawn-at-startup "bash" "-c" "[ -x \"$(command -v dunst)\" ] && pkill dunst; dunst"
 
 // Conky
 spawn-at-startup "bash" "-c" "$HOME/.config/niri/conky.sh"
@@ -72,7 +72,8 @@ input {
 
             // For example:
             layout "us,ru"
-            options "grp:win_space_toggle,compose:ralt,ctrl:nocaps"
+            options "grp:win_space_toggle,compose:ralt"
+            // options "ctrl:nocaps"
         }
     }
 
@@ -316,15 +317,10 @@ window-rule {
     // since this is the default config, and we want no false positives.
     // You can get away with just app-id="wezterm" if you want.
     match app-id=r#"^Emulator"#
-    opacity 1.0
-    open-floating false
-}
-
-window-rule {
-    // This regular expression is intentionally made as specific as possible,
-    // since this is the default config, and we want no false positives.
-    // You can get away with just app-id="wezterm" if you want.
+    match app-id=r#"^steam$"#
+    match app-id=r#"^mpv$"#
     match title=r#"^TelegramDesktop"#
+
     opacity 1.0
     open-floating false
 }
@@ -336,6 +332,13 @@ window-rule {
     open-fullscreen false
     open-floating true
     clip-to-geometry false
+}
+
+
+// No opacity rule
+window-rule {
+    match app-id="org.wezfurlong.wezterm"
+    opacity 1.0
 }
 
 // Example: block out two password managers from screen capture.
@@ -624,8 +627,15 @@ binds {
     // Powers off the monitors. To turn them back on, do any input like
     // moving the mouse or pressing any other key.
     Mod+Shift+M { power-off-monitors; }
+
+    // Toggle overview
+    Mod+O { toggle-overview; }
 }
 
 hotkey-overlay {
     skip-at-startup
+}
+
+overview {
+  // zoom 0.25
 }

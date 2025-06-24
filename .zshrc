@@ -13,7 +13,7 @@ if [[ -e /usr/share/zsh/manjaro-zsh-prompt ]]; then
   # source /usr/share/zsh/manjaro-zsh-prompt
 fi
 
-source .zsh_private_env
+source "$HOME/.zsh_private_env"
 
 [ -z "$NVM_DIR" ] && export NVM_DIR="$HOME/.nvm"
 source /usr/share/nvm/nvm.sh
@@ -53,6 +53,7 @@ fi
 eval "$(zoxide init zsh)"
 alias vc="zi && nvim ."
 alias vr="sudo -e nvim"
+alias vo="cd ~/Documents/Weissmall && v"
 
 # Flutter
 # export PATH="$PATH:/opt/flutter/bin"

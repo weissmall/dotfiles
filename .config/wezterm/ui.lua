@@ -4,9 +4,18 @@ local M = {}
 
 function M.setColorScheme(config)
 	-- config.color_scheme = "tokyonight_night"
-	config.color_scheme = "Rosé Pine Moon (base16)"
+	-- config.color_scheme = "nord"
+	-- config.color_scheme = "Nord (base16)"
+	-- config.color_scheme = "nordfox"
+	-- config.color_scheme = "Grayscale (dark) (terminal.sexy)"
+	-- config.color_scheme = "Guezwhoz"
+	config.color_scheme = "tokyonight"
+	config.colors = {
+		background = "#2C2C33",
+	}
+	-- config.color_scheme = "Rosé Pine Moon (base16)"
 	-- config.color_scheme = "Catppuccin Mocha"
-	config.window_background_opacity = 1.00
+	config.window_background_opacity = 0.93
 end
 
 function M.setFonts(config)

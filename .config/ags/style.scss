@@ -1,6 +1,8 @@
 // https://gitlab.gnome.org/GNOME/gtk/-/blob/gtk-3-24/gtk/theme/Adwaita/_colors-public.scss
 @use "sass:color";
 @use "css/bar.scss";
+@use "css/notifications.scss";
+@use "css/player.scss";
 // $fg-color: #{"@theme_fg_color"};
 // $bg-color: #{"@theme_bg_color"};
 
@@ -10,280 +12,286 @@ $fg: #f1f1f1;
 $accent: #378DF7;
 $radius: 7px;
 
+// $bg: #232136;
+$surface: #2a273f;
+$overlay: #393552;
+$subtle: #908caa;
+$text: #e0def4;
+
 * {
-    font-family: "Fira Code", "SF Pro Display", sans-serif;
-    font-size: 14px;
-    font-weight: normal;
-    color: white;
+  font-family: "Fira Code", "SF Pro Display", sans-serif;
+  font-size: 14px;
+  font-weight: normal;
+  color: white;
 }
 
 popover {
-    arrow {
-        background: none;
-        border: none;
-        padding: 0;
-        margin: 0;
-    }
+  arrow {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+  }
 
-    contents {
-        background-color: $bg;
-    }
+  contents {
+    background-color: $bg;
+  }
 }
 
 .Bar {
-    background-color: $bg;
-    box-shadow: none;
-    padding: 0px 0px;
+  background-color: $bg;
+  box-shadow: none;
+  padding: 0px 0px;
 }
 
 .Time {
-    font-weight: 600;
-    font-size: 12px;
-    padding: 8px 10px;
+  font-weight: 600;
+  font-size: 12px;
+  padding: 8px 10px;
 
-    Calendar {
-        background-color: $bg;
-    }
+  Calendar {
+    background-color: $bg;
+  }
 }
 
 .SysTray {
-    margin: 0px 8px;
-    margin-right: 0px;
-    margin-top: -2px;
+  margin: 0px 8px;
+  margin-right: 0px;
+  margin-top: -2px;
 }
 
 .Wifi {
-    color: white;
-    border-radius: 15px;
-    margin: 0px 8px;
-    margin-top: -2px;
-    padding: 2px;
-    font-size: 16px;
+  color: white;
+  border-radius: 15px;
+  margin: 0px 8px;
+  margin-top: -2px;
+  padding: 2px;
+  font-size: 16px;
 }
 
 .IconButton {
-    color: white;
-    border-radius: 15px;
-    margin: 0px 8px;
-    margin-top: -3px;
-    font-size: 20px;
+  color: white;
+  border-radius: 15px;
+  margin: 0px 8px;
+  margin-top: -3px;
+  font-size: 20px;
 
-    trough {
-        background-color: rgba(255, 255, 255, 0.2);
-        border-radius: 4px;
-        min-height: 8px;
-    }
+  trough {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+    min-height: 8px;
+  }
 
-    highlight {
-        background-color: white;
-        border-radius: 4px;
-    }
+  highlight {
+    background-color: white;
+    border-radius: 4px;
+  }
 
 }
 
 .Slider {
-    min-width: 140px;
+  min-width: 140px;
 
-    slider {
-        background-color: white;
-        border-radius: 50%;
-        min-height: 12px;
-        min-width: 12px;
-        margin: -2px;
-    }
+  slider {
+    background-color: white;
+    border-radius: 50%;
+    min-height: 12px;
+    min-width: 12px;
+    margin: -2px;
+  }
 }
 
 .Battery {
-    color: white;
-    border-radius: 15px;
-    margin: 0px 8px;
-    margin-top: -2px;
-    padding: 2px;
-    font-size: 16px;
+  color: white;
+  border-radius: 15px;
+  margin: 0px 8px;
+  margin-top: -2px;
+  padding: 2px;
+  font-size: 16px;
 }
 
 .Brightness {
-    color: white;
-    border-radius: 15px;
-    margin: 0px 8px;
-    margin-top: -2px;
-    padding: 2px;
-    font-size: 16px;
+  color: white;
+  border-radius: 15px;
+  margin: 0px 8px;
+  margin-top: -2px;
+  padding: 2px;
+  font-size: 16px;
 }
 
 .Bluetooth {
-    color: white;
-    border-radius: 15px;
-    margin: 0px 8px;
-    margin-top: -2px;
-    padding: 2px;
-    font-size: 16px;
+  color: white;
+  border-radius: 15px;
+  margin: 0px 8px;
+  margin-top: -2px;
+  padding: 2px;
+  font-size: 16px;
 }
 
 // Tooltip styling
 tooltip {
-    background-color: rgba(0, 0, 0, 0.8);
-    border-radius: 8px;
+  background-color: rgba(0, 0, 0, 0.8);
+  border-radius: 8px;
 }
 
 // Menu item hover effect
 menuitem:hover {
-    background-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(255, 255, 255, 0.2);
 }
 
 window.Bar {
+  border: none;
+  box-shadow: none;
+  color: $fg;
+  font-size: 1.1em;
+  font-weight: bold;
+  // background-color: rgba(0, 0, 0, 0.8);
+  background-color: $bg;
+
+  label {
+    margin: 0px 4px;
+  }
+
+  centerbox {
+    background-color: transparent;
     border: none;
-    box-shadow: none;
-    color: $fg;
-    font-size: 1.1em;
-    font-weight: bold;
-    // background-color: rgba(0, 0, 0, 0.8);
-    background-color: $bg;
+    border-color: transparent;
+    padding: 0px 10px;
+  }
 
-    label {
-        margin: 0px 4px;
-    }
+  button {
+    background-color: transparent;
+    border: none;
+    border-color: transparent;
 
-    centerbox {
-        background-color: transparent;
-        border: none;
-        border-color: transparent;
-        padding: 0px 10px;
+    &:hover {
+      background-color: color.adjust($fg, $alpha: -0.84);
+      border-color: color.adjust($accent, $alpha: -0.8);
     }
+  }
+
+  .SysTray {
+    background-color: transparent;
+    border: none;
+    border-color: transparent;
+    padding: 0px;
+    margin: 0px;
 
     button {
-        background-color: transparent;
-        border: none;
-        border-color: transparent;
+      background-color: transparent;
+      border: none;
+      border-color: transparent;
+      padding: 4px;
+      margin: 0px;
 
-        &:hover {
-            background-color: color.adjust($fg, $alpha: -0.84);
-            border-color: color.adjust($accent, $alpha: -0.8);
-        }
+      &:hover {
+        background-color: color.adjust($fg, $alpha: -0.84);
+        border-color: color.adjust($accent, $alpha: -0.8);
+      }
     }
 
-    .SysTray {
-        background-color: transparent;
-        border: none;
-        border-color: transparent;
-        padding: 0px;
-        margin: 0px;
+    separator {
+      background: transparent;
+      margin: 0px;
+      padding: 0px;
+    }
+  }
 
-        button {
-            background-color: transparent;
-            border: none;
-            border-color: transparent;
-            padding: 4px;
-            margin: 0px;
+  .Workspaces {
+    button {
+      all: unset;
+      background-color: transparent;
 
-            &:hover {
-                background-color: color.adjust($fg, $alpha: -0.84);
-                border-color: color.adjust($accent, $alpha: -0.8);
-            }
-        }
+      &:hover label {
+        background-color: color.adjust($fg, $alpha: -0.84);
+        border-color: color.adjust($accent, $alpha: -0.8);
+      }
 
-        separator {
-            background: transparent;
-            margin: 0px;
-            padding: 0px;
-        }
+      &:active label {
+        background-color: color.adjust($fg, $alpha: -0.8);
+      }
     }
 
-    .Workspaces {
-        button {
-            all: unset;
-            background-color: transparent;
-
-            &:hover label {
-                background-color: color.adjust($fg, $alpha: -0.84);
-                border-color: color.adjust($accent, $alpha: -0.8);
-            }
-
-            &:active label {
-                background-color: color.adjust($fg, $alpha: -0.8);
-            }
-        }
-
-        label {
-            transition: 200ms;
-            padding: 0px 8px;
-            margin: 2px;
-            border-radius: $radius;
-            border: 1pt solid transparent;
-        }
-
-        .focused label {
-            color: $accent;
-            border-color: $accent;
-        }
+    label {
+      transition: 200ms;
+      padding: 0px 8px;
+      margin: 2px;
+      border-radius: $radius;
+      border: 1pt solid transparent;
     }
 
-    .FocusedClient {
-        color: $accent;
+    .focused label {
+      color: $accent;
+      border-color: $accent;
+    }
+  }
+
+  .FocusedClient {
+    color: $accent;
+  }
+
+  .Media {
+    // background-color: $bg;
+    // border-radius: $radius;
+
+    .Cover {
+      min-height: 50px;
+      min-width: 50px;
+      border-radius: $radius;
+      background-position: center;
+      background-size: contain;
     }
 
-    .Media {
-        // background-color: $bg;
-        // border-radius: $radius;
+    .Info {
+      * {
+        padding: 2px 4px;
+      }
 
-        .Cover {
-            min-height: 50px;
-            min-width: 50px;
-            border-radius: $radius;
-            background-position: center;
-            background-size: contain;
-        }
+      label {
+        font-size: 16px;
+      }
 
-        .Info {
-            * {
-                padding: 2px 4px;
-            }
+      .Title {
+        font-weight: bold;
+      }
 
-            label {
-                font-size: 16px;
-            }
-
-            .Title {
-                font-weight: bold;
-            }
-
-            .Description {
-                font-weight: normal;
-            }
-        }
+      .Description {
+        font-weight: normal;
+      }
     }
+  }
 
-    .Battery label {
-        padding-left: 0px;
-        margin-left: 0px;
-    }
+  .Battery label {
+    padding-left: 0px;
+    margin-left: 0px;
+  }
 
-    .PlayPauseBtn {
-        padding: 0px;
-        margin: 0px;
-        padding-right: 3px;
-    }
+  .PlayPauseBtn {
+    padding: 0px;
+    margin: 0px;
+    padding-right: 3px;
+  }
 }
 
 // System tray menu styling
 menubar {
-    background-color: rgba(0, 0, 0, 0.9);
-    color: white;
+  background-color: rgba(0, 0, 0, 0.9);
+  color: white;
 }
 
 menu {
-    background-color: rgba(0, 0, 0, 0.9);
-    color: white;
-    border-radius: 8px;
-    padding: 4px;
+  background-color: rgba(0, 0, 0, 0.9);
+  color: white;
+  border-radius: 8px;
+  padding: 4px;
 }
 
 menuitem {
-    padding: 4px 8px;
-    border-radius: 4px;
-    margin: 0px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  margin: 0px;
 }
 
 menuitem:hover {
-    background-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(255, 255, 255, 0.2);
 }

@@ -1,0 +1,65 @@
+$summaryFsz: 16px;
+$bodyFsz: 12px;
+$radius: 8px;
+$separatorVH: 10px;
+$notificationMargin: 2px;
+
+// $bg: #232136;
+$bg: #2C2C33;
+$surface: #2a273f;
+$overlay: #393552;
+$subtle: #908caa;
+$text: #e0def4;
+
+$highlightLow: #2a283e;
+$highlightMed: #44415a;
+$highlightHigh: #56526e;
+
+.NotificationsWindow {
+  background-color: transparent;
+  padding: 12px;
+  min-height: 0px;
+}
+
+.notification-box {
+  * {
+    background-color: transparent;
+    color: transparent;
+    min-height: 0px;
+  }
+}
+
+.Notification {
+  margin: $notificationMargin;
+  padding: 12px;
+  background-color: $bg;
+  border-radius: $radius;
+  border: 1px solid $highlightMed;
+
+  min-width: 300px;
+  // min-height: 50px;
+
+  // .app-icon {
+  //   color: white;
+  // }
+
+  .separator {
+    min-height: $separatorVH;
+  }
+
+  .image {
+    min-height: 200px;
+    min-width: 200px;
+  }
+
+  .summary {
+    font-size: $summaryFsz;
+    color: $text;
+  }
+
+  .body {
+    color: $subtle;
+    font-size: $bodyFsz;
+    line-height: $bodyFsz * 1.5;
+  }
+}

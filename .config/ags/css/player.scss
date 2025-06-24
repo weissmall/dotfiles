@@ -1,0 +1,88 @@
+$summaryFsz: 16px;
+$bodyFsz: 12px;
+$radius: 8px;
+$separatorVH: 10px;
+$notificationMargin: 2px;
+
+$bg: #232136;
+$surface: #2a273f;
+$overlay: #393552;
+$subtle: #908caa;
+$text: #e0def4;
+
+$highlightLow: #2a283e;
+$highlightMed: #44415a;
+$highlightHigh: #56526e;
+
+.PlayerWindow {
+  margin: 0;
+  padding: 0;
+  background-color: transparent;
+}
+
+.PlayerPopoverWrapper {
+  margin: 0;
+  padding: 0;
+  background-color: transparent;
+}
+
+.PlayerContainer {
+  background-color: $bg;
+  margin: 24px;
+  padding: 48px;
+  border-radius: $radius;
+  border: 1px solid $highlightHigh;
+
+  * {
+    margin: 0px;
+    padding: 0px;
+  }
+
+  .player-cover-container {
+    border-radius: $radius;
+  }
+
+  .player-cover {
+    min-height: 200px;
+    min-width: 200px;
+  }
+
+  .player-artist {
+    margin-top: 24px;
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  .player-title {
+    margin-top: 4px;
+    font-size: 16px;
+    font-weight: normal;
+  }
+
+  .player-buttons-container {
+    margin-top: 28px;
+  }
+
+  .player-button {
+    background-color: $surface;
+    border-color: $highlightMed;
+    border-radius: 100%;
+    margin-left: 8px;
+    margin-right: 8px;
+  }
+
+  .player-button:hover {
+    background-color: $highlightMed;
+    cursor: pointer;
+  }
+
+  .player-other-button {
+    min-height: 48px;
+    min-width: 48px;
+  }
+
+  .play-button {
+    min-height: 48px;
+    min-width: 48px;
+  }
+}

@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      ags:
+        specifier: /usr/local/share/ags/js
+        version: link:../../../../usr/local/share/ags/js
       astal:
         specifier: /usr/share/astal/gjs
         version: link:../../../../usr/share/astal/gjs

@@ -1,7 +1,7 @@
 $summaryFsz: 16px;
 $bodyFsz: 12px;
 $radius: 8px;
-$separatorVH: 10px;
+$separatorVH: 8px;
 $notificationMargin: 2px;
 
 // $bg: #232136;
@@ -19,6 +19,7 @@ $highlightHigh: #56526e;
   background-color: transparent;
   padding: 12px;
   min-height: 0px;
+  margin-top: 24px;
 }
 
 .notification-box {
@@ -43,23 +44,69 @@ $highlightHigh: #56526e;
   //   color: white;
   // }
 
+  .header {
+    margin-bottom: 4px;
+
+    * {
+      color: white;
+      font-size: 12px;
+      font-weight: lighter;
+    }
+
+    .app-name {
+      opacity: 0.4;
+      padding-top: 4px;
+    }
+
+    .time {
+      opacity: 0.4;
+      padding-top: 4px;
+    }
+
+    .close {
+      font-family: Material;
+      border: none;
+      padding: 4px 2px;
+      margin-top: 0px;
+      margin-bottom: 0px;
+      margin-right: 0px;
+      margin-left: 6px;
+    }
+
+    .close:hover {
+      background-color: $highlightMed;
+    }
+  }
+
   .separator {
     min-height: $separatorVH;
   }
 
+  .image-container {
+    max-height: 50px;
+    max-width: 50px;
+    overflow: hidden;
+  }
+
   .image {
-    min-height: 200px;
-    min-width: 200px;
+    min-height: 50px;
+    min-width: 50px;
+    // max-height: 50px;
+    // max-width: 50px;
+    margin-right: 8px;
   }
 
   .summary {
     font-size: $summaryFsz;
     color: $text;
+    font-weight: normal;
+    margin-top: 8px;
   }
 
   .body {
     color: $subtle;
     font-size: $bodyFsz;
     line-height: $bodyFsz * 1.5;
+    font-weight: lighter;
   }
 }

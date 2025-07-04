@@ -13,6 +13,10 @@ if [[ -e /usr/share/zsh/manjaro-zsh-prompt ]]; then
   # source /usr/share/zsh/manjaro-zsh-prompt
 fi
 
+if [[ -e .zsh-niri ]]; then
+  source .zsh-niri
+fi
+
 source "$HOME/.zsh_private_env"
 
 [ -z "$NVM_DIR" ] && export NVM_DIR="$HOME/.nvm"
@@ -87,6 +91,8 @@ alias pmm="pm2"
 
 alias resource="source ~/.zshrc"
 alias vrc="nvim ~/.zshrc"
+alias vai="NVIM_USE_AVANTE=true proxychains -q nvim"
+alias vco="NVIM_USE_COPILOT=true proxychains -q nvim"
 
 # GO binaries
 export PATH="$PATH:$HOME/go/bin"
@@ -94,3 +100,10 @@ export PATH="$PATH:$HOME/go/bin"
 # Git sync with submodules
 alias gssync="git pull origin \$(git rev-parse --abbrev-ref HEAD) && git submodule update --init --recursive"
 
+# nmcli aliases
+#
+# nmcli connection up
+alias cou="nmcli connection up"
+#
+# nmcli connection down
+alias cod="nmcli connection down"

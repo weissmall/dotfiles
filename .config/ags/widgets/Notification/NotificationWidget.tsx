@@ -1,7 +1,7 @@
 import { Gtk } from "astal/gtk4";
 import config from "../../config";
 import Chain from "../utils/chain";
-import { ellipsis, ellipsisByLines } from "../utils/utils";
+import { ellipsis } from "../utils/utils";
 import { timeout } from "astal";
 
 export default function NotificationWidget(props: NotificationProps | undefined) {
@@ -26,49 +26,87 @@ export default function NotificationWidget(props: NotificationProps | undefined)
       cssClasses={["Notification"]}
       hexpand
     >
-      {/* {props.app_icon && ( */}
-      {/*   <image */}
-      {/*     cssClasses={["app-icon"]} */}
-      {/*     file={props.image} */}
-      {/*   /> */}
-      {/* )} */}
       <box vertical hexpand>
-        <box>
-          <label
-            cssClasses={["summary"]}
-            label={summary}
-          />
-        </box>
-        {props.body && (
-          <box cssClasses={["separator"]} />
-        )}
-        {props.body && (
-          <box>
+        <box cssClasses={["header"]} hexpand>
+          {props.app_icon && (
+            <image
+              cssClasses={["app-icon"]}
+              file={props.image}
+            />
+          )}
+          <box
+            halign={Gtk.Align.FILL}
+            hexpand
+          >
             <label
-              cssClasses={["body"]}
-              label={body}
-              maxWidthChars={20}
+              cssClasses={["app-name"]}
+              label={props.appName}
             />
           </box>
-        )}
-        {/* {props.image && ( */}
-        {/*   <box cssClasses={["separator"]} /> */}
-        {/* )} */}
-        {/* {props.image && ( */}
-        {/*   <image */}
-        {/*     cssClasses={["image"]} */}
-        {/*     file={props.image} */}
-        {/*   /> */}
-        {/* )} */}
+          <label
+            cssClasses={["time"]}
+            label={props.time.toLocaleTimeString("en-US", {
+              hour: "2-digit",
+              minute: "2-digit",
+              hour12: true,
+            })}
+          />
+          <button
+            cssClasses={["close"]}
+            iconName={"cancel"}
+            onClicked={props.delete}
+          />
+        </box>
+        <box>
+          {props.image && (
+            <box
+              cssClasses={["image-container"]}
+              overflow={Gtk.Overflow.HIDDEN}
+              vexpand={false}
+              hexpand={false}
+              widthRequest={50}
+              heightRequest={50}
+            >
+              <image
+                cssClasses={["image"]}
+                file={props.image}
+                pixelSize={-1}
+              />
+            </box>
+          )}
+          <box vertical>
+            <box>
+              <label
+                cssClasses={["summary"]}
+                label={summary}
+              />
+            </box>
+            {props.body && (
+              <box cssClasses={["separator"]} />
+            )}
+            {props.body && (
+              <box>
+                <label
+                  cssClasses={["body"]}
+                  label={body}
+                  maxWidthChars={20}
+                />
+              </box>
+            )}
+          </box>
+        </box>
       </box>
     </box>
   </revealer>
 }
 
 export type NotificationProps = {
+  delete: () => void;
   summary: string;
   body?: string | undefined;
   app_icon?: string | undefined;
   image?: string | undefined;
+  appName: string;
+  time: Date;
   id: number;
 };

@@ -1,7 +1,8 @@
 {
   "name": "astal-shell",
   "dependencies": {
-    "astal": "/usr/share/astal/gjs"
+    "astal": "/usr/share/astal/gjs",
+    "ags": "/usr/local/share/ags/js"
   },
   "devDependencies": {
     "gulp": "^4.0.2",

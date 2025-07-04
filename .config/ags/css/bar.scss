@@ -1,4 +1,35 @@
+@use "sass:color";
+@use "variables.scss";
+
+$bg: variables.$bg;
+$fg: variables.$fg;
+$accent: variables.$accent;
+
+$bar-height: 36px;
+$radius: 18px;
+$freeSpace: 12px;
+
+$overlay: #3b3a4b;
+$subtle: #908ca1;
+$fancy: #{"@wm_button_unfocused_bg"};
+$fancyHover: #{"@wm_button_active_fg"};
+/* ---------------------------------- Bar ----------------------------------- */
+$barBgColor: #{"@theme_bg_color"};
+$barFgColor: #{"@theme_fg_color"};
+/* --------------------------- Vertical separator --------------------------- */
+$vSeparatorColor: #{"@unfocused_borders"};
+$vSeparatorWidth: 2px;
+$vSeparatorPaddingVertical: 8px;
+$vSeparatorPaddingHorizontal: 8px;
+/* -------------------------------------------------------------------------- */
+
 .Bar {
+  min-height: $bar-height;
+  // background-color: $barBgColor;
+  box-shadow: none;
+  padding: 0px 0px;
+  margin: 0px;
+
   .AudioIconButton {
     margin: 0px;
   }
@@ -11,4 +42,171 @@
 .bar-music-icon {
   color: white;
   padding: 2px;
+}
+
+.Bar {
+  .box-container {
+    transition: 0.3s background-color;
+    // background-color: $fancy;
+    //
+    // &:hover {
+    //   background-color: $fancyHover;
+    //
+    //   .center-box {
+    //     background-color: $fancyHover;
+    //   }
+    // }
+  }
+
+  .right {
+    // background-color: $overlay;
+    padding: 0px 12px;
+    border-radius: 0px 0px 0px $radius;
+  }
+
+  .vertical-separator-box {
+    min-width: $vSeparatorWidth;
+    max-width: $vSeparatorWidth;
+    padding: $vSeparatorPaddingVertical $vSeparatorPaddingHorizontal;
+  }
+
+  .vertical-separator {
+    border: none;
+    border-left: $vSeparatorWidth solid $vSeparatorColor;
+  }
+}
+
+window.Bar {
+  border: none;
+  box-shadow: none;
+  color: $fg;
+  font-size: 1.1em;
+  font-weight: bold;
+  background-color: #{"@theme_bg_color"};
+
+  label {
+    margin: 0px 4px;
+  }
+
+  centerbox {
+    background-color: transparent;
+    border: none;
+    border-color: transparent;
+    padding: 0px 10px;
+  }
+
+  button {
+    background-color: transparent;
+    border: none;
+    border-color: transparent;
+    padding: 0px 8px;
+    margin: 4px 0px;
+
+    &:hover {
+      background-color: color.adjust($fg, $alpha: -0.84);
+      border-color: color.adjust($accent, $alpha: -0.8);
+    }
+  }
+
+  .SysTray {
+    background-color: transparent;
+    border: none;
+    border-color: transparent;
+    padding: 0px;
+    margin: 0px;
+
+    button {
+      background-color: transparent;
+      border: none;
+      border-color: transparent;
+      padding: 4px;
+      margin: 0px;
+
+      &:hover {
+        background-color: color.adjust($fg, $alpha: -0.84);
+        border-color: color.adjust($accent, $alpha: -0.8);
+      }
+    }
+
+    separator {
+      background: transparent;
+      margin: 0px;
+      padding: 0px;
+    }
+  }
+
+  .Workspaces {
+    button {
+      all: unset;
+      background-color: transparent;
+
+      &:hover label {
+        background-color: color.adjust($fg, $alpha: -0.84);
+        border-color: color.adjust($accent, $alpha: -0.8);
+      }
+
+      &:active label {
+        background-color: color.adjust($fg, $alpha: -0.8);
+      }
+    }
+
+    label {
+      transition: 200ms;
+      padding: 0px 8px;
+      margin: 2px;
+      border-radius: $radius;
+      border: 1pt solid transparent;
+    }
+
+    .focused label {
+      color: $accent;
+      border-color: $accent;
+    }
+  }
+
+  .FocusedClient {
+    color: $accent;
+  }
+
+  .Media {
+    // background-color: $bg;
+    // border-radius: $radius;
+
+    .Cover {
+      min-height: 50px;
+      min-width: 50px;
+      border-radius: $radius;
+      background-position: center;
+      background-size: contain;
+    }
+
+    .Info {
+      * {
+        padding: 2px 4px;
+      }
+
+      label {
+        font-size: 16px;
+      }
+
+      .Title {
+        font-weight: bold;
+      }
+
+      .Description {
+        font-weight: normal;
+      }
+    }
+  }
+
+  .Battery label {
+    padding-left: 0px;
+    margin-left: 0px;
+  }
+
+  .PlayPauseBtn {
+    padding: 0px;
+    margin: 0px;
+    padding-right: 3px;
+  }
 }

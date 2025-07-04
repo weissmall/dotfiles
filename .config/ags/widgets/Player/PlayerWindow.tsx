@@ -9,14 +9,16 @@ export default function PlayerWindow(gdkmonitor: Gdk.Monitor) {
     visible
     type="player"
     anchor={Astal.WindowAnchor.BOTTOM | Astal.WindowAnchor.LEFT}
-    layer={Astal.Layer.TOP}
+    layer={Astal.Layer.BOTTOM}
     gdkmonitor={gdkmonitor}
     exclusivity={Astal.Exclusivity.IGNORE}
     valign={Gtk.Align.START}
     hexpand
     cssClasses={["PlayerWindow"]}
   >
-    {PlayerBox(players)}
+    <box vertical>
+      {PlayerBox(players)}
+    </box>
   </window >
 }
 

@@ -3,10 +3,10 @@
 @use "css/bar.scss";
 @use "css/notifications.scss";
 @use "css/player.scss";
-// $fg-color: #{"@theme_fg_color"};
-// $bg-color: #{"@theme_bg_color"};
+@use "css/osd.scss";
+@use "css/status.scss";
+@use "css/variables.scss";
 
-// $bg: rgba(0, 0, 0, 0.8);
 $bg: #2C2C33;
 $fg: #f1f1f1;
 $accent: #378DF7;
@@ -36,12 +36,6 @@ popover {
   contents {
     background-color: $bg;
   }
-}
-
-.Bar {
-  background-color: $bg;
-  box-shadow: none;
-  padding: 0px 0px;
 }
 
 .Time {
@@ -139,140 +133,6 @@ menuitem:hover {
   background-color: rgba(255, 255, 255, 0.2);
 }
 
-window.Bar {
-  border: none;
-  box-shadow: none;
-  color: $fg;
-  font-size: 1.1em;
-  font-weight: bold;
-  // background-color: rgba(0, 0, 0, 0.8);
-  background-color: $bg;
-
-  label {
-    margin: 0px 4px;
-  }
-
-  centerbox {
-    background-color: transparent;
-    border: none;
-    border-color: transparent;
-    padding: 0px 10px;
-  }
-
-  button {
-    background-color: transparent;
-    border: none;
-    border-color: transparent;
-
-    &:hover {
-      background-color: color.adjust($fg, $alpha: -0.84);
-      border-color: color.adjust($accent, $alpha: -0.8);
-    }
-  }
-
-  .SysTray {
-    background-color: transparent;
-    border: none;
-    border-color: transparent;
-    padding: 0px;
-    margin: 0px;
-
-    button {
-      background-color: transparent;
-      border: none;
-      border-color: transparent;
-      padding: 4px;
-      margin: 0px;
-
-      &:hover {
-        background-color: color.adjust($fg, $alpha: -0.84);
-        border-color: color.adjust($accent, $alpha: -0.8);
-      }
-    }
-
-    separator {
-      background: transparent;
-      margin: 0px;
-      padding: 0px;
-    }
-  }
-
-  .Workspaces {
-    button {
-      all: unset;
-      background-color: transparent;
-
-      &:hover label {
-        background-color: color.adjust($fg, $alpha: -0.84);
-        border-color: color.adjust($accent, $alpha: -0.8);
-      }
-
-      &:active label {
-        background-color: color.adjust($fg, $alpha: -0.8);
-      }
-    }
-
-    label {
-      transition: 200ms;
-      padding: 0px 8px;
-      margin: 2px;
-      border-radius: $radius;
-      border: 1pt solid transparent;
-    }
-
-    .focused label {
-      color: $accent;
-      border-color: $accent;
-    }
-  }
-
-  .FocusedClient {
-    color: $accent;
-  }
-
-  .Media {
-    // background-color: $bg;
-    // border-radius: $radius;
-
-    .Cover {
-      min-height: 50px;
-      min-width: 50px;
-      border-radius: $radius;
-      background-position: center;
-      background-size: contain;
-    }
-
-    .Info {
-      * {
-        padding: 2px 4px;
-      }
-
-      label {
-        font-size: 16px;
-      }
-
-      .Title {
-        font-weight: bold;
-      }
-
-      .Description {
-        font-weight: normal;
-      }
-    }
-  }
-
-  .Battery label {
-    padding-left: 0px;
-    margin-left: 0px;
-  }
-
-  .PlayPauseBtn {
-    padding: 0px;
-    margin: 0px;
-    padding-right: 3px;
-  }
-}
-
 // System tray menu styling
 menubar {
   background-color: rgba(0, 0, 0, 0.9);
@@ -294,4 +154,21 @@ menuitem {
 
 menuitem:hover {
   background-color: rgba(255, 255, 255, 0.2);
+}
+
+.bar {
+  background-color: blue;
+  min-width: 20px;
+  max-width: 20px;
+}
+
+.status-desc {
+  font-family: 'Finlandica';
+  overflow: visible;
+
+  label {
+    color: #222222;
+    text-align: start;
+    font-size: 11px;
+  }
 }

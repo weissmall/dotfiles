@@ -27,8 +27,8 @@ export default class NotificationsManager {
   private onNotified(source: AstalNotifd.Notifd, id: number, replaced: boolean): void {
     const notification = this.notifd.get_notification(id);
     const expireIn = notification.expireTimeout <= 0 ? config.notifications.defaultTimeoutMs : notification.expire_timeout;
-    console.log("EXPIRE_SRC: ", notification.expireTimeout)
-    console.log("EXPIRE_OUT: ", expireIn)
+    // console.log("EXPIRE_OUT: ", expireIn)
+    // console.log("EXPIRE_SRC: ", notification.expireTimeout)
 
     this.set(id,
       NotificationWidget({
@@ -36,6 +36,9 @@ export default class NotificationsManager {
         summary: notification.get_summary(),
         body: notification.get_body(),
         image: notification.get_image(),
+        appName: notification.get_app_name(),
+        time: new Date(notification.get_time()),
+        delete: () => this.delete(id),
       }))
 
     setTimeout(() => {

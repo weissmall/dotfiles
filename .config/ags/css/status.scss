@@ -1,0 +1,36 @@
+@use "variables.scss";
+// $surface: #2a273f;
+
+.status {
+  text-align: left;
+
+  margin-bottom: 90px;
+  margin-left: 70px;
+
+  * {
+    color: variables.$subtle;
+    font-family: Finlandica, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+
+  .time {
+    font-size: 80px;
+  }
+
+  .date {
+    // margin-bottom: 20px;
+    font-size: 28px;
+  }
+
+  .week-day {
+    margin-top: 12px;
+    margin-bottom: 12px;
+    font-family: Material, sans-serif;
+    font-size: 12px;
+  }
+
+  .weather * {
+    font-size: 14px;
+  }
+}

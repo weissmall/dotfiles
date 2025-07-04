@@ -12,14 +12,22 @@
 spawn-at-startup "kanshi"
 
 // Simple volume & brightness notifications
-spawn-at-startup "swayosd-server"
+// 50MiB RAM
+// spawn-at-startup "swayosd-server"
 
 // Top bar
+// 60MiB RAM
 // spawn-at-startup "waybar"
 
 // spawn-at-startup "bash" "-c" "lua /home/weissmall/Projects/CursorTest/weissbar/init.lua"
 
-spawn-at-startup "ags" "run" "--gtk4"
+// ags 29MiB RAM
+// gjs 169MiB RAM
+// nm-applet 41MiB RAM
+// conky 28MiB RAM
+// blueman-tray 52MiB RAM
+// blueman-applet 56MiB RAM
+spawn-at-startup "ags" "run" "--gtk" "4"
 
 // Running Xorg applications
 spawn-at-startup "xwayland-satellite"
@@ -408,25 +416,28 @@ binds {
     // Example volume keys mappings for PipeWire & WirePlumber.
     // The allow-when-locked=true property makes them work even when the session is locked.
     XF86AudioRaiseVolume allow-when-locked=true {
-        spawn "swayosd-client" "--output-volume" "raise";
+        // spawn "swayosd-client" "--output-volume" "raise";
+        spawn "astal" "-i" "Astal" "volume" "inc" "10";
     }
     XF86AudioLowerVolume allow-when-locked=true {
-        spawn "swayosd-client" "--output-volume" "lower";
+        spawn "astal" "-i" "Astal" "volume" "dec" "10";
     }
     XF86AudioMute allow-when-locked=true {
-        spawn "swayosd-client" "--output-volume" "mute-toggle";
+        spawn "astal" "-i" "Astal" "volume" "mute" "toggle";
     }
     XF86AudioMicMute allow-when-locked=true {
-        spawn "swayosd-client" "--input-volume" "mute-toggle";
+        spawn "astal" "-i" "Astal" "volume" "mute" "toggle";
     }
 
     // Brightness
     XF86MonBrightnessUp allow-when-locked=true {
-        spawn "swayosd-client" "--brightness" "raise"
+        // spawn "swayosd-client" "--brightness" "raise"
+        spawn "astal" "-i" "Astal" "brightness" "inc" "10";
     }
 
     XF86MonBrightnessDown allow-when-locked=true {
-        spawn "swayosd-client" "--brightness" "lower"
+        // spawn "swayosd-client" "--brightness" "lower"
+        spawn "astal" "-i" "Astal" "brightness" "dec" "10";
     }
 
     Super+XF86AudioRaiseVolume allow-when-locked=true {
@@ -443,10 +454,11 @@ binds {
     Mod+Down  { focus-window-down; }
     Mod+Up    { focus-window-up; }
     Mod+Right { focus-column-right; }
-    Mod+H     { focus-column-left; }
-    Mod+J     { focus-window-down; }
-    Mod+K     { focus-window-up; }
-    Mod+L     { focus-column-right; }
+
+    Mod+H     { focus-column-or-monitor-left; }
+    Mod+L     { focus-column-or-monitor-right; }
+    Mod+J     { focus-window-or-workspace-down; }
+    Mod+K     { focus-window-or-workspace-up; }
 
     Mod+Ctrl+Left  { move-column-left; }
     Mod+Ctrl+Down  { move-window-down; }
@@ -582,8 +594,8 @@ binds {
     Mod+Period { expel-window-from-column; }
 
     // There are also commands that consume or expel a single window to the side.
-    // Mod+BracketLeft  { consume-or-expel-window-left; }
-    // Mod+BracketRight { consume-or-expel-window-right; }
+    Mod+BracketLeft  { consume-or-expel-window-left; }
+    Mod+BracketRight { consume-or-expel-window-right; }
 
     Mod+R { switch-preset-column-width; }
     Mod+Shift+R { reset-window-height; }

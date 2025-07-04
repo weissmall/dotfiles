@@ -51,7 +51,6 @@ return {
 				providers = {
 					snippets = {
 						should_show_items = function(ctx, items)
-							-- Disable snippets after trigger char like `.` or `"`
 							return ctx.trigger.initial_kind ~= "trigger_character"
 						end,
 					},

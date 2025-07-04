@@ -39,5 +39,5 @@ vim.opt.list = true
 vim.opt.listchars = { tab = "  ", trail = "·", nbsp = "␣" }
 
 -- Wrapping
-vim.opt.wrap = true
+vim.opt.wrap = false
 vim.opt.laststatus = 3

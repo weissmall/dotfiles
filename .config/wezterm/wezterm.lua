@@ -5,6 +5,7 @@ local tabbar = require("tabbar")
 
 local config = w.config_builder()
 config.window_frame = nil
+config.enable_wayland = false
 config.window_decorations = "NONE"
 config.scrollback_lines = 50000
 -- config.window_padding = {

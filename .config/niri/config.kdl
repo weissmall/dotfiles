@@ -55,8 +55,10 @@ environment {
     GTK_CSD "0"
 
     // Can cause Firefox crashes
-    // export GBM_BACKEND=nvidia-drm
+    GBM_BACKEND "nvidia-drm"
+
     // Can cause Discord or Zoom crashes
+    __NV_PRIME_RENDER_OFFLOAD "1"
     __GLX_VENDOR_LIBRARY_NAME "nvidia"
     LIBVA_DRIVER_NAME "nvidia"
     XDG_SESSION_TYPE "wayland"
@@ -70,6 +72,7 @@ environment {
 
     // Java XWayland blank screens fix
     _JAVA_AWT_WM_NONREPARENTING "1"
+
 }
 
 input {
@@ -455,8 +458,8 @@ binds {
     Mod+Up    { focus-window-up; }
     Mod+Right { focus-column-right; }
 
-    Mod+H     { focus-column-or-monitor-left; }
-    Mod+L     { focus-column-or-monitor-right; }
+    Mod+H     { focus-column-left; }
+    Mod+L     { focus-column-right; }
     Mod+J     { focus-window-or-workspace-down; }
     Mod+K     { focus-window-or-workspace-up; }
 

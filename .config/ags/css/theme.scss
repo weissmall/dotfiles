@@ -1,0 +1,63 @@
+// Theme light colors
+$light_1: #{"@light_1"};
+$light_2: #{"@light_2"};
+$light_3: #{"@light_3"};
+$light_4: #{"@light_4"};
+$light_5: #{"@light_5"};
+
+// Theme dark colors
+$dark_1: #{"@dark_1"};
+$dark_2: #{"@dark_2"};
+$dark_3: #{"@dark_3"};
+$dark_4: #{"@dark_4"};
+$dark_5: #{"@dark_5"};
+
+// Theme support colors
+$warning: #{"@warning_color"};
+$error: #{"@error_color"};
+$success: #{"@success_color"};
+$accent: #{"@theme_base_color"};
+
+// $light_1: #ffffff;
+// $light_2: #f6f5f4;
+// $light_3: #deddda;
+// $light_4: #c0bfbc;
+// $light_5: #9a9996;
+// $dark_1: #77767b;
+// $dark_2: #5e5c64;
+// $dark_3: #3d3846;
+// $dark_4: #241f31;
+// $dark_5: #000000;
+
+$dark: (
+  bg: $dark_4,
+  fg: $light_4,
+  accent: $accent,
+  error: $error,
+  warning: $warning,
+  success: $success,
+  border: $dark_3,
+);
+
+$light: (
+  bg: $light_4,
+  fg: $dark_4,
+  accent: $accent,
+  error: $error,
+  warning: $warning,
+  success: $success,
+  border: $light_5,
+);
+
+$themes: (
+  light: $light,
+  dark: $dark,
+);
+
+@function themed($theme, $key) {
+  @return map-get(map-get($themes, $theme), $key);
+}
+
+@mixin apply-theme($theme) {
+  @content($theme);
+}

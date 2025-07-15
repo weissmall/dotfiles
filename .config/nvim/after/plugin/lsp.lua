@@ -475,6 +475,9 @@ lspConfig.ts_ls.setup({
 
 lspConfig.cssls.setup({
   filetypes = { "css", "scss", "less" },
+  init_options = {
+    -- provideFormatter = false,
+  },
   settings = {
     css = {
       validate = true,

@@ -9,6 +9,7 @@ $overlay: #393552;
 $subtle: #908caa;
 $text: #e0def4;
 
+
 $STRAWBERRY_100: #FF9262;
 $STRAWBERRY_300: #FF793E;
 $STRAWBERRY_500: #F15D22;
@@ -105,7 +106,6 @@ $dark_3: #3d3846;
 $dark_4: #241f31;
 $dark_5: #000000;
 
-
 $theme_fg_color: #e9e9ed;
 /* text color for entries, views and content in general */
 $theme_text_color: #e9e9ed;
@@ -141,10 +141,7 @@ $unfocused_insensitive_color: rgba(233, 233, 237, 0.5);
 $borders: rgba(233, 233, 237, 0.12);
 /* widgets main borders color on backdrop windows */
 $unfocused_borders: rgba(233, 233, 237, 0.12);
-/* these are pretty self explicative */
-$warning_color: #8c6c3e;
-$error_color: #f52a65;
-$success_color: #387068;
+
 /* these colors are exported for the window manager and shouldn't be used in applications,
 read if you used those and something break with a version upgrade you're on your own... */
 $wm_focused_title: #e9e9ed;

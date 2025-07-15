@@ -1,19 +1,10 @@
+@use "css/theme.scss";
+
 $summaryFsz: 16px;
 $bodyFsz: 12px;
 $radius: 8px;
 $separatorVH: 8px;
 $notificationMargin: 2px;
-
-// $bg: #232136;
-$bg: #2C2C33;
-$surface: #2a273f;
-$overlay: #393552;
-$subtle: #908caa;
-$text: #e0def4;
-
-$highlightLow: #2a283e;
-$highlightMed: #44415a;
-$highlightHigh: #56526e;
 
 .NotificationsWindow {
   background-color: transparent;
@@ -33,16 +24,10 @@ $highlightHigh: #56526e;
 .Notification {
   margin: $notificationMargin;
   padding: 12px;
-  background-color: $bg;
   border-radius: $radius;
-  border: 1px solid $highlightMed;
+  border: 1px solid transparent;
 
   min-width: 300px;
-  // min-height: 50px;
-
-  // .app-icon {
-  //   color: white;
-  // }
 
   .header {
     margin-bottom: 4px;
@@ -72,10 +57,6 @@ $highlightHigh: #56526e;
       margin-right: 0px;
       margin-left: 6px;
     }
-
-    .close:hover {
-      background-color: $highlightMed;
-    }
   }
 
   .separator {
@@ -91,22 +72,53 @@ $highlightHigh: #56526e;
   .image {
     min-height: 50px;
     min-width: 50px;
-    // max-height: 50px;
-    // max-width: 50px;
     margin-right: 8px;
   }
 
   .summary {
     font-size: $summaryFsz;
-    color: $text;
     font-weight: normal;
     margin-top: 8px;
   }
 
   .body {
-    color: $subtle;
     font-size: $bodyFsz;
     line-height: $bodyFsz * 1.5;
     font-weight: lighter;
   }
+}
+
+@mixin themed($themeName) {
+  @include theme.apply-theme($themeName) using ($theme) {
+    .Notification {
+      background-color: theme.themed($theme, bg);
+      border-color: theme.themed($theme, border);
+
+      .header {
+        * {
+          color: theme.themed($theme, fg);
+        }
+
+        .close:hover {
+          background-color: theme.themed($theme, bg);
+        }
+      }
+
+      .summary {
+        color: theme.themed($theme, fg);
+      }
+
+      .body {
+        color: theme.themed($theme, fg);
+      }
+    }
+  }
+}
+
+.dark-theme {
+  @include themed(dark)
+}
+
+.light-theme {
+  @include themed(light)
 }

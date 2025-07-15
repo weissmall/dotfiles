@@ -1,7 +1,6 @@
 import { Astal, Gdk, Gtk } from "astal/gtk4"
-import { bind, Variable } from "astal"
+import { bind } from "astal"
 import NotificationsManager from "./NotificationsManager";
-import NotificationWidget from "./NotificationWidget";
 
 export default function NotificationsWindow(
   gdkmonitor: Gdk.Monitor,
@@ -9,7 +8,7 @@ export default function NotificationsWindow(
 ) {
 
   return <window
-    cssClasses={["NotificationsWindow"]}
+    cssClasses={["NotificationsWindow", "dark-theme"]}
     anchor={Astal.WindowAnchor.TOP | Astal.WindowAnchor.RIGHT}
     gdkmonitor={gdkmonitor}
     exclusivity={Astal.Exclusivity.NORMAL}
@@ -17,13 +16,14 @@ export default function NotificationsWindow(
     layer={Astal.Layer.TOP}
     valign={Gtk.Align.START}
     visible={bind(manager).as((arr) => arr.length != 0)}
-  >
-    <box
-      vertical
-      valign={Gtk.Align.START}
-      cssClasses={["notification-box"]}
-    >
-      {bind(manager)}
-    </box>
-  </window >
+    child={(
+      <box
+        vertical
+        valign={Gtk.Align.START}
+        cssClasses={["notification-box"]}
+      >
+        {bind(manager)}
+      </box>
+    )}
+  />
 }

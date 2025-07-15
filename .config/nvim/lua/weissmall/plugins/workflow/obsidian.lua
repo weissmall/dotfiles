@@ -5,6 +5,9 @@ return {
 	version = "*",
 	lazy = true,
 	ft = { "markdown" },
+	init = function()
+		vim.opt.conceallevel = 1
+	end,
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 	},

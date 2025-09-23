@@ -1,3 +1,4 @@
+#!/bin/bash
 function getWallpaperByOutput() {
   output=$1
   outputsJson=$(waypaper --list | jq ".[] | select(.monitor==\"${output}\") | .wallpaper ")
@@ -26,4 +27,4 @@ function lock() {
   fi
 }
 
-lock
+lock >> $HOME/lock.log

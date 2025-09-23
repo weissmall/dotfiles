@@ -48,4 +48,30 @@ function showSsh()
     -theme ${dir}/${theme}.rasi
 }
 
+function showEmoji() {
+  rofi \
+    -modi emoji \
+    -show emoji \
+    -emoji-format '{emoji} {name}' \
+    -theme ${dir}/${theme}.rasi
+}
+
+function showCursorRun() {
+  path=$(getZoxidePath)
+  runCursor $path
+}
+
+function getZoxidePath() {
+  echo $(zoxide query --list | rofi \
+    -dmenu \
+    -case-smart \
+    -theme ${dir}/${theme}.rasi)
+}
+
+function runCursor() {
+  if [[ -n $1 ]]; then
+    cursor $1
+  fi
+}
+
 "$@"

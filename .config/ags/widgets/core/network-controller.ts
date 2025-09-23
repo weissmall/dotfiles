@@ -37,12 +37,15 @@ export default class NetworkController {
     this.wifiIcon.set(wifi.get_icon_name());
     this.wifiConnected.set(wifi.get_active_connection() != null);
 
-    const accessPoints = wifi.get_access_points()
-      .map((ap) => ap.get_ssid())
-      .filter((ap) => ap != null)
-      .filter((ap) => ap != this.wifiSsid.get())
-      .sort();
-    this.wifiAccessPoints.set(accessPoints);
+
+    const accessPoints =
+      new Set(wifi.get_access_points()
+        .map((ap) => ap.get_ssid())
+        .filter((ap) => ap != null)
+        .filter((ap) => ap != this.wifiSsid.get())
+        .sort());
+
+    this.wifiAccessPoints.set(Array.from(accessPoints));
   }
 
   switchWifiStatus(accessPointName: string) {

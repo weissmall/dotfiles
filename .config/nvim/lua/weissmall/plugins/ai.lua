@@ -16,6 +16,8 @@ local function enabledCond(env)
   return false
 end
 
+---@module 'lazy'
+---@type LazySpec[]
 return {
   {
     enabled = true,
@@ -83,7 +85,7 @@ return {
         auto_set_keymaps = true,
         auto_apply_diff_after_generation = false,
         support_paste_from_clipboard = false,
-        minimize_diff = true,         -- Whether to remove unchanged lines when applying a code block
+        minimize_diff = true,     -- Whether to remove unchanged lines when applying a code block
         enable_token_counting = true, -- Whether to enable token counting. Default to true.
       },
       mappings = {
@@ -174,6 +176,7 @@ return {
     lazy = false,
     init = function()
       vim.g.copilot_no_tab_map = true
+      -- vim.g.copilot_proxy = vim.uv.os_getenv("PROXY_URL")
     end,
     keys = {
       {

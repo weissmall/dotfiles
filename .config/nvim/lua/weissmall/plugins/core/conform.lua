@@ -20,6 +20,7 @@ return {
       python = { "isort", "black" },
       rust = { "rustfmt" },
       dart = { "dart_format" },
+      sql = { "pg_format" },
       -- c = { "clangformat" },
       -- cpp = { "clangformat" },
     },

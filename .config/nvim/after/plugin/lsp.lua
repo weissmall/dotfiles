@@ -351,18 +351,18 @@ lspConfig.rust_analyzer.setup({
 
 lspConfig.gopls.setup({
   capabilities = capabilities,
-  cmd = { "gopls", "serve" },
+  cmd = { "gopls" },
   filetypes = { "go", "go.mod" },
   root_dir = util.root_pattern("go.work", "go.mod", ".git"),
-  settings = {
-    gopls = {
-      analyses = {
-        unusedparams = true,
-        shadow = true,
-      },
-      staticcheck = true,
-    },
-  },
+  -- settings = {
+  -- 	gopls = {
+  -- 		analyses = {
+  -- 			unusedparams = true,
+  -- 			shadow = true,
+  -- 		},
+  -- 		staticcheck = true,
+  -- 	},
+  -- },
 })
 -- https://microsoft.github.io/pyright/#/settings
 lspConfig.pyright.setup({
@@ -403,17 +403,17 @@ lspConfig.clangd.setup({
   },
 })
 
-lspConfig.dcmls.setup({
-  cmd = {
-    "dcm",
-    "start-server",
-    "--client=neovim",
-  },
-  filetypes = {
-    "dart",
-  },
-  root_dir = util.root_pattern("pubspec.yaml"),
-})
+-- lspConfig.dcmls.setup({
+-- 	cmd = {
+-- 		"dcm",
+-- 		"start-server",
+-- 		"--client=neovim",
+-- 	},
+-- 	filetypes = {
+-- 		"dart",
+-- 	},
+-- 	root_dir = util.root_pattern("pubspec.yaml"),
+-- })
 
 -- lspConfig.dartls.setup({
 -- 	cmd = { "dart", "language-server", "--protocol=lsp" },
@@ -466,6 +466,9 @@ lspConfig.terraformls.setup({
 })
 
 lspConfig.ts_ls.setup({
+  on_attach = function(client, bufnr)
+    require("workspace-diagnostics").populate_workspace_diagnostics(client, bufnr)
+  end,
   filetypes = {
     "javascript",
     "typescript",
@@ -553,6 +556,11 @@ lspConfig.kotlin_language_server.setup({
   capabilities = capabilities,
 })
 
+lspConfig.postgres_lsp.setup({
+  capabilities = capabilities,
+  filetypes = { "sql" },
+})
+
 vim.api.nvim_create_user_command("FormatDisable", function(args)
   if args.bang then
     -- FormatDisable! will disable formatting just for this buffer
@@ -564,9 +572,17 @@ end, {
   desc = "Disable autoformat-on-save",
   bang = true,
 })
+
 vim.api.nvim_create_user_command("FormatEnable", function()
   vim.b.disable_autoformat = false
   vim.g.disable_autoformat = false
 end, {
   desc = "Re-enable autoformat-on-save",
+})
+
+vim.diagnostic.config({
+  float = {
+    source = true,
+    border = "rounded",
+  },
 })

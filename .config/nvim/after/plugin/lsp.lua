@@ -1,3 +1,102 @@
+-- Taken from nvim/runtime/lua/vim/lsp/buf.lua
+
+local api = vim.api
+local lsp = vim.lsp
+local util = require('vim.lsp.util')
+
+---@param method string
+---@param opts? vim.lsp.LocationOpts
+local function get_location(method, params, opts)
+  opts = opts or {}
+  params = params or {}
+  local bufnr = api.nvim_get_current_buf()
+  local clients = lsp.get_clients({ method = method, bufnr = bufnr })
+  if not next(clients) then
+    vim.notify(lsp._unsupported_method(method), vim.log.levels.WARN)
+    return
+  end
+  local win = api.nvim_get_current_win()
+  local from = vim.fn.getpos('.')
+  from[1] = bufnr
+  local tagname = vim.fn.expand('<cword>')
+  local remaining = #clients
+
+  ---@type vim.quickfix.entry[]
+  local all_items = {}
+
+  ---@param result nil|lsp.Location|lsp.Location[]
+  ---@param client vim.lsp.Client
+  local function on_response(_, result, client)
+    local locations = {}
+    if result then
+      locations = vim.islist(result) and result or { result }
+    end
+    local items = util.locations_to_items(locations, client.offset_encoding)
+    vim.list_extend(all_items, items)
+    remaining = remaining - 1
+    if remaining == 0 then
+      if vim.tbl_isempty(all_items) then
+        vim.notify('No locations found', vim.log.levels.INFO)
+        return
+      end
+
+      local title = 'LSP locations'
+      if opts.on_list then
+        assert(vim.is_callable(opts.on_list), 'on_list is not a function')
+        opts.on_list({
+          title = title,
+          items = all_items,
+          context = { bufnr = bufnr, method = method },
+        })
+        return
+      end
+
+      if #all_items == 1 then
+        local item = all_items[1]
+        local b = item.bufnr or vim.fn.bufadd(item.filename)
+
+        -- Save position in jumplist
+        vim.cmd("normal! m'")
+        -- Push a new item into tagstack
+        local tagstack = { { tagname = tagname, from = from } }
+        vim.fn.settagstack(vim.fn.win_getid(win), { items = tagstack }, 't')
+
+        vim.bo[b].buflisted = true
+        local w = win
+        if opts.reuse_win then
+          w = vim.fn.win_findbuf(b)[1] or w
+          if w ~= win then
+            api.nvim_set_current_win(w)
+          end
+        end
+        api.nvim_win_set_buf(w, b)
+        api.nvim_win_set_cursor(w, { item.lnum, item.col - 1 })
+        vim._with({ win = w }, function()
+          -- Open folds under the cursor
+          vim.cmd('normal! zv')
+        end)
+        return
+      end
+      if opts.loclist then
+        vim.fn.setloclist(0, {}, ' ', { title = title, items = all_items })
+        vim.cmd.lopen()
+      else
+        vim.fn.setqflist({}, ' ', { title = title, items = all_items })
+        vim.cmd('botright copen')
+      end
+    end
+  end
+  for _, client in ipairs(clients) do
+    local lparams = util.make_position_params(win, client.offset_encoding)
+    for k, v in pairs(params) do
+      lparams[k] = v
+    end
+    client:request(method, lparams, function(_, result)
+      on_response(_, result, client)
+    end)
+  end
+end
+
 local util = require("lspconfig/util")
 
 vim.keymap.set("n", "<leader>lsr", vim.cmd.LspRestart)
@@ -375,15 +474,33 @@ lspConfig.pyright.setup({
   },
 })
 
+
 lspConfig.clangd.setup({
-  capabilities = capabilities,
+  capabilities = vim.tbl_extend("keep", capabilities, {
+    offsetEncoding = { "utf-8", "utf-16" },
+    textDocument = {
+      completion = {
+        editsNearCursor = true
+      }
+    }
+  }),
   init_options = {
     usePlaceholders = true,
     completeUnimported = true,
     clangdFileStatus = true,
     semanticHighlighting = true,
   },
+  filetypes = { "c", "cpp", "objc", "objcpp", "cuda" },
   single_file_support = true,
+  root_markers = {
+    ".clangd",
+    ".clang-tidy",
+    ".clang-format",
+    "compile_commands.json",
+    "compile_flags.txt",
+    "configure.ac",
+    ".git"
+  },
   root_dir = util.root_pattern(
     ".clangd",
     ".clang-tidy",
@@ -560,6 +677,33 @@ lspConfig.postgres_lsp.setup({
   capabilities = capabilities,
   filetypes = { "sql" },
 })
+
+-- lspConfig.ccls.setup {
+--   init_options = {
+--     cache = {
+--       directory = ".ccls-cache",
+--     },
+--   },
+--   on_attach = function(client, bufnr)
+--     local opts = { buffer = bufnr, remap = false }
+--     local lopts = { loclist = true }
+--     -- ...
+--     vim.keymap.set('n', 'gxb', function() get_location('$ccls/inheritance', {}, lopts) end, opts)
+--     vim.keymap.set('n', 'gxB', function() get_location('$ccls/inheritance', { levels = 3 }, lopts) end, opts)
+--     vim.keymap.set('n', 'gxd', function() get_location('$ccls/inheritance', { derived = true }, lopts) end, opts)
+--     vim.keymap.set('n', 'gxD', function() get_location('$ccls/inheritance', { derived = true, levels = 3 }, lopts) end,
+--       opts)
+--     vim.keymap.set('n', 'gxc', function() get_location('$ccls/call', {}, lopts) end, opts)
+--     vim.keymap.set('n', 'gxC', function() get_location('$ccls/call', { callee = true }, lopts) end, opts)
+--     vim.keymap.set('n', 'gxs', function() get_location('$ccls/member', { kind = 2 }, lopts) end, opts)
+--     vim.keymap.set('n', 'gxf', function() get_location('$ccls/member', { kind = 3 }, lopts) end, opts)
+--     vim.keymap.set('n', 'gxm', function() get_location('$ccls/member', {}, lopts) end, opts)
+--     vim.keymap.set('n', '<C-j>', function() get_location('$ccls/navigate', { direction = 'D' }, lopts) end, opts)
+--     vim.keymap.set('n', '<C-k>', function() get_location('$ccls/navigate', { direction = 'U' }, lopts) end, opts)
+--     vim.keymap.set('n', '<C-h>', function() get_location('$ccls/navigate', { direction = 'L' }, lopts) end, opts)
+--     vim.keymap.set('n', '<C-l>', function() get_location('$ccls/navigate', { direction = 'R' }, lopts) end, opts)
+--   end,
+-- }
 
 vim.api.nvim_create_user_command("FormatDisable", function(args)
   if args.bang then

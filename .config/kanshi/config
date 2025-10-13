@@ -7,9 +7,13 @@ profile work {
 	output "AOC Q27G2WG4 0x00004AA2" enable mode 2560x1440@60Hz transform 90 position 1920,0
 }
 
+profile ardor-single {
+	output "AREC Inc. Ardor Unknown" enable mode 2560x1440@170Hz position 0,0
+}
+
 profile home-ardor {
 	output eDP-1 disable position 0,1440
-	output "AREC Inc. Ardor Unknown" enable mode 2560x1440@60Hz position 1920,0
+	output "AREC Inc. Ardor Unknown" enable mode 2560x1440@170Hz position 1920,0
 }
 
 profile work-1 {

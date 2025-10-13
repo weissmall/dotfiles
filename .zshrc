@@ -55,6 +55,8 @@ if [[ $TERM = "kitty" ]]; then
 fi
 
 eval "$(zoxide init zsh)"
+alias v="nvim"
+alias vc="zi && nvim ."
 alias vc="zi && nvim ."
 alias vr="sudo -e nvim"
 alias vo="cd ~/Documents/Weissmall && v"

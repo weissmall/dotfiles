@@ -17,12 +17,31 @@ if [[ -e .zsh-niri ]]; then
   source .zsh-niri
 fi
 
-source "$HOME/.zsh_private_env"
+# Setup default editor
+if [[ -x nvim ]]; then
+  echo "3"
+  export EDITOR="nvim"
+
+  gitEditor=$(git config --global --list | grep "core.editor")
+  if [[ -z gitEditor ]]; then
+    echo "1"
+    git config --global core.editor nvim
+  else
+    echo "2"
+  fi
+fi
+
+
+if [[ -f "$HOME/.zsh_private_env" ]]; then
+  source "$HOME/.zsh_private_env"
+fi
 
 [ -z "$NVM_DIR" ] && export NVM_DIR="$HOME/.nvm"
-source /usr/share/nvm/nvm.sh
-source /usr/share/nvm/bash_completion
-source /usr/share/nvm/install-nvm-exec
+if [[ -d /usr/share/nvm ]]; then
+  source /usr/share/nvm/nvm.sh
+  source /usr/share/nvm/bash_completion
+  # source /usr/share/nvm/install-nvm-exec
+fi
 
 alias y="yadm"
 
@@ -30,11 +49,14 @@ alias y="yadm"
 alias vg="nvim --listen ~/.cache/nvim/godot.pipe ."
 alias no="pnpm"
 alias vconf="nvim ~/.config/nvim"
-alias batinfo="upower -i $(upower --enumerate | grep BAT)"
 alias sv="sudo -e nvim"
 
 export NVIM_USE_CC=false
 export NVIM_USE_AVANTE=false
+
+if [[ -x upower ]]; then
+  alias batinfo="upower -i $(upower --enumerate | grep BAT)"
+fi
 
 # bun
 export BUN_INSTALL="$HOME/.bun"

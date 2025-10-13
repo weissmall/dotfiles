@@ -19,20 +19,20 @@ uptime="`uptime -p | sed -e 's/up //g'`"
 host=`hostname`
 
 # Options
-hibernate=''
-shutdown=''
-reboot=''
-lock=''
-suspend=''
-logout=''
-yes=''
-no=''
+hibernate=''
+shutdown=''
+reboot=''
+lock=''
+suspend=''
+logout=''
+yes=''
+no=''
 
 # Rofi CMD
 rofi_cmd() {
 	rofi -dmenu \
-		-p " $USER@$host" \
-		-mesg " Uptime: $uptime" \
+		-p " $USER@$host" \
+		-mesg " Uptime: $uptime" \
 		-theme ${dir}/${theme}.rasi
 			# -mesg " Last Login: $lastlogin |  Uptime: $uptime" \
 }
@@ -86,8 +86,8 @@ run_cmd() {
 				i3-msg exit
 			elif [[ "$DESKTOP_SESSION" == 'plasma' ]]; then
 				qdbus org.kde.ksmserver /KSMServer logout 0 0 0
-			elif [[ "$DESKTOP_SESSION" == 'niri' ]]; then
-                                niri msg action quit -s
+			elif command -v niri; then
+        niri msg action quit -s
 			else
 				session=`loginctl session-status | head -n 1 | awk '{print $1}'`
 				loginctl terminate-session $session

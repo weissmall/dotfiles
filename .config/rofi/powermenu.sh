@@ -115,9 +115,8 @@ case ${chosen} in
 			betterlockscreen -l
 		elif [[ -x '/usr/bin/i3lock' ]]; then
 			i3lock
-	        else
-			$HOME/.config/rofi/scripts/lock.sh
-			# swaymsg exec \$locking
+	  else
+			$HOME/.config/swaylock/lock.sh
 		fi
         ;;
     $suspend)

@@ -36,30 +36,30 @@ function lock() {
     swaylock \
       --daemonize\
 \
-      --inside-clear-color "#3E4244"\
-      --line-clear-color "#3E4244"\
-      --ring-clear-color "#A4C9E3"\
+      --inside-clear-color "#3E4244CC"\
+      --line-clear-color "#3E4244CC"\
+      --ring-clear-color "#A4C9E3CC"\
       --text-clear-color "#FFFFFF"\
 \
-      --inside-ver-color "#35424A"\
-      --line-ver-color "#35424A"\
-      --ring-ver-color "#A4C9E3"\
+      --inside-ver-color "#35424ACC"\
+      --line-ver-color "#35424ACC"\
+      --ring-ver-color "#A4C9E3CC"\
       --text-ver-color "#FFFFFF"\
 \
-      --inside-wrong-color "#4A3535"\
-      --line-wrong-color "#4A3535"\
-      --ring-wrong-color "#E3A4A4"\
+      --inside-wrong-color "#4A3535CC"\
+      --line-wrong-color "#4A3535CC"\
+      --ring-wrong-color "#E3A4A4CC"\
       --text-wrong-color "#FFFFFF"\
 \
-      --inside-color "#3E4244"\
-      --line-color "#3E4244"\
-      --ring-color "#A4C9E3"\
+      --inside-color "#3E4244CC"\
+      --line-color "#3E4244CC"\
+      --ring-color "#A4C9E3CC"\
       --text-color "#FFFFFF"\
 \
       --text-caps-lock-color "#FFFFFF"\
 \
-      --key-hl-color "#FFFFFF"\
-      --bs-hl-color "#808080"\
+      --key-hl-color "#FFFFFFCC"\
+      --bs-hl-color "#808080CC"\
 \
       --show-failed-attempts\
       --fade-in 0.2\

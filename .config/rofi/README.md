@@ -6,12 +6,13 @@ Originally rofi theme was taken from [this repository](https://github.com/adi109
 
 | Powermenu | Confirmation |
 |:----------|:-------------|
-|[powermenu image](./images/power-menu.jpg)|[confirmation dialog image](./images/confirmation.jpg)|
+|<img width="1003" height="593" alt=powermenu image src="https://raw.githubusercontent.com/weissmall/dotfiles/refs/heads/niri/.config/rofi/images/power-menu.jpg" />|<img width="1003" height="593" alt="confirmation dialog image" src="https://raw.githubusercontent.com/weissmall/dotfiles/refs/heads/niri/.config/rofi/images/confirmation.jpg" />|
 
 ## General (drun & etc)
 
 | Drun | Run |
 |:----------|:-------------|
-|[rofi drun image](./images/drun.jpg)|[rofi run image](./images/run.jpg)|
+|<img width="1003" height="593" alt="rofi drun image" src="https://raw.githubusercontent.com/weissmall/dotfiles/refs/heads/niri/.config/rofi/images/drun.jpg" />|<img width="1003" height="593" alt="rofi run image" src="https://raw.githubusercontent.com/weissmall/dotfiles/refs/heads/niri/.config/rofi/images/run.jpg" />|
 | Ssh | Window |
-|[rofi ssh image](./images/ssh.jpg)|[rofi window image](./images/window.jpg)|
+|<img width="1003" height="593" alt="rofi ssh image" src="https://raw.githubusercontent.com/weissmall/dotfiles/refs/heads/niri/.config/rofi/images/ssh.jpg" />|<img width="1003" height="593" alt="rofi window image" src="https://raw.githubusercontent.com/weissmall/dotfiles/refs/heads/niri/.config/rofi/images/window.jpg" />|
+

@@ -4,6 +4,10 @@ USE_POWERLINE="true"
 # Example:
 #    is not a diamond
 HAS_WIDECHARS="false"
+
+# Include envs
+source $HOME/.zshenv
+
 # Source manjaro-zsh-configuration
 if [[ -e /usr/share/zsh/manjaro-zsh-config ]]; then
 source /usr/share/zsh/manjaro-zsh-config
@@ -116,7 +120,7 @@ alias pmm="pm2"
 alias resource="source ~/.zshrc"
 alias vrc="nvim ~/.zshrc"
 alias vai="NVIM_USE_AVANTE=true proxychains -q nvim"
-alias vco="NVIM_USE_COPILOT=true proxychains -q nvim"
+alias vco="NVIM_USE_COPILOT=true nvim"
 
 # GO binaries
 export PATH="$PATH:$HOME/go/bin"
@@ -131,3 +135,18 @@ alias cou="nmcli connection up"
 #
 # nmcli connection down
 alias cod="nmcli connection down"
+
+# Android platform tools
+export PATH="$PATH:$HOME/Android/Sdk/platform-tools"
+
+export PNPM_HOME="/home/weissmall/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+
+# Nvim mason plugins
+export PATH="$PATH:$HOME/.local/share/nvim/mason/bin"
+
+# Cria
+export PATH="$PATH:$HOME/Software/cria/target/release"

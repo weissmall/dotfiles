@@ -32,6 +32,9 @@ spawn-at-startup "ags" "run" "--gtk" "4"
 // Running Xorg applications
 spawn-at-startup "xwayland-satellite"
 
+// Running Thunderbird
+spawn-at-startup "birdtray"
+
 // Restore wallpapers
 spawn-at-startup "waypaper" "--restore"
 
@@ -334,6 +337,15 @@ window-rule {
 
     opacity 1.0
     open-floating false
+
+    block-out-from "screencast"
+}
+
+window-rule {
+    match app-id="TelegramDesktop"
+    match app-id=r#"^TelegramDesktop$"# title="^Media viewer$"
+    match title=r#"^TelegramDesktop"#
+    block-out-from "screen-capture"
 }
 
 window-rule {

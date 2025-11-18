@@ -16,7 +16,7 @@ function getWallpaperByOutputOrAll() {
 }
 
 function getImagesPerOutput() {
-  niriOutputs=$(niri msg outputs | grep "Output" | grep -oE '\(.*\)' | tr -d '()')
+  niriOutputs=$(niri msg outputs | awk '/Output/ {gsub(/[()]/,"",$NF); print $NF}')
   niriOutputsArray=($niriOutputs)
 
   result=""

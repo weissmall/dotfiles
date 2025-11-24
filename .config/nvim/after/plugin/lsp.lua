@@ -678,6 +678,11 @@ lspConfig.postgres_lsp.setup({
   filetypes = { "sql" },
 })
 
+lspConfig.qmlls.setup({
+  capabilities = capabilities,
+  cmd = { "qmlls", "-E" }
+})
+
 -- lspConfig.ccls.setup {
 --   init_options = {
 --     cache = {

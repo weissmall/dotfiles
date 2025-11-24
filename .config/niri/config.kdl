@@ -27,7 +27,10 @@ spawn-at-startup "kanshi"
 // conky 28MiB RAM
 // blueman-tray 52MiB RAM
 // blueman-applet 56MiB RAM
-spawn-at-startup "ags" "run" "--gtk" "4"
+spawn-at-startup "ags3" "run" "--gtk" "4"
+spawn-at-startup "bash" "-c" "/home/weissmall/Projects/ags-transfer/build/ags-shell"
+// spawn-at-startup "caelestia" "shell" "-d"
+// spawn-at-startup "zsh" "c" "QT_QPA_PLATFORM=wayland caelestia shell -d"
 
 // Running Xorg applications
 spawn-at-startup "xwayland-satellite"
@@ -68,14 +71,19 @@ environment {
     WLR_NO_HARDWARE_CURSORS "1"
 
     // qt wayland
-    QT_QPA_PLATFORM "xcb"
-    // QT_QPA_PLATFORM "wayland"
+    // QT_QPA_PLATFORM "xcb"
+    QT_QPA_PLATFORM "wayland"
     QT_QPA_PLATFORMTHEME "qt5ct"
     QT_WAYLAND_DISABLE_WINDOWDECORATION "1"
 
     // Java XWayland blank screens fix
     _JAVA_AWT_WM_NONREPARENTING "1"
 
+    // AGS shell
+    WEATHER_CITY_ID "498817"
+    WEATHER_API_KEY "2346fa4d5f6c0ab93c816ece6193746a"
+    WEATHER_UNITS "metric"
+    WEATHER_LANG "en"
 }
 
 input {
@@ -377,6 +385,9 @@ window-rule {
 }
 
 binds {
+    Super+Shift+O {
+      toggle-window-floating;
+    }
     // Process menu
     Super+Shift+P { spawn "bash" "-c" "pkill rofi || $HOME/.config/rofi/launcher.sh showWindow"; }
 
@@ -406,8 +417,13 @@ binds {
     }
 
     Super+Shift+B {
-        spawn "bash" "-c" "pkill gjs; ags run --gtk 4"
+        spawn "bash" "-c" "pkill gjs; ags3 run --gtk 4"
     }
+
+    Super+Alt+B {
+        spawn "bash" "-c" "pkill ags-shell; /home/weissmall/Projects/ags-transfer/build/ags-shell"
+    }
+
     // Keys consist of modifiers separated by + signs, followed by an XKB key name
     // in the end. To find an XKB name for a particular key, you may use a program
     // like wev.

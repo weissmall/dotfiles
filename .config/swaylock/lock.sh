@@ -1,4 +1,44 @@
 #!/bin/bash
+WALL_HASH="$HOME/.config/swaylock/.waypaper.hash"
+WALL_CACHE="$HOME/.config/swaylock/.wallpaper.cache"
+
+function checkDiff() {
+  # Execute waypaper --list and capture output
+  output=$(waypaper --list)
+  
+  # Check if .waypaper.hash file exists
+  if [ -f ".waypaper.hash" ]; then
+      # Read the previous output from file
+      previous=$(cat $WALL_HASH)
+      
+      # Compare current output with previous
+      if [ "$output" = "$previous" ]; then
+          # echo "same"
+          lock >> $HOME/lock.log
+      else
+          # echo "different"
+          echo "$output" > $WALL_HASH
+          storeWallpapers
+          lock >> $HOME/lock.log
+      fi
+  else
+      # File doesn't exist, treat as different and create it
+      # echo "different"
+      echo "$output" > $WALL_HASH
+      storeWallpapers
+      lock >> $HOME/lock.log
+  fi
+}
+
+function storeWallpapers() {
+  # Check if .waypaper.hash exists
+  if [ ! -f $WALL_HASH ]; then
+      echo "Error: .waypaper.hash file not found"
+      exit 1
+  fi
+  getImagesPerOutput > $WALL_CACHE
+}
+
 function getWallpaperByOutput() {
   output=$1
   outputsJson=$(waypaper --list | jq ".[] | select(.monitor==\"${output}\") | .wallpaper ")
@@ -29,9 +69,12 @@ function getImagesPerOutput() {
   echo $result
 }
 
-
+function getCacheWallpaper() {
+  echo | cat $WALL_CACHE
+}
 
 function lock() {
+  
   if [[ -x '/usr/bin/swaylock' ]]; then
     swaylock \
       --daemonize\
@@ -63,15 +106,16 @@ function lock() {
 \
       --show-failed-attempts\
       --fade-in 0.2\
-      --grace 1\
       --effect-blur 2x1\
       --effect-vignette 0.5:0.5\
       --ignore-empty-password\
-      $(getImagesPerOutput) \
+      $(getCacheWallpaper) \
       --clock \
+      --grace 1\
       -e
   fi
 }
 
 
-lock >> $HOME/lock.log
+# lock >> $HOME/lock.log
+checkDiff

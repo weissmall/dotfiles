@@ -135,6 +135,20 @@ input {
 // Find more information on the wiki:
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Outputs
 // Remember to uncomment the node by removing "/-"!
+output "Iiyama North America PL3270Q 1155103721286" {
+  mode "2560x1440@60"
+}
+
+output "AREC Inc. Ardor Unknown" {
+  mode "2560x1440@170.00"
+  position x=1920 y=0
+}
+
+output "eDP-1" {
+    mode "1920x1080@60.00"
+    position x=0 y=0
+}
+
 /-output "eDP-1" {
     // Uncomment this line to disable this output.
     // off
@@ -445,7 +459,8 @@ binds {
 
     // Mod+D { spawn "bash" "-c" "pkill rofi || $HOME/.config/rofi/launcher.sh showDrun"; }
     Super+Alt+L { spawn "swaylock"; }
-    Super+Return { spawn "wezterm"; }
+    // Super+Return { spawn "wezterm"; }
+    Super+Return { spawn "ghostty"; }
 
     // You can also use a shell. Do this if you need pipes, multiple commands, etc.
     // Note: the entire command goes as a single argument in the end.

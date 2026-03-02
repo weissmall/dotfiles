@@ -2,7 +2,7 @@
 
 local api = vim.api
 local lsp = vim.lsp
-local util = require('vim.lsp.util')
+local util = require("vim.lsp.util")
 
 ---@param method string
 ---@param opts? vim.lsp.LocationOpts
@@ -16,9 +16,9 @@ local function get_location(method, params, opts)
     return
   end
   local win = api.nvim_get_current_win()
-  local from = vim.fn.getpos('.')
+  local from = vim.fn.getpos(".")
   from[1] = bufnr
-  local tagname = vim.fn.expand('<cword>')
+  local tagname = vim.fn.expand("<cword>")
   local remaining = #clients
 
   ---@type vim.quickfix.entry[]
@@ -36,13 +36,13 @@ local function get_location(method, params, opts)
     remaining = remaining - 1
     if remaining == 0 then
       if vim.tbl_isempty(all_items) then
-        vim.notify('No locations found', vim.log.levels.INFO)
+        vim.notify("No locations found", vim.log.levels.INFO)
         return
       end
 
-      local title = 'LSP locations'
+      local title = "LSP locations"
       if opts.on_list then
-        assert(vim.is_callable(opts.on_list), 'on_list is not a function')
+        assert(vim.is_callable(opts.on_list), "on_list is not a function")
         opts.on_list({
           title = title,
           items = all_items,
@@ -59,7 +59,7 @@ local function get_location(method, params, opts)
         vim.cmd("normal! m'")
         -- Push a new item into tagstack
         local tagstack = { { tagname = tagname, from = from } }
-        vim.fn.settagstack(vim.fn.win_getid(win), { items = tagstack }, 't')
+        vim.fn.settagstack(vim.fn.win_getid(win), { items = tagstack }, "t")
 
         vim.bo[b].buflisted = true
         local w = win
@@ -73,16 +73,16 @@ local function get_location(method, params, opts)
         api.nvim_win_set_cursor(w, { item.lnum, item.col - 1 })
         vim._with({ win = w }, function()
           -- Open folds under the cursor
-          vim.cmd('normal! zv')
+          vim.cmd("normal! zv")
         end)
         return
       end
       if opts.loclist then
-        vim.fn.setloclist(0, {}, ' ', { title = title, items = all_items })
+        vim.fn.setloclist(0, {}, " ", { title = title, items = all_items })
         vim.cmd.lopen()
       else
-        vim.fn.setqflist({}, ' ', { title = title, items = all_items })
-        vim.cmd('botright copen')
+        vim.fn.setqflist({}, " ", { title = title, items = all_items })
+        vim.cmd("botright copen")
       end
     end
   end
@@ -474,15 +474,14 @@ lspConfig.pyright.setup({
   },
 })
 
-
 lspConfig.clangd.setup({
   capabilities = vim.tbl_extend("keep", capabilities, {
     offsetEncoding = { "utf-8", "utf-16" },
     textDocument = {
       completion = {
-        editsNearCursor = true
-      }
-    }
+        editsNearCursor = true,
+      },
+    },
   }),
   init_options = {
     usePlaceholders = true,
@@ -499,7 +498,7 @@ lspConfig.clangd.setup({
     "compile_commands.json",
     "compile_flags.txt",
     "configure.ac",
-    ".git"
+    ".git",
   },
   root_dir = util.root_pattern(
     ".clangd",
@@ -580,6 +579,8 @@ lspConfig.gdscript.setup({
 
 lspConfig.terraformls.setup({
   cmd = { "terraform-ls", "serve" },
+  filetypes = { "terraform", "terraform-vars", "tf" },
+  root_markers = { ".terraform", ".git" },
 })
 
 lspConfig.ts_ls.setup({
@@ -611,14 +612,14 @@ lspConfig.cssls.setup({
   },
 })
 
-lspConfig.svelte.setup({
-  cmd = {
-    "svelteserver",
-    "--stdio",
-  },
-  filetypes = { "svelte" },
-  root_dir = util.root_pattern("package.json"),
-})
+-- lspConfig.svelte.setup({
+--   cmd = {
+--     "svelteserver",
+--     "--stdio",
+--   },
+--   filetypes = { "svelte" },
+--   root_dir = util.root_pattern("package.json"),
+-- })
 
 lspConfig.jsonls.setup({
   capabilities = capabilities,
@@ -673,10 +674,10 @@ lspConfig.kotlin_language_server.setup({
   capabilities = capabilities,
 })
 
-lspConfig.postgres_lsp.setup({
-  capabilities = capabilities,
-  filetypes = { "sql" },
-})
+-- lspConfig.postgres_lsp.setup({
+-- 	capabilities = capabilities,
+-- 	filetypes = { "sql" },
+-- })
 
 lspConfig.qmlls.setup({
   capabilities = capabilities,

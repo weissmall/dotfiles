@@ -71,8 +71,9 @@ environment {
     WLR_NO_HARDWARE_CURSORS "1"
 
     // qt wayland
-    // QT_QPA_PLATFORM "xcb"
-    QT_QPA_PLATFORM "wayland"
+    // Should be xcb to run Android Emulator for some reason idk
+    QT_QPA_PLATFORM "xcb"
+    // QT_QPA_PLATFORM "wayland"
     QT_QPA_PLATFORMTHEME "qt5ct"
     QT_WAYLAND_DISABLE_WINDOWDECORATION "1"
 
@@ -91,8 +92,6 @@ input {
         xkb {
             // You can set rules, model, layout, variant and options.
             // For more information, see xkeyboard-config(7).
-
-            // For example:
             layout "us,ru"
             options "grp:win_space_toggle,compose:ralt"
             // options "ctrl:nocaps"
@@ -122,7 +121,7 @@ input {
     }
 
     // Uncomment this to make the mouse warp to the center of newly focused windows.
-    // warp-mouse-to-focus
+    warp-mouse-to-focus
 
     // Focus windows and outputs automatically when moving the mouse into them.
     // Setting max-scroll-amount="0%" makes it work only on windows already fully on screen.

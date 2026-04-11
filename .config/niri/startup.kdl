@@ -1,0 +1,46 @@
+spawn-at-startup "kanshi"
+
+// Simple volume & brightness notifications
+// 50MiB RAM
+// spawn-at-startup "swayosd-server"
+
+// Top bar
+// 60MiB RAM
+// spawn-at-startup "waybar"
+
+// spawn-at-startup "bash" "-c" "lua /home/weissmall/Projects/CursorTest/weissbar/init.lua"
+
+// ags 29MiB RAM
+// gjs 169MiB RAM
+// nm-applet 41MiB RAM
+// conky 28MiB RAM
+// blueman-tray 52MiB RAM
+// blueman-applet 56MiB RAM
+// spawn-at-startup "caelestia" "shell" "-d"
+// spawn-at-startup "zsh" "c" "QT_QPA_PLATFORM=wayland caelestia shell -d"
+
+// Running Xorg applications
+spawn-at-startup "xwayland-satellite"
+
+// Running Thunderbird
+// spawn-at-startup "birdtray"
+
+// Restore wallpapers
+// spawn-at-startup "waypaper" "--restore"
+
+// Cliphist watch
+spawn-at-startup "bash" "-c" "[ -x \"$(command -v wl-paste)\" ] && [ -x \"$(command -v cliphist)\" ] && wl-paste --watch pkill -RTMIN+9 waybar"
+spawn-at-startup "bash" "-c" "[ -x \"$(command -v wl-paste)\" ] && [ -x \"$(command -v cliphist)\" ] && wl-paste --watch cliphist store"
+
+// Notifications
+// spawn-at-startup "bash" "-c" "[ -x \"$(command -v dunst)\" ] && pkill dunst; dunst"
+
+// Conky
+// spawn-at-startup "nm-applet"
+// spawn-at-startup "bash" "-c" "$HOME/.config/niri/conky.sh"
+
+// AGS
+// spawn-at-startup "ags" "run" "--gtk" "4"
+// spawn-at-startup "bash" "-c" "/home/weissmall/Projects/ags-transfer/build/ags-shell"
+// Noctails
+spawn-at-startup "noctalia-shell"

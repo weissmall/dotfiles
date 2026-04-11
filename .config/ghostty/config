@@ -43,6 +43,9 @@
 # # Empty values are used to reset config keys to default.
 # key =
 
+shell-integration = zsh
+shell-integration-features = ssh-env
+
 keybind = alt+space>n>w=new_window
 
 # Create splits
@@ -71,7 +74,7 @@ keybind = alt+space>t>shift+t=previous_tab
 # wayland-focus-handling-workaround = true
 
 # Style
-theme = TokyoNight
+theme = noctalia
 background = #2C2C33
 font-family = JetbrainsMonoNL
 font-size = 12

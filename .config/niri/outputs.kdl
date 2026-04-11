@@ -1,0 +1,11 @@
+// Outputs documentation
+// https://niri-wm.github.io/niri/Configuration%3A-Outputs.html
+output "AREC Inc. Ardor Unknown" {
+  mode "2560x1440@170.00"
+  position x=0 y=0
+}
+
+output "eDP-1" {
+    mode "1920x1080@60.00"
+    position x=0 y=0
+}

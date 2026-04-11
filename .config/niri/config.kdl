@@ -1,5 +1,5 @@
-include "startup.kdl"
-include "environment.kdl"
+include "./startup.kdl"
+include "./environment.kdl"
 /* -------------------------------------------------------------------------- */
 // Docs for inputs
 // https://niri-wm.github.io/niri/Configuration%3A-Input.html

@@ -1,0 +1,22 @@
+layout {
+  // just a raw pane, no plugins for tab‑bar or status
+  tab name="Neovim" {
+    pane {
+      // borderless true
+    }
+  }
+
+  tab name="Shell" {
+    pane {
+      // borderless true
+    }
+  }
+
+  tab name="OpenCode" {
+    pane {
+      // borderless true
+    }
+  }
+
+  plugin "status_bar"
+}

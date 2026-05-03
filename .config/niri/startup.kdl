@@ -1,3 +1,4 @@
+spawn-at-startup "nm-applet"
 spawn-at-startup "kanshi"
 
 // Simple volume & brightness notifications
@@ -20,7 +21,7 @@ spawn-at-startup "kanshi"
 // spawn-at-startup "zsh" "c" "QT_QPA_PLATFORM=wayland caelestia shell -d"
 
 // Running Xorg applications
-spawn-at-startup "xwayland-satellite"
+// spawn-at-startup "xwayland-satellite"
 
 // Running Thunderbird
 // spawn-at-startup "birdtray"

@@ -40,6 +40,6 @@ vim.opt.listchars = { tab = "  ", trail = "·", nbsp = "␣" }
 
 -- Wrapping
 vim.opt.wrap = false
-vim.opt.laststatus = 3
+vim.opt.laststatus = 2
 
 -- vim.opt.guicursor = ""

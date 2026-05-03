@@ -1,0 +1,14 @@
+[metadata]
+name = "nix-devshells"
+description = "Picker for my development shells of nix develop"
+
+[source]
+command = "nix flake show ~/.config/dev-shells --json | jq -r '.devShells.\"x86_64-linux\" | keys[]'"
+
+[keybindings]
+enter = "actions:loadShell"
+
+[actions.loadShell]
+description = "Attach"
+command = "nix develop ~/.config/dev-shells#{}"
+mode = "execute"

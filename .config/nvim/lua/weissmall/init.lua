@@ -244,6 +244,7 @@ require("lazy").setup({
     "akinsho/toggleterm.nvim",
     version = "*",
     config = true,
+    enabled = false,
   },
 
   -- Rust
@@ -253,7 +254,7 @@ require("lazy").setup({
   -- 	ft = { "rust" },
   -- },
   -- Project management
-  { "ahmedkhalf/project.nvim" },
+  { "ahmedkhalf/project.nvim",    enabled = false, },
 
   -- Startup dashboard
   {
@@ -265,14 +266,14 @@ require("lazy").setup({
     },
   },
 
-  {
-    "nvim-tree/nvim-tree.lua",
-    version = "*",
-    lazy = false,
-    dependencies = {
-      "nvim-tree/nvim-web-devicons",
-    },
-  },
+  -- {
+  --   "nvim-tree/nvim-tree.lua",
+  --   version = "*",
+  --   lazy = false,
+  --   dependencies = {
+  --     "nvim-tree/nvim-web-devicons",
+  --   },
+  -- },
 
   -- Barbecue (breadcrumbs like line)
   {

@@ -29,10 +29,10 @@ vim.keymap.set("n", "<leader>qa", vim.cmd.qa)
 vim.keymap.set("n", "<leader>wqa", vim.cmd.wqa)
 
 -- Buffers motions from `barbar` extension
--- vim.keymap.set("n", "<A-l>", "<Cmd>BufferNext<CR>", opts)
--- vim.keymap.set("n", "<A-h>", "<Cmd>BufferPrevious<CR>", opts)
+vim.keymap.set("n", "<A-l>", "<Cmd>BufferLineCycleNext<CR>", {})
+vim.keymap.set("n", "<A-h>", "<Cmd>BufferLineCyclePrev<CR>", {})
 --
--- vim.keymap.set("n", "<A-c>", "<Cmd>BufferClose<CR>", opts)
+vim.keymap.set("n", "<A-c>", "<Cmd>BufferLinePickClose<CR>", {})
 -- vim.keymap.set("n", "<A-e>", "<Cmd>BufferPick<CR>", opts)
 -- vim.keymap.set("n", "<A-Right>", "<Cmd>BufferNext<CR>", opts)
 -- vim.keymap.set("n", "<A-Left>", "<Cmd>BufferPrevious<CR>", opts)
@@ -61,5 +61,5 @@ vim.keymap.set("v", "<leader>x", ":lua<CR>")
 
 -- vim.keymap.set("n", "<leader>wrs", vim.g.wrap_state_set, {})
 vim.keymap.set("n", "<leader>nft", function()
-	vim.notify(vim.bo.filetype)
+  vim.notify(vim.bo.filetype)
 end)

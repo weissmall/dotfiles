@@ -2,6 +2,7 @@
 ---@type LazySpec
 return {
   "Wansmer/langmapper.nvim",
+  enabled = false,
   priority = 1,
   opts = {
     ---@type boolean Add mapping for every CTRL+ binding or not.

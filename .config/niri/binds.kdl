@@ -5,6 +5,7 @@ binds {
     }
 
     Super+D { 
+      // spawn-sh "~/.config/rofi/launcher.sh showDrun";
       spawn-sh "noctalia-shell ipc call launcher toggle"; 
     }
 

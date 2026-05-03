@@ -1,13 +1,8 @@
 local telescope = require("telescope")
 local builtin = require("telescope.builtin")
 
-telescope.load_extension("projects")
 telescope.load_extension("noice")
 telescope.load_extension("flutter")
-
-local function showProjects()
-  require("telescope").extensions.projects.projects({})
-end
 
 local function tlWrapper(fn)
   return function()
@@ -26,14 +21,12 @@ vim.keymap.set("n", "<leader>fg", tlWrapper(builtin.live_grep), {})
 vim.keymap.set("n", "<leader>fof", tlWrapper(builtin.oldfiles), {})
 vim.keymap.set("n", "<leader>b", tlWrapper(builtin.buffers), {})
 
-vim.keymap.set("n", "<leader>r", tlWrapper(showProjects))
-
 local function flutterCommands()
   return require("telescope").extensions.flutter.commands()
 end
 vim.keymap.set("n", "<leader>fc", flutterCommands)
 
---vim.keymap.set("n", "<leader>fb", builtin.buffers, {})
+vim.keymap.set("n", "<leader>fb", builtin.buffers, {})
 --vim.keymap.set("n", "<leader>fh", builtin.help_tags, {})
 telescope.setup({
   defaults = {
@@ -46,10 +39,10 @@ telescope.setup({
   },
   extensions = {
     fzf = {
-      fuzzy = true,                -- false will only do exact matching
+      fuzzy = true,                   -- false will only do exact matching
       override_generic_sorter = true, -- override the generic sorter
-      override_file_sorter = true, -- override the file sorter
-      case_mode = "smart_case",    -- or "ignore_case" or "respect_case"
+      override_file_sorter = true,    -- override the file sorter
+      case_mode = "smart_case",       -- or "ignore_case" or "respect_case"
       -- the default case_mode is "smart_case"
     },
     just = {

@@ -66,6 +66,8 @@ keybind = alt+space>t>c=close_tab:this
 keybind = alt+space>t>t=next_tab
 keybind = alt+space>t>shift+t=previous_tab
 
+keybind = super+space=ignore
+
 # # Some config options have unique syntaxes for their value,
 # # which is explained in the docs for that config option.
 # # Just for example:

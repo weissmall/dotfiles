@@ -172,7 +172,7 @@ animations {
     // off
 
     // Slow down all animations by this factor. Values below 1 speed them up instead.
-    // slowdown 3.0
+    slowdown 1.5
 }
 
 // Window rules let you adjust behavior for individual windows.
@@ -182,16 +182,20 @@ animations {
 // All windows
 window-rule {
     draw-border-with-background false
-    opacity 0.95
+    opacity 0.85
     geometry-corner-radius 8
     clip-to-geometry true
+    background-effect {
+      blur true
+    }
 }
 
 // All active windows
 window-rule {
     match is-active=false
-    opacity 0.90
+    opacity 0.80
 }
+
 
 // Work around WezTerm's initial configure bug
 // by setting an empty default-column-width.
@@ -243,9 +247,8 @@ window-rule {
 
 // Steam notifications floating
 window-rule {
-    // Title: "notificationtoasts_11_desktop"
-    match app-id="steam" title="notificationtoasts.*"
-    open-floating true
+    match app-id="steam" title=r#"^notificationtoasts_\d+_desktop$"#
+    default-floating-position x=10 y=10 relative-to="bottom-right"
 }
 
 // Example: block out two password managers from screen capture.
@@ -280,4 +283,37 @@ include "./binds.kdl"
 layer-rule {
   match namespace="^noctalia-overview*"
   place-within-backdrop true
+  background-effect {
+    blur true
+  }
 }
+
+blur {
+  passes 2
+  offset 0.0
+  noise 0.04
+  saturation 1.5
+}
+
+window-rule {
+    match is-window-cast-target=true
+
+    focus-ring {
+        active-color "#f38ba8"
+        inactive-color "#7d0d2d"
+    }
+
+    border {
+        inactive-color "#7d0d2d"
+    }
+
+    shadow {
+        color "#7d0d2d70"
+    }
+
+    tab-indicator {
+        active-color "#f38ba8"
+        inactive-color "#7d0d2d"
+    }
+}
+// include "./animations/swipe-window.kdl"

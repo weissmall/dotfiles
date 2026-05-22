@@ -1,3 +1,10 @@
+vim.diagnostic.config({
+  float = {
+    source = true,
+    border = "rounded",
+  },
+})
+
 local function cwdName()
   return vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
 end

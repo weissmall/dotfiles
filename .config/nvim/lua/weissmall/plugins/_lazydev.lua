@@ -1,7 +1,3 @@
-local lazydev = {
-	"folke/lazydev.nvim",
-}
-
 -- local blink = { -- optional blink completion source for require statements and module annotations
 -- 	"Saghen/blink.cmp",
 -- 	opts = {
@@ -20,6 +16,15 @@ local lazydev = {
 -- }
 
 return {
-	lazydev,
-	{},
+  {
+    "folke/lazydev.nvim",
+    ft = "lua", -- only load on lua files
+    opts = {
+      library = {
+        -- See the configuration section for more details
+        -- Load luvit types when the `vim.uv` word is found
+        { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+      },
+    },
+  },
 }

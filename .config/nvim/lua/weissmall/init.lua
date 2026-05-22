@@ -69,11 +69,39 @@ require("lazy").setup({
   { "jay-babu/mason-nvim-dap.nvim" },
   {
     "MunifTanjim/prettier.nvim",
+    opts = {
+      bin = "prettierd",
+      cli_options = {
+        config_precedence = "prefer-file",
+      },
+      filetypes = {
+        "css",
+        "graphql",
+        "html",
+        "javascript",
+        "javascriptreact",
+        "json",
+        "less",
+        "markdown",
+        "scss",
+        "typescript",
+        "typescriptreact",
+        "yaml",
+      },
+
+    },
     dependencies = {
       { "neovim/nvim-lspconfig" },
     },
   },
-  { "vidocqh/auto-indent.nvim" },
+  {
+    "vidocqh/auto-indent.nvim",
+    opts = {
+      lightmode = true,
+      indentexpr = nil,
+      ignore_filetype = {},
+    },
+  },
   -- { "abecodes/tabout.nvim" },
   {
     "windwp/nvim-autopairs",
@@ -86,7 +114,59 @@ require("lazy").setup({
     lazy = true,
   },
 
-  { "xiyaowong/transparent.nvim" },
+  {
+    "xiyaowong/transparent.nvim",
+    lazy = false,
+    opts = {
+      -- Optional, you don't have to run setup.
+      groups = { -- table: default groups
+        "Normal",
+        "NormalNC",
+        "Comment",
+        "Constant",
+        "Special",
+        "Identifier",
+        "Statement",
+        "PreProc",
+        "Type",
+        "Underlined",
+        "Todo",
+        "String",
+        "Function",
+        "Conditional",
+        "Repeat",
+        "Operator",
+        "Structure",
+        "LineNr",
+        "NonText",
+        "SignColumn",
+        "CursorLine",
+        "CursorLineNr",
+        "StatusLine",
+        "StatusLineNC",
+        "EndOfBuffer",
+        "NeoTreeNormal",
+        "NeoTreeNormalNC",
+      },
+      extra_groups = {
+        "Telescope",
+        "TelescopeNormal",
+        "TelescopeBorder",
+        "TelescopePromptBorder",
+        "TelescopePromptTitle",
+        "NoicePopupBorder",
+        "NoiceSplitBorder",
+        "FloatBorder",
+        "NormalFloat",
+        "Barbar",
+        "neo-tree",
+      }, -- table: additional groups that should be cleared
+      exclude_groups = {
+        "Buffer",
+      }, -- table: groups you don't want to clear
+
+    },
+  },
   {
     "nvim-telescope/telescope.nvim",
     dependencies = {
@@ -115,11 +195,8 @@ require("lazy").setup({
     version = "v2.*",
     build = "make install_jsregexp",
   },
-  -- Powerline
-  { "nvim-lualine/lualine.nvim" },
-
   -- Neovim development
-  { "Bilal2453/luvit-meta",      lazy = true }, -- optional `vim.uv` typings
+  { "Bilal2453/luvit-meta",        lazy = true }, -- optional `vim.uv` typings
 
   -- Startup dashboard
   {
@@ -127,6 +204,86 @@ require("lazy").setup({
     event = "VimEnter",
     dependencies = {
       { "nvim-tree/nvim-web-devicons" },
+    },
+    opts = {
+      theme = "doom",
+      config = {
+        week_header = {
+          enable = true,
+        },
+        disable_mode = true,
+        vertical_center = true,
+        center = {
+          {
+            icon = " ",
+            icon_hl = "Title",
+            desc = "Find File",
+            desc_hl = "String",
+            key = "ff",
+            keymap = "<leader>",
+            key_hl = "Number",
+            key_format = " %s", -- remove default surrounding `[]`
+            action = "lua print(2)",
+          },
+          {
+            icon = " ",
+            icon_hl = "Title",
+            desc = "Find Grep",
+            desc_hl = "String",
+            key = "fg",
+            keymap = "<leader>",
+            key_hl = "Number",
+            key_format = " %s", -- remove default surrounding `[]`
+            action = "lua print(2)",
+          },
+          {
+            icon = " ",
+            icon_hl = "Title",
+            desc = "Quick jump",
+            desc_hl = "String",
+            key = "e",
+            keymap = "<leader>",
+            key_hl = "Number",
+            key_format = " %s", -- remove default surrounding `[]`
+            action = "lua print(2)",
+          },
+          {
+            icon = " ",
+            icon_hl = "Title",
+            desc = "File Tree",
+            desc_hl = "String",
+            key = "ft",
+            keymap = "<leader>",
+            key_hl = "Number",
+            key_format = " %s", -- remove default surrounding `[]`
+            action = "lua print(2)",
+          },
+          {
+            icon = " ",
+            icon_hl = "Title",
+            desc = "Another File Manager",
+            desc_hl = "String",
+            key = "fm",
+            keymap = "<leader>",
+            key_hl = "Number",
+            key_format = " %s", -- remove default surrounding `[]`
+            action = "lua print(2)",
+          },
+          {
+            icon = " ",
+            icon_hl = "Title",
+            desc = "Quit",
+            desc_hl = "String",
+            key = "qa",
+            keymap = "<leader>",
+            key_hl = "Number",
+            key_format = " %s", -- remove default surrounding `[]`
+            action = "lua print(2)",
+          },
+        },
+        footer = {},
+      },
+
     },
   },
   -- Golang

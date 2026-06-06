@@ -1,0 +1,8 @@
+{
+  "name": "personal-snippets",
+  "contributes": {
+    "snippets": [
+      { "language": "dart", "path": "./lua.json" }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+[metadata]
+name = "tfw"
+description = "A channel to select from zellij sessions"
+requirements = ["terraform"]
+
+[source]
+command = "terraform workspace list"
+
+[keybindings]
+enter = "actions:select"
+
+[actions.select]
+description = "Select workspace"
+command = "terraform workspace select {trim}"
+mode = "execute"

@@ -1,5 +1,5 @@
 [metadata]
-name = "zellij-sessions"
+name = "zjs"
 description = "A channel to select from zellij sessions"
 
 [source]

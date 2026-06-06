@@ -1,5 +1,9 @@
 binds {
 
+    Super+Shift+B hotkey-overlay-title="Restart Noctalia" {
+      spawn-sh "(pkill quickshell || true) && noctalia-shell"
+    }
+
     Super+Shift+P hotkey-overlay-title="Opened windows" { 
       spawn-sh "noctalia-shell ipc call launcher windows"; 
     }

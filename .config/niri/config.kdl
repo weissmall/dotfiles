@@ -223,6 +223,12 @@ window-rule {
 }
 
 window-rule {
+    match app-id=r#"^steam$"# title=r#"^notificationtoasts.*"
+    open-floating true
+    opacity 0.80
+}
+
+window-rule {
     match app-id="TelegramDesktop"
     match app-id=r#"^TelegramDesktop$"# title="^Media viewer$"
     match title=r#"^TelegramDesktop"#

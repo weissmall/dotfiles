@@ -1,11 +1,11 @@
 // Outputs documentation
 // https://niri-wm.github.io/niri/Configuration%3A-Outputs.html
-output "AREC Inc. Ardor Unknown" {
-  mode "2560x1440@170.00"
-  position x=0 y=0
-}
+// output "AREC Inc. Ardor Unknown" {
+//   mode "2560x1440@170.00"
+//   position x=0 y=0
+// }
 
-output "eDP-1" {
+output "Chimei Innolux Corporation 0x15E7 Unknown" {
     mode "1920x1080@60.00"
     position x=0 y=0
 }

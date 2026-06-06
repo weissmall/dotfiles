@@ -1,5 +1,5 @@
 spawn-at-startup "nm-applet"
-spawn-at-startup "kanshi"
+// spawn-at-startup "kanshi"
 
 // Simple volume & brightness notifications
 // 50MiB RAM
